@@ -9,6 +9,9 @@
 <body>
 
 <%= yield %>
+<% if logged_in? %>
+  <%= button_to 'Log Out', session_url, method: :delete, form_class: "logout-btn" %>
+<% end %>
 
 </body>
 </html>

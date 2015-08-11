@@ -16,6 +16,7 @@
 
 ### Feeds
 - `user_id` -> foreign key
+- `title` -> optional
 - `url`
 - `have_one` (or maybe many) topic(s)
 
@@ -50,7 +51,7 @@
     - this will take just a username, feed_url and password
     - on success will fire off backbone home (users show), and this will provide a way for the user to update settings with interests, age, etc. 
 - session new (shares a partial with users new)
-- jbuilder from here down
+- ejs templates for
     - user's show 
     - user's edit
-    - feed views to come 
+- feed views to come 
