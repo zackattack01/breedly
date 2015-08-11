@@ -1,0 +1,17 @@
+<%= flash_errors %>
+<br><br>
+<form action="<%= action %>" method="POST">
+  <%= csrf_tag %>
+  <label for="username">Username: </label>
+  <input type="text" id="username" name="user[username]">
+  <br>
+  <% unless action == session_url %>
+    <label for="blog">Blog feed:</label>
+    <input type="text" id="blog" name="user[feed_url]">
+  <% end %>
+  <br>
+  <label for="password">Password: </label>
+  <input type="password" id="password" name="user[password]">
+  <br>
+  <input type="submit" value="Let's go">
+</form>

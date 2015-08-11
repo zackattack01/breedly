@@ -10,6 +10,7 @@
 - `age`
 - `age_range`
     - distance from the user's own age allowed when calculating compatible feeds
+- `feed_url`
 - `have_one` feed
 - `have_many` interests
 
