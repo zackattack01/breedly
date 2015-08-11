@@ -1,12 +1,12 @@
 # Messaging
 
 ## The message model
-- body
-- author_id
-- recipient_id
-- parent_id to indicate the conversation
+- `body`
+- `author_id`
+- `recipient_id`
+- `parent_id` to indicate the conversation
 - timestamps to keep them organized
-- viewed boolean
+- `viewed` boolean
     - unseen messages will be displayed as notifications to the recipient
 
 ## The message controller
@@ -17,8 +17,8 @@
 - destroy
 
 ## Coversations
-- will be provided as an index of any message authored or recieved by the current_user
-- will be organized by parent_id to keep conversations together
+- will be provided as an index of any message authored or recieved by the `current_user`
+- will be organized by `parent_id` to keep conversations together
 - this logic will be defined as a helper method in the user model
 
 ## Message Views

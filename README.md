@@ -50,13 +50,13 @@ Users can:
 ### Phase IV: Messaging and Notifications ~1 day
 
 - Create a message model
-- These will be organized into conversations and provided as json by the message index using the current_user
+- These will be organized into conversations and provided as json by the message index using the `current_user`
 messages association
 
 [Details](./docs/phase_four.md)
 
 ### Phase V: User interests
-- create a user_interest model
+- create a `user_interest` model
 - user's can click to generate a user interest
 - database will check for mutual interests
 

@@ -3,20 +3,20 @@
 ## Models
 
 ### Users
-- password_digest
-- session_token
-- username -> unique
-- real_name -> not necessarily unique
-- age
-- age_range
+- `password_digest`
+- `session_token`
+- `username` -> unique
+- `real_name` -> not necessarily unique
+- `age`
+- `age_range`
     - distance from the user's own age allowed when calculating compatible feeds
-- have_one feed
-- have_many interests
+- `have_one` feed
+- `have_many` interests
 
 ### Feeds
-- user_id -> foreign key
-- url
-- have_one (or maybe many) topic(s)
+- `user_id` -> foreign key
+- `url`
+- `have_one` (or maybe many) topic(s)
 
 ## Controllers
 
