@@ -1,6 +1,6 @@
 Breedly.Collections.Feeds = Backbone.Collection.extend({
   url: 'api/feeds',
-  model: Breedly.Models.Feed;
+  model: Breedly.Models.Feed,
 
   getOrFetch: function(id) {
     var feeds = this;
