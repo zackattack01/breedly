@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 gem 'rails', '4.2.3'
 gem 'pg'
@@ -11,8 +11,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'feedjira', '~> 2.0'
 gem 'backbone-on-rails'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'ejs'
 
-group :development, :test do
+group :development do
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
