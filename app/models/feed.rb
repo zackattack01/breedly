@@ -9,23 +9,24 @@ class Feed < ActiveRecord::Base
 
   validates :user, :url, presence: true
   validates :url, uniqueness: true
+  validate :parsable
 
   belongs_to :user
 
-  attr_reader :data
-
   def self.generate_feed_object(url, user_id)
+    feed = Feed.create!(url: url, user_id: user_id)
+    feed
+  end
+
+  private
+  def parsable
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     rescue Feedjira::NoParserAvailable 
-      @feed.errors.full_messages << FEED_ERRORS[:no_parser]
-      return nil
+      errors.add(:no_parser, FEED_ERRORS[:no_parser])
     rescue Feedjira::FetchFailure
-      @feed.errors.full_messages << FEED_ERRORS[:fetch_failure]
-      return nil
-    end
-    feed = Feed.create!(url: url, user_id: user_id)
+      errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
+    end 
     feed.data = parsed_feed_data
-    feed
-  end
+  end 
 end

@@ -1,7 +1,7 @@
 class Api::FeedsController < ApplicationController
   def create
     @feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
-    if @feed.save
+    if @feed && @feed.save
       render 'show'
     else
       render json: @feed.errors.full_messages, status: 422
