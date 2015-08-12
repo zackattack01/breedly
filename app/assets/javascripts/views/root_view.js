@@ -1,4 +1,3 @@
-//next get composite view
 Breedly.Views.RootView = Backbone.View.extend({
   template: JST['root'],
 

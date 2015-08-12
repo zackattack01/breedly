@@ -5,7 +5,10 @@ class Feed < ActiveRecord::Base
     no_update: "We were unable to update your feed, please make sure you have the correct url in xml format"
   }
 
+  attr_accessor :data
+
   validates :user, :url, presence: true
+  validates :url, uniqueness: true
 
   belongs_to :user
 

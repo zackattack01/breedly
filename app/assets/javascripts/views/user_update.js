@@ -8,7 +8,10 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
   update: function(e) {
     e.preventDefault();
     var userData = $('#user-update').serializeJSON();
-    debugger;
+    //if there is a url and it isn't valid, delete it before it gets set
+    if (userData.user['feed_url'] && !this.addFeed(userData.user['feed_url'])) {
+      delete userData.feed_url;
+    }
     this.model.set(userData);
     var that = this;
     that.model.save({}, {
@@ -17,6 +20,11 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
         Backbone.history.navigate('/', { trigger: true });
       }
     });
+  },
+
+  addFeed: function(url) {
+    var newFeed = new Breedly.Models.Feed({ url: url });
+    newFeed.save();
   },
 
   render: function() {
