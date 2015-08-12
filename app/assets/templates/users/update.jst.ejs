@@ -1,0 +1,19 @@
+<h1>Update Your Profile</h1>
+<form id="user-update">
+  <label for="username">Username:</label>
+  <input id="username" type="text" name="user[username]" value="<%= user.userData['username'] %>">
+  <br>
+  <label for="real-name">Your Name:</label>
+  <input id="real-name" type="text" name="user[real_name]" value="<%= user.userData['real_name'] %>">
+  <br>
+  <label for="age">Age:</label>
+  <input id="age" type="text" name="user[age]" value="<%= user.userData['age'] %>">
+  <br>
+  <label for="age_range">How far from your age do you want to see?</label>
+  <input id="age_range" type="text" name="user[age_range]" value="<%= user.userData['age_range'] %>">
+  <br>
+  <label for="feed_url">Update Your Feed:</label>
+  <input id="feed_url" type="text" name="user[feed_url]" value="<%= user.userData['feed_url'] %>">
+  <br>
+  <button class="submit">Update!</button>
+</form>

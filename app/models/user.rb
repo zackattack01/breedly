@@ -27,15 +27,16 @@ class User < ActiveRecord::Base
     self.save!
   end
 
-  def to_json
-    {
-      'username' => username,
-      'real_name' => real_name,
-      'age' => age,
-      'age_range' => age_range,
-      'feed_url' => feed_url
-    }.to_s
-  end
+  # def to_json
+  #   {
+  #     :id => id,
+  #     :username => username,
+  #     :real_name => real_name, 
+  #     :age => age,
+  #     :age_range => age_range, 
+  #     :feed_url => feed_url
+  #   }.to_json
+  # end
 
   private
   def ensure_session_token

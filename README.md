@@ -75,4 +75,5 @@ messages association
 - Additional points may be given to the compatibility score if a user has indicated an interested in the user who is having the feeds generated
 - Implement a cap on the number of feeds provided, allow a refresh button from backbone as well as a more feeds button
     - This will request the next 100 (or whatever the cap is) number of sorted feeds from the database
+- Users can add a profile picture
 - Users can block other user's messages

@@ -2,7 +2,6 @@ Breedly.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.feeds = options.feeds;
     this.$rootEl = options.$rootEl;
-    this.current_user = options.current_user;
   },
 
   routes: {
@@ -12,12 +11,15 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   userRoot: function() {
-    console.log("IN USER SHOW");
-    this.$rootEl.html('<h1>IN SHOW</h1>')    
+    var user = new Breedly.Models.User(Breedly.CURRENT_USER);
+    var view = new Breedly.Views.RootView({ model: user });
+    this._swapView(view); 
   },
 
-  userUpdate: function() {
-    var 
+  userUpdate: function(id) {
+    var user = new Breedly.Models.User(Breedly.CURRENT_USER);
+    var view = new Breedly.Views.UserUpdate({ model: user });
+    this._swapView(view);
   },
 
   feedShow: function(id) {
@@ -32,6 +34,3 @@ Breedly.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.render().$el);
   }
 });
-  
-//    
-//Backbone.history.navigate('users/' + this.current_user_id, { trigger: true });
