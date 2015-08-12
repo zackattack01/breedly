@@ -1,19 +1,22 @@
 class Api::FeedsController < ApplicationController
   def create
-    @feed = Feed.new(feed_params)
+    @feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
     if @feed.save
       render 'show'
     else
-      render json: { error: "Invalid feed url" }, status: 422
+      render json: @feed.errors.full_messages, status: 422
     end
   end
 
   def update
     @feed = Feed.find(params[:id])
-    if @feed.update(feed_params)
+    updated_feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
+    if updated_feed
+      @feed.destroy
+      @feed = updated_feed
       render 'show'
     else
-      render json: { error: "Invalid feed url" }, status: 422
+      render json: { error: Feed::FEED_ERRORS[:no_update] }, status: 422
     end
   end
 

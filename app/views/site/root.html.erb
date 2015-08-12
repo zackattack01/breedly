@@ -1,9 +1,11 @@
 <h1>Routing correctly</h1>
-<div id="feeds-index-bar">
-<div id="main-content">
+<div id="navbar"></div>
+<div id="feeds-index-bar"></div>
+<div id="main-content"></div>
 
 <script>
 $(document).ready(function(){
-  Breedly.initialize();
+  var current_user = "<%= current_user.to_json %>";
+  Breedly.initialize({ current_user_id: current_user_id });
 });
 </script>

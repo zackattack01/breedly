@@ -1,3 +1,1 @@
-json.extract!(@feed, :id, :url)
-
-##remember to add other needed info
+json.extract!(@feed, :id, :url, :data)

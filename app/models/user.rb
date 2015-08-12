@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many :feeds
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     user && user.is_password?(password) ? user : nil
@@ -23,6 +25,16 @@ class User < ActiveRecord::Base
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64
     self.save!
+  end
+
+  def to_json
+    {
+      'username' => username,
+      'real_name' => real_name,
+      'age' => age,
+      'age_range' => age_range,
+      'feed_url' => feed_url
+    }.to_s
   end
 
   private

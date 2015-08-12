@@ -1,16 +1,23 @@
 Breedly.Routers.Router = Backbone.Router.extend({
-  initialize: function() {
+  initialize: function(options) {
     this.feeds = options.feeds;
     this.$rootEl = options.$rootEl;
+    this.current_user = options.current_user;
   },
 
   routes: {
-    '': 'userShow',
-    'feeds/:id': 'feedShow'
+    '': 'userRoot',
+    'feeds/:id': 'feedShow',
+    'users/:id/edit': 'userUpdate'
   },
 
-  userShow: function() {
+  userRoot: function() {
+    console.log("IN USER SHOW");
+    this.$rootEl.html('<h1>IN SHOW</h1>')    
+  },
 
+  userUpdate: function() {
+    var 
   },
 
   feedShow: function(id) {
@@ -25,3 +32,6 @@ Breedly.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.render().$el);
   }
 });
+  
+//    
+//Backbone.history.navigate('users/' + this.current_user_id, { trigger: true });
