@@ -8,7 +8,7 @@ Breedly.Views.RootView = Backbone.View.extend({
 
   redirectToUpdate: function(e) {
     e.preventDefault();
-    Backbone.history.navigate('users/' + this.model.userData['id'] + '/edit', { trigger: true });
+    Backbone.history.navigate('users/' + this.model.id + '/edit', { trigger: true });
   },
 
   render: function() {

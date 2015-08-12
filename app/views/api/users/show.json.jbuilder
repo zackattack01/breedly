@@ -1,0 +1,1 @@
+json.extract!(@user, :id, :username, :real_name, :age, :age_range, :feed_url)
