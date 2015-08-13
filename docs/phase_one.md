@@ -8,9 +8,10 @@
 - `username` -> unique
 - `real_name` -> not necessarily unique
 - `age`
-- `age_range`
-    - distance from the user's own age allowed when calculating compatible feeds
-- `have_one` feed
+- `age_min`
+- `age_max`
+    - target range for compatible feeds
+- `have_many` feed
 - `have_many` interests
 
 ### Feeds
@@ -22,13 +23,12 @@
 ## Controllers
 
 ### Users need:
-- new, the only one that won't be api namespaced
-    - begin backbone immediately after auth
-- update
+- new
 - create
+    - begin api namespace/backbone logic immediately after auth
+- update
 - destroy
 - show
-- maybe an index for admin
 
 ### Sessions need:
 - new
@@ -39,7 +39,6 @@
 - new
 - create
 - destroy
-- update
 - show
 - index
 
@@ -51,6 +50,6 @@
     - on success will fire off backbone home (users show), and this will provide a way for the user to update settings with interests, age, etc. 
 - session new (shares a partial with users new)
 - ejs templates for
-    - user's show 
+    - user's show- this will be the top level composite view
     - user's edit
 - feed views to come 

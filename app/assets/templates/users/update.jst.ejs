@@ -7,10 +7,12 @@
   <input id="real-name" type="text" name="user[real_name]" value="<%= user.escape('real_name') %>">
   <br>
   <label for="age">Age:</label>
-  <input id="age" type="text" name="user[age]" value="<%= user.escape('age') %>">
+  <input id="age" type="number" name="user[age]" value="<%= user.escape('age') %>">
   <br>
-  <label for="age_range">Age range (from your own):</label>
-  <input id="age_range" type="text" name="user[age_range]" value="<%= user.escape('age_range') %>">
+  <label for="age_min">Minimum target age:</label>
+  <input id="age_min" type="number" name="user[age_min]" value="<%= user.escape('age_min') %>">
+  <label for="age_max">Max target age:</label>
+  <input id="age_max" type="number" name="user[age_max]" value="<%= user.escape('age_max') %>">
   <br>
   <button class="submit">Update!</button>
 </form>

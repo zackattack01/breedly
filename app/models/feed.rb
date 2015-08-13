@@ -2,7 +2,6 @@ class Feed < ActiveRecord::Base
   FEED_ERRORS = { 
     no_parser: "We were unable to parse your feed, make sure your feed is in a valid xml format",
     fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL",
-    no_update: "We were unable to update your feed, please make sure you have the correct url in xml format"
   }
 
   attr_accessor :data
