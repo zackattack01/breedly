@@ -1,6 +1,6 @@
 Breedly.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
-    this.feeds = options.feeds;
+    this.feeds = new Breedly.Collections.Feeds();
     this.$rootEl = options.$rootEl;
   },
 
@@ -11,9 +11,16 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   userRoot: function() {
-    var user = this.currentUser;
-    var view = new Breedly.Views.RootView({ model: user });
-    this._swapView(view); 
+    // var view = new Breedly.Views.RootView({ feeds: this.feeds });
+    // this.rootView = view;
+    this._swapView(this.rootView()); 
+  },
+
+  rootView: function() {
+    if (!this._rootView) {
+      this._rootView = new Breedly.Views.RootView({ feeds: this.feeds });
+    }
+    return this._rootView;
   },
 
   userUpdate: function(id) {
@@ -24,14 +31,14 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   feedShow: function(id) {
-    var feed = this.feeds.getOrFetch(id);
-    var view = new Breedly.Views.Feeds({ model: feed });
-    this._swapView(view);
+    var activeFeed = this.feeds.getOrFetch(id);
+    this.rootView().showFeedContent(activeFeed);
   },
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
+    view.render();
   }
 });

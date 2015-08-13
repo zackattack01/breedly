@@ -1,10 +1,14 @@
 class Api::FeedsController < ApplicationController
   def create
-    @feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
-    if @feed.save
-      render 'show'
+    if current_user.nil?
+      render json: "You must be signed in to add a feed", status: 422
     else
-      render json: @feed.errors.full_messages, status: 422
+      @feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
+      if @feed.save
+        render 'show'
+      else
+        render json: @feed.errors.full_messages, status: 422
+      end
     end
   end
 

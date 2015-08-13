@@ -4,14 +4,8 @@ window.Breedly = {
   Views: {},
   Routers: {},
   initialize: function(options) {
-    var feeds = new Breedly.Collections.Feeds();
-    feeds.fetch();
-    //var feedIndex = new Breedly.Views.FeedIndex({ collection: feeds });
-    var $el = $('#main-content');
-    new Breedly.Routers.Router({ 
-      $rootEl: $el, 
-      feeds: feeds, 
-    });
+    var $el = $('#all-content');
+    new Breedly.Routers.Router({ $rootEl: $el });
     Backbone.history.start();
   }
 };

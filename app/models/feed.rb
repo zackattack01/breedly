@@ -7,13 +7,14 @@ class Feed < ActiveRecord::Base
   attr_accessor :data
 
   validates :user, :url, presence: true
-  validates :url, uniqueness: true
+  ### validate uniqueness when there's more seed data
+  ##validates :url, uniqueness: true
   validate :parsable
 
   belongs_to :user
 
   def self.generate_feed_object(url, user_id)
-    feed = Feed.create!(url: url, user_id: user_id)
+    feed = Feed.create(url: url, user_id: user_id)
     feed
   end
 

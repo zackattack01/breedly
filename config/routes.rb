@@ -11,5 +11,4 @@ end
 
 
 ##TODO
-# remove feed_url from the user model
 # feeds should have_many attrs through: users
