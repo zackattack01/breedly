@@ -1,17 +1,18 @@
-<h1>I'm Root.html.erb</h1>
-<div id="navbar">I'm navbar div</div>
-<div id="feeds-index-bar">I'm the feeds index</div>
-<div id="main-content">I'm main content</div>
+<div id="navbar">
+  <%= link_to 'Log Out', session_url, method: :delete, form_class: "logout-btn btn" %>
+</div>
+<div id="feeds-index">I'm the feeds index</div>
+<div id="main-container">
+  <div id="main-content">I'm main content</div>
+</div>
 
 <script>
-
 $(document).ready(function(){
   Breedly.CURRENT_USER = {
     id: "<%= current_user.id %>",
     username: "<%= current_user.username %>",
     real_name: "<%= current_user.real_name %>",
-    age: "<%= current_user.age %>",
-    age_range: "<%= current_user.age_range %>"
+    age: "<%= current_user.age %>"
   };
   Breedly.initialize();
 });

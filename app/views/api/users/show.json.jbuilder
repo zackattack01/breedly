@@ -1,1 +1,1 @@
-json.extract!(@user, :id, :username, :real_name, :age, :age_range)
+json.extract!(@user, :id, :username, :real_name, :age, :age_min, :age_max)
