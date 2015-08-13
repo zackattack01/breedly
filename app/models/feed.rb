@@ -1,10 +1,10 @@
 class Feed < ActiveRecord::Base
   FEED_ERRORS = { 
     no_parser: "We were unable to parse your feed, make sure your feed is in a valid xml format",
-    fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL",
+    fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL"
   }
 
-  attr_accessor :data
+  # attr_accessor :data
 
   validates :user, :url, presence: true
   ### validate uniqueness when there's more seed data
@@ -18,15 +18,22 @@ class Feed < ActiveRecord::Base
     feed
   end
 
+  def self.feed_data(url)
+    Feedjira::Feed.fetch_and_parse url
+  end
+
   private
   def parsable
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     rescue Feedjira::NoParserAvailable 
       errors.add(:no_parser, FEED_ERRORS[:no_parser])
+      puts "NO PARSER"
     rescue Feedjira::FetchFailure
       errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
-    end 
-    self.data = parsed_feed_data
+      puts "NO FETCH"
+    else 
+      self.title = parsed_feed_data.title
+    end
   end 
 end
