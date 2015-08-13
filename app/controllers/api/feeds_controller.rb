@@ -8,19 +8,6 @@ class Api::FeedsController < ApplicationController
     end
   end
 
-  ### probabaly should just create and destroy
-  # def update
-  #   @feed = Feed.find(params[:id])
-  #   updated_feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
-  #   if updated_feed
-  #     @feed.destroy
-  #     @feed = updated_feed
-  #     render 'show'
-  #   else
-  #     render json: { error: Feed::FEED_ERRORS[:no_update] }, status: 422
-  #   end
-  # end
-
   def destroy
     feed = Feed.find(params[:id])
     feed.destroy

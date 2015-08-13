@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do 
     resources :users, only: [:show, :update, :destroy]
-    resources :feeds, except: :new
+    resources :feeds, except: [:new, :update]
   end
 end
+
+
+##TODO
+# remove feed_url from the user model
+# feeds should have_many attrs through: users

@@ -16,13 +16,6 @@ Breedly.Routers.Router = Backbone.Router.extend({
     this._swapView(view); 
   },
 
-  // currentUser: function() {
-  //   if (!this._currentUser) {
-  //     this._currentUser = new Breedly.Models.User(Breedly.CURRENT_USER);
-  //   } 
-  //   return this._currentUser;
-  // },
-
   userUpdate: function(id) {
     var user = new Breedly.Models.User();
     user.set(Breedly.CURRENT_USER); 

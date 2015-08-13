@@ -27,26 +27,8 @@ class User < ActiveRecord::Base
     self.save!
   end
 
-  # def to_json
-  #   {
-  #     :id => id,
-  #     :username => username,
-  #     :real_name => real_name, 
-  #     :age => age,
-  #     :age_range => age_range, 
-  #     :feed_url => feed_url
-  #   }.to_json
-  # end
-
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
-
-  # def generate_user_feed
-  #   ## need some user feedback 
-  #   if feed_url != ""
-  #     Feed.generate_feed_object(feed_url, id)
-  #   end
-  # end
 end
