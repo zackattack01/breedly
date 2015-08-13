@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
 
   private
   def user_params
-    params.require(:user).permit(:username, :real_name, :password, :age, :age_range, :feed_url)
+    params.require(:user).permit(:username, :real_name, :password, :age, :age_range)
   end  
 end

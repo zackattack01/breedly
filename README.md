@@ -6,9 +6,9 @@ Breedly is a personal blog feed reading site for singles with blogs.
 ## The what specifically
 Users can:
 
-- [ ] Sign up 
-- [ ] Sign in
-- [ ] Provide or update a link to their own blog
+- [x] Sign up 
+- [x] Sign in
+- [x] Provide or update a link to their own blog
 - [ ] Select topics they're interested in
 - [ ] Select age ranges that they're interested in
 - [ ] Subscribe to another user's blog

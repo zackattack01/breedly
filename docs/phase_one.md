@@ -10,7 +10,6 @@
 - `age`
 - `age_range`
     - distance from the user's own age allowed when calculating compatible feeds
-- `feed_url`
 - `have_one` feed
 - `have_many` interests
 
@@ -48,7 +47,7 @@
 
 ### Needed:
 - user's new
-    - this will take just a username, feed_url and password
+    - this will take just a username and password
     - on success will fire off backbone home (users show), and this will provide a way for the user to update settings with interests, age, etc. 
 - session new (shares a partial with users new)
 - ejs templates for
