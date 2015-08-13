@@ -42,4 +42,11 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
+
+  # def generate_user_feed
+  #   ## need some user feedback 
+  #   if feed_url != ""
+  #     Feed.generate_feed_object(feed_url, id)
+  #   end
+  # end
 end

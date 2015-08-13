@@ -27,6 +27,6 @@ class Feed < ActiveRecord::Base
     rescue Feedjira::FetchFailure
       errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
     end 
-    feed.data = parsed_feed_data
+    self.data = parsed_feed_data
   end 
 end
