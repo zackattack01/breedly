@@ -4,8 +4,6 @@ class Feed < ActiveRecord::Base
     fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL"
   }
 
-  # attr_accessor :data
-
   validates :user, :url, presence: true
   ### validate uniqueness when there's more seed data
   ##validates :url, uniqueness: true

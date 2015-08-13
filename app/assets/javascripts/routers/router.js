@@ -29,8 +29,7 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   feedShow: function(id) {
-    var activeFeed = this.feeds.getOrFetch(id);
-    this.rootView().showFeedContent(activeFeed);
+    this.rootView().showFeedContent(id);
   },
 
   _swapView: function(view) {
