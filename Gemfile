@@ -13,10 +13,10 @@ gem 'feedjira', '~> 2.0'
 gem 'backbone-on-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'ejs'
+gem 'faker'
 
 group :development do
   gem 'byebug'
-  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
