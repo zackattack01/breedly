@@ -16,8 +16,9 @@ class Feed < ActiveRecord::Base
     feed
   end
 
-  def self.feed_data(url)
-    Feedjira::Feed.fetch_and_parse url
+  def entries
+    entries = Feedjira::Feed.fetch_and_parse(url).entries
+    entries.map! { |entry| entry.to_h }
   end
 
   private

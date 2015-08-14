@@ -28,7 +28,6 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
     e.preventDefault();
     var feedUrl = $('#feed-url').serializeJSON();
     var newFeed = new Breedly.Models.Feed(feedUrl);
-    debugger;
     var that = this;
     newFeed.save({}, {
       success: function() {
