@@ -6,7 +6,7 @@ Breedly.Collections.Feeds = Backbone.Collection.extend({
     var feeds = this;
     var feed = this.get(id);
     if (feed) {
-      feed.fetch()
+      feed.fetch();
     } else {
       feed = new Breedly.Models.Feed({ id: id });
       feeds.add(feed);

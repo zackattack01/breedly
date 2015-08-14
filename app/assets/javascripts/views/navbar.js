@@ -1,8 +1,4 @@
 Breedly.Views.NavBar = Backbone.View.extend({
-  initialize: function() {
-
-  },
-
   template: JST['navbar'],
 
   events: {

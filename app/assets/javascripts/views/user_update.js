@@ -19,6 +19,7 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
     delete userData['id'];
     this.model.set(userData);
     var that = this;
+
     //ask how to not save id
     that.model.save({}, {
       success: function() {
@@ -26,7 +27,7 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
       },
 
       error: function(resp) {
-        //do something with response errors
+        //make a template for response errors
         console.log(resp);
       }
     });   

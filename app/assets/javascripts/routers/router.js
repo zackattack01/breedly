@@ -2,6 +2,7 @@ Breedly.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.feeds = new Breedly.Collections.Feeds();
     this.$rootEl = options.$rootEl;
+    this.rootView = new Breedly.Views.RootView({ collection: this.feeds }); 
   },
 
   routes: {
@@ -10,24 +11,19 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   userRoot: function() {
-    this._swapView(this.rootView()); 
-  },
-
-  rootView: function() {
-    if (!this._rootView) {
-      this._rootView = new Breedly.Views.RootView({ feeds: this.feeds });
-    }
-    return this._rootView;
+    this._swapView(this.rootView);
   },
 
   feedShow: function(id) {
-    this.rootView().showFeedContent(id);
+    this.rootView.showFeedContent(id);
+    
+    // ask how to not do this nonsense
+    this._swapView(this.rootView);
   },
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.$el);
-    view.render();
+    this.$rootEl.html(view.render().$el);
   }
 });

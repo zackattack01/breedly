@@ -8,6 +8,10 @@ form input {
   display: inline-block;
 }
 
+form {
+  padding: 20px;
+}
+
 input[type='text'], input[type='password'] {
   cursor: text;
 }
@@ -110,6 +114,33 @@ h3 {
   background-color: white;
   padding: 20px;
   z-index: 2;
-  top: 25%;
-  left: 25%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.submit, .add-feed, #update-user-btn, #add-feed-btn {
+  text-align: center;
+  padding: 10px;
+  -webkit-appearance: none;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: 'Monaco', monospace;
+  cursor: pointer;
+}
+
+#update-user-btn, #add-feed-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.submit:hover, .add-feed:hover, #update-user-btn:hover, #add-feed-btn:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.submit {
+  margin-top: 20px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }

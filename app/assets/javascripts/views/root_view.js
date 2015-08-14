@@ -6,9 +6,9 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   initialize: function(options) {
-    this.feeds = options.feeds;
-    this.addFeedsIndexBar(options.feeds);
+    this.addFeedsIndexBar();
     this.addNavBar();
+    this.listenTo(this.collection, 'sync add', this.render);
   },
 
   addNavBar: function() {
@@ -17,15 +17,23 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addFeedsIndexBar: function(feeds) {
-    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: feeds });
+    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.collection });
     this.addSubview('#feeds-index', feedsIndex);
   },
 
   showFeedContent: function(activeFeedId) {
-    var activeFeed = this.feeds.getOrFetch(activeFeedId);
-    this._activeFeedView && this._activeFeedView.remove();
-    this._activeFeedView = new Breedly.Views.FeedShow({ model: activeFeed });
-    this.addSubview('#main-content', this._activeFeedView);
+    var activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
+    var that = this;
+    if (this._activeFeedView) { 
+      this._activeFeedView.remove();
+      this.removeSubview("#main-content", this._activeFeedView);
+    }
+    activeFeed.fetch({
+      success: function() {
+        that._activeFeedView = new Breedly.Views.FeedShow({ model: activeFeed });
+        that.addSubview('#main-content', that._activeFeedView);  
+      }
+    });
   },
 
   render: function() {
