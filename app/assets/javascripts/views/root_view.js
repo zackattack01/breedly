@@ -7,13 +7,13 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.feeds = options.feeds;
-    //feeds sidebar
     this.addFeedsIndexBar(options.feeds);
-    //remember nav
+    this.addNavBar();
   },
 
   addNavBar: function() {
-
+    var navBar = new Breedly.Views.NavBar();
+    this.addSubview('#navbar', navBar);
   },
 
   addFeedsIndexBar: function(feeds) {
@@ -26,11 +26,6 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this._activeFeedView && this._activeFeedView.remove();
     this._activeFeedView = new Breedly.Views.FeedShow({ model: activeFeed });
     this.addSubview('#main-content', this._activeFeedView);
-  },
-
-  redirectToUpdate: function(e) {
-    e.preventDefault();
-    Backbone.history.navigate('users/' + Breedly.CURRENT_USER['id'] + '/edit', { trigger: true });
   },
 
   render: function() {

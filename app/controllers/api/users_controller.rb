@@ -1,14 +1,14 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       render 'show'
     else
-      render :json => @user.errors, status: :unprocessable_entity
+      render json: @user.errors, status: 422
     end
   end
   

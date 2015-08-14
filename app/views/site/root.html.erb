@@ -1,12 +1,7 @@
 <div id="all-content"></div>
 <script>
 $(document).ready(function(){
-  Breedly.CURRENT_USER = {
-    id: "<%= current_user.id %>",
-    username: "<%= current_user.username %>",
-    real_name: "<%= current_user.real_name %>",
-    age: "<%= current_user.age %>"
-  };
+  Breedly.CURRENT_USER_ID = "<%= current_user.id %>";
   Breedly.initialize();
 });
 </script>

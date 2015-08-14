@@ -3,7 +3,7 @@ window.Breedly = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function(options) {
+  initialize: function() {
     var $el = $('#all-content');
     new Breedly.Routers.Router({ $rootEl: $el });
     Backbone.history.start();

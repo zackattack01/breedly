@@ -6,8 +6,7 @@ Breedly.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'userRoot',
-    'feeds/:id': 'feedShow',
-    'users/:id/edit': 'userUpdate'
+    'feeds/:id': 'feedShow'
   },
 
   userRoot: function() {
@@ -19,13 +18,6 @@ Breedly.Routers.Router = Backbone.Router.extend({
       this._rootView = new Breedly.Views.RootView({ feeds: this.feeds });
     }
     return this._rootView;
-  },
-
-  userUpdate: function(id) {
-    var user = new Breedly.Models.User();
-    user.set(Breedly.CURRENT_USER); 
-    var view = new Breedly.Views.UserUpdate({ model: user });
-    this._swapView(view);
   },
 
   feedShow: function(id) {
