@@ -42,7 +42,7 @@ h3 {
   border: thin solid black;
 }
 
-#feeds-index, #main-content {
+#feeds-index {
   margin-top: 1px;
   overflow: scroll;
 }
@@ -76,4 +76,5 @@ h3 {
   position: relative;
   width: inherit;
   height: inherit;
+  margin-top: 1px;
 }
