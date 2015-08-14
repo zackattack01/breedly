@@ -18,6 +18,14 @@ html {
 
 a {
   text-decoration: none;
+  margin: 10px;
+  color: red;
+  display: block;
+}
+
+a:hover {
+  color: black;
+  text-shadow: 0 0 10px red;
 }
 
 h1 {
@@ -39,7 +47,7 @@ h3 {
 
 /* positioning for containers  */
 #navbar, #feeds-index, #main-content {
-  border: thin solid black;
+  
 }
 
 #feeds-index {
@@ -48,6 +56,7 @@ h3 {
 }
 
 #navbar {
+  /*border: thin solid black;*/
   position: fixed;
   top: 0;
   left: 0;
@@ -56,6 +65,7 @@ h3 {
 }
 
 #feeds-index {
+  /*border: thin solid black;*/
   position: fixed;
   top: 50px;
   left:0;
@@ -70,6 +80,7 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: scroll;
+  border: thick solid black;
 }
 
 #main-content {
