@@ -1,2 +1,3 @@
-<h1><%= feed.escape('title') %></h1>
-<p><%= feed.entries %>
+<h1><%= feed.get('title') %></h1>
+<h3><%= feed.entries && feed.entries[0]['title'] %></h3>
+<p><%= feed.entries && feed.entries[0]['summary'] %><p>

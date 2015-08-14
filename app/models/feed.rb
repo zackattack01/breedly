@@ -18,7 +18,9 @@ class Feed < ActiveRecord::Base
 
   def entries
     entries = Feedjira::Feed.fetch_and_parse(url).entries
-    entries.map! { |entry| entry.to_h }
+    entries.map! do |entry|
+      entry.map { |x, y| [x.to_s.sanitize, y.to_s.sanitize] }.to_h
+    end
   end
 
   private
@@ -32,7 +34,7 @@ class Feed < ActiveRecord::Base
       errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
       puts "NO FETCH"
     else 
-      self.title = parsed_feed_data.title
+      self.title = parsed_feed_data.title.to_s.sanitize
     end
   end 
 end
