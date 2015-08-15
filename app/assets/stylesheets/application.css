@@ -1,6 +1,5 @@
 /* reset */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video { margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}body { line-height: 1; }ol, ul {list-style: none;}blockquote, q {quotes: none;}blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}table {border-collapse: collapse;border-spacing: 0;}
-
 form input {
   background-color: transparent;
   font: inherit; 
@@ -17,7 +16,7 @@ input[type='text'], input[type='password'] {
 }
 
 html {
-  font-family: 'Monaco' monospace;
+  font-family: 'Oxygen', sans-serif;
 }
 
 a {
@@ -50,6 +49,8 @@ h3 {
 
 
 /* positioning for containers  */
+
+/* #AA1111 #FFFFFF #EBEBEB #000000; */
 #navbar, #feeds-index, #main-content {
   
 }
@@ -60,21 +61,33 @@ h3 {
 }
 
 #navbar {
-  /*border: thin solid black;*/
   position: fixed;
+  background: linear-gradient(to bottom, #AA1111, rgba(255,0,0,0));
   top: 0;
   left: 0;
   height: 50px;
   width: 100%;
 }
 
+.logo {
+  width: 182px;
+  height: 82px;
+  z-index: 10;
+  margin: 20px;
+}
+
 #feeds-index {
   /*border: thin solid black;*/
+  background: linear-gradient(to right, #AA1111, rgba(255,0,0,0));
   position: fixed;
-  top: 50px;
+  top: 0;
   left:0;
   width: 15%;
-  height:95%;
+  height: 100%;
+}
+
+#feeds-index h3 {
+  margin-top: 80px;
 }
 
 #main-container {
@@ -84,7 +97,7 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  border: thick solid black;
+  /*border: thick solid black;*/
 }
 
 #main-content {
@@ -126,13 +139,14 @@ h3 {
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
-  font-family: 'Monaco', monospace;
+  font-family: 'Oxygen', sans-serif;
   cursor: pointer;
 }
 
 #update-user-btn, #add-feed-btn {
   margin-top: 10px;
   margin-left: 10px;
+  float:right;
 }
 
 .submit:hover, .add-feed:hover, #update-user-btn:hover, #add-feed-btn:hover {

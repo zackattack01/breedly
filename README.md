@@ -1,4 +1,4 @@
-![breedly](./app/assets/images/breedly.png)
+![breedly](./app/assets/images/logo_full.png)
 
 ## The what 
 Breedly is a personal blog feed reading site for singles with blogs.
