@@ -3,7 +3,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
 
   events: {
     'click #update-user-btn': 'updateModal',
-    'click #add-feed-btn': 'addFeedModal'
+    'click #add-feed-btn': 'addFeedModal',
+    'click #logout-btn': 'logoutUser'
   },
 
   addFeedModal: function(e) {
@@ -18,6 +19,12 @@ Breedly.Views.NavBar = Backbone.View.extend({
     user.fetch();
     var modal = new Breedly.Views.UserUpdate({ model: user });
     $('body').append(modal.render().$el);
+  },
+
+  logoutUser: function(e) {
+    e.preventDefault();
+    var session = new Breedly.Models.Session();
+    session.logout();
   },
 
   render: function() {

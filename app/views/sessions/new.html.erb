@@ -1,3 +1,4 @@
-<h1>Sign In</h1>
-<%= render 'shared/user_form', action: session_url, user: @user %>
-<%= link_to 'Or Sign Up', new_user_url %>
+<div class="auth-screen">
+  <%= render 'shared/user_form', action: session_url, user: @user %>
+  <%= link_to '(Or Sign Up)', new_user_url %>
+</div>

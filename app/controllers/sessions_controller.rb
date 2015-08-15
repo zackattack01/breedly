@@ -15,8 +15,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user = current_user.id
-    logout
-    redirect_to new_session_url
+    if current_user
+      logout 
+      render :json => "Logout successful." 
+    else
+      render :json => "You are already logged out.", status: 422
+    end
   end
 end

@@ -1,6 +1,6 @@
 <%= flash_errors %>
 <br><br>
-<form action="<%= action %>" method="POST">
+<form class="auth-form" action="<%= action %>" method="POST">
   <%= csrf_tag %>
   <label for="username">Username: </label>
   <input type="text" id="username" name="user[username]">
@@ -8,5 +8,13 @@
   <label for="password">Password: </label>
   <input type="password" id="password" name="user[password]">
   <br>
-  <input type="submit" value="Let's go">
+  <input type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
 </form>
+
+<script>
+  $(function() {
+      var mTop = ($('.logo').width() * 0.35);
+      $('.auth-form').css('margin-top', mTop);
+      $('.auth-form #username').focus();
+    });
+</script>

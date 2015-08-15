@@ -47,6 +47,36 @@ h3 {
   text-align: center;
 }
 
+.auth-screen {
+  background: radial-gradient(#AA1111, rgba(170,17,17,.1));
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.auth-form {
+  padding: 0;
+  display: block;
+  font-size: 1.2em;
+}
+
+.auth-form input{
+  margin: 10px;
+  border: none;
+  border-bottom: thin solid #EBEBEB; 
+  border-radius: 5px;
+}
+.auth-form input:hover {
+  border-bottom: 2px solid #AA1111; 
+}
+.auth-form input:focus {
+  border: 2px solid #AA1111; 
+  outline-color: #AA1111;
+}
+
 
 /* positioning for containers  */
 
@@ -66,7 +96,7 @@ h3 {
 
 #navbar {
   position: fixed;
-  background: linear-gradient(to bottom, #AA1111, rgba(255,0,0,0));
+  background: linear-gradient(to bottom, #AA1111, rgba(170,17,17,0.1));
   top: 0;
   left: 0;
   height: 50px;
@@ -74,6 +104,19 @@ h3 {
 }
 
 .logo {
+  /* transform stuff */
+}
+
+.logo-full {
+  width: 40%;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.logo_small {
   width: 278px;
   height: 127px;
   position: relative;
@@ -83,8 +126,7 @@ h3 {
 }
 
 #feeds-index {
-  /*border: thin solid black;*/
-  background: linear-gradient(to right, #AA1111, rgba(255,0,0,0));
+  background: linear-gradient(to right, #AA1111, rgba(170,17,17,0.1));
   position: fixed;
   top: 30px;
   left:0;
@@ -103,15 +145,10 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: scroll;
-  /*border: thick solid black;*/
 }
 
 #main-content {
   position: relative;
-  width: inherit;
-  height: inherit;
-  margin-top: 1px;
-  text-align: center;
 }
 
 /* modals */
@@ -138,7 +175,7 @@ h3 {
   transform: translateX(-50%);
 }
 
-.submit, .add-feed, #update-user-btn, #add-feed-btn {
+.submit, .add-feed, #update-user-btn, #add-feed-btn, #logout-btn {
   text-align: center;
   padding: 10px;
   -webkit-appearance: none;
@@ -149,7 +186,7 @@ h3 {
   cursor: pointer;
 }
 
-#update-user-btn, #add-feed-btn {
+#update-user-btn, #add-feed-btn, #logout-btn {
   margin-top: 10px;
   margin-left: 10px;
   float:right;
