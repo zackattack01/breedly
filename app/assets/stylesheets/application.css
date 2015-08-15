@@ -22,13 +22,13 @@ html {
 a {
   text-decoration: none;
   margin: 10px;
-  color: red;
+  color: black;
   display: block;
 }
 
 a:hover {
-  color: black;
-  text-shadow: 0 0 10px red;
+  color: red;
+  text-shadow: 0 0 10px black;
 }
 
 h1 {
@@ -60,6 +60,10 @@ h3 {
   overflow: scroll;
 }
 
+.feed-list {
+  margin-top: 80px;
+}
+
 #navbar {
   position: fixed;
   background: linear-gradient(to bottom, #AA1111, rgba(255,0,0,0));
@@ -70,17 +74,19 @@ h3 {
 }
 
 .logo {
-  width: 182px;
-  height: 82px;
+  width: 278px;
+  height: 127px;
+  position: relative;
   z-index: 10;
-  margin: 20px;
+  margin-left: -25px;
+  margin-top: -20px;
 }
 
 #feeds-index {
   /*border: thin solid black;*/
   background: linear-gradient(to right, #AA1111, rgba(255,0,0,0));
   position: fixed;
-  top: 0;
+  top: 30px;
   left:0;
   width: 15%;
   height: 100%;
