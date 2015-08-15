@@ -63,18 +63,27 @@ h3 {
   font-size: 1.2em;
 }
 
-.auth-form input{
+.auth-form input {
   margin: 10px;
   border: none;
-  border-bottom: thin solid #EBEBEB; 
+  border-bottom: thin solid black; 
   border-radius: 5px;
 }
-.auth-form input:hover {
-  border-bottom: 2px solid #AA1111; 
+
+.auth-form input.submit {
+  background: none;
+  box-shadow: 0 0 10px black;
+  background-color: rgba(235,235,235,0.1);
 }
-.auth-form input:focus {
-  border: 2px solid #AA1111; 
-  outline-color: #AA1111;
+
+input.submit:hover {
+  box-shadow: 0 0 10px #EBEBEB;
+  background-color: rgba(235,235,235,0.15);
+}
+
+input:focus, input:hover {
+  outline: none;
+  box-shadow: 0 0 10px black;
 }
 
 
@@ -179,9 +188,8 @@ h3 {
   text-align: center;
   padding: 10px;
   -webkit-appearance: none;
-  background-color: white;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: 'Oxygen', sans-serif;
   cursor: pointer;
 }
@@ -193,11 +201,5 @@ h3 {
 }
 
 .submit:hover, .add-feed:hover, #update-user-btn:hover, #add-feed-btn:hover {
-  box-shadow: 0 0 10px black;
-}
-
-.submit {
-  margin-top: 20px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  /*box-shadow: 0 0 10px black;*/
 }
