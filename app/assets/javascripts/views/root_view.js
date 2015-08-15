@@ -22,6 +22,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   showFeedContent: function(activeFeedId) {
+    //question bomb
     var activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
     var that = this;
     if (this._activeFeedView) { 

@@ -6,10 +6,12 @@ class Feed < ActiveRecord::Base
 
   validates :user, :url, presence: true
   ### validate uniqueness when there's more seed data
-  ##validates :url, uniqueness: true
+  ### validates :url, uniqueness: true
   validate :parsable
 
   belongs_to :user
+  has_many :feed_topics
+  has_many :topics, through: :feed_topics
 
   def self.generate_feed_object(url, user_id)
     feed = Feed.create(url: url, user_id: user_id)

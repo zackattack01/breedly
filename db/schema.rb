@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813214522) do
+ActiveRecord::Schema.define(version: 20150814234924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feed_topics", force: :cascade do |t|
+    t.integer  "feed_id",    null: false
+    t.integer  "topic_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feed_topics", ["feed_id"], name: "index_feed_topics_on_feed_id", using: :btree
+  add_index "feed_topics", ["topic_id"], name: "index_feed_topics_on_topic_id", using: :btree
 
   create_table "feeds", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,6 +35,15 @@ ActiveRecord::Schema.define(version: 20150813214522) do
   end
 
   add_index "feeds", ["user_id"], name: "index_feeds_on_user_id", using: :btree
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title",       null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "password_digest"
@@ -40,5 +59,7 @@ ActiveRecord::Schema.define(version: 20150813214522) do
 
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
+  add_foreign_key "feed_topics", "feeds"
+  add_foreign_key "feed_topics", "topics"
   add_foreign_key "feeds", "users"
 end

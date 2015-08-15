@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do 
     resources :users, only: [:show, :update, :destroy]
-    resources :feeds, except: [:new, :update]
+    resources :feeds, except: [:new, :update] do 
+      resources :feed_topics, only: [:create]
+    end
+    resources :feed_topics, only: [:show, :destroy]
+    resources :topics, only: [:create, :destroy, :show, :index] 
   end
 end
-
-
-##TODO
-# feeds should have_many attrs through: users
