@@ -1,3 +1,17 @@
 <h1><%= feed.get('title') %></h1>
-<h3><%= feed.entries && feed.entries[1]['title'] %></h3>
-<p><%= feed.entries && feed.entries[1]['summary'] %><p>
+<% if (feed && feed.entries) { %>
+<h3>
+  <% if (feed && feed.selectedEntryIdx) { %>
+    <%= feed.entries[feed.selectedEntryIdx]['title'] %>
+  <% } else { %>
+    <%= feed.entries[0]['title'] %>
+  <% }; %>
+</h3>
+<p>
+  <% if (feed && feed.selectedEntryIdx) { %>
+    <%= feed.entries[feed.selectedEntryIdx]['summary'] %>
+  <% } else { %>
+    <%= feed.entries[0]['summary'] %>
+  <% }; %>
+</p>
+<% }; %>

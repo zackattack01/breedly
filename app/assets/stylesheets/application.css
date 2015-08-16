@@ -214,6 +214,22 @@ a:hover, a:focus, a:active {
   overflow: scroll;
 }
 
+#entries-index li {
+  text-decoration: none;
+  margin: 10px;
+  margin-left: 20px;
+  display: block;
+}
+
+#entries-index li:hover {
+  color: #EBEBEB;
+  text-shadow: 0 0 10px black;
+  cursor: pointer;
+}
+
+#entries-index li:first-child {
+  margin-top: 80px;
+}
 
 /* modals */
 .modal-background {

@@ -4,7 +4,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.addFeedsIndexBar();
     this.addNavBar();
-    this.listenTo(this.collection, 'add', this.render);
+    this.rendered = false;
   },
 
   addNavBar: function() {
@@ -18,31 +18,38 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   showFeedContent: function(activeFeedId) {
-    //question bomb for monday theres a leak here
-    var activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
+    this._activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
+
     var that = this;
-    if (this._activeFeedView) { 
-      this._activeFeedView.remove();
-      this.removeSubview("#main-content", this._activeFeedView);
-    }
-    activeFeed.fetch({
+    //clean this shit up 
+    this._activeFeed.fetch({
       success: function() {
-        that._activeFeedView = new Breedly.Views.FeedShow({ model: activeFeed });
-        that.addSubview('#main-content', that._activeFeedView);  
-        that.addActiveEntriesBar(activeFeed);
+        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed });
+        that.swapActiveEntries(entriesView);
       }
     });
+    var activeFeedView = new Breedly.Views.FeedShow({ model: this._activeFeed });   
+    this.swapActiveFeed(activeFeedView);
   },
 
-  addActiveEntriesBar: function(activeFeed) {
-    var entriesView = new Breedly.Views.EntriesIndex({ entries: activeFeed.entries })
-    this.addSubview('#entries-index', entriesView);
+  swapActiveFeed: function() {
+    var syncedFeedView = new Breedly.Views.FeedShow({ model: this._activeFeed });
+    this._activeFeedView && this._activeFeedView.remove();
+    this._activeFeedView = syncedFeedView;
+    this.$('#main-content').html(syncedFeedView.render().$el);
+  },
+
+  swapActiveEntries: function(activeEntriesView) {
+    this._activeEntriesIndex && this._activeEntriesIndex.remove();
+    this._activeEntriesIndex = activeEntriesView;
+    this.$('#entries-index').html(activeEntriesView.render().$el);
   },
 
   render: function() {
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
+    this.rendered = true;
     return this;
   }
 });
