@@ -7,7 +7,7 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
   template: JST['users/update'],
 
   events: {
-    'click form button.submit': 'submitUpdate',
+    'click form button#submit-update': 'submitUpdate',
     'click button.add-feed': 'addFeed',
     'click .close': 'remove',
     'click .modal-background': 'remove'

@@ -3,12 +3,12 @@
 <form class="auth-form" action="<%= action %>" method="POST">
   <%= csrf_tag %>
   <label for="username">Username: </label>
-  <input type="text" id="username" name="user[username]">
+  <input type="text" autocomplete="off" id="username" name="user[username]">
   <br>
   <label for="password">Password: </label>
   <input type="password" id="password" name="user[password]">
   <br>
-  <input class="submit" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
+  <input class="btn" style="color:black" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
 </form>
 
 <script>

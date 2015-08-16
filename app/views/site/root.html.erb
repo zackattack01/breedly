@@ -2,9 +2,26 @@
 
 </div>
 <script>
+
 $(document).ready(function(){
+  var logo = $('.logo');
+  logo.removeClass('logo-full');
+  logo.css('width', '18%')
+      .css('left', '0px')
+      .css('top', '0')
+      .css('z-index', '3')
+      .css('position', 'relative');
+      debugger;
   Breedly.CURRENT_USER_ID = "<%= current_user.id %>";
   Breedly.RAILS_ENV = "<%= Rails.env %>";
   Breedly.initialize();
 });
 </script>
+
+<!-- questions for monday
+  - how to start above transition on login success, not this page load
+  
+
+
+
+ -->

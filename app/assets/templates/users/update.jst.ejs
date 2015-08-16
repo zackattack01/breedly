@@ -1,7 +1,8 @@
 <div class="modal-background"></div>
 <div class="modal-content">
   <button class="close">&times;</button>
-  <h3>Update Your Profile</h3>
+  <h2>Update Your Profile</h2>
+  <br>
   <form id="user-update">
     <label for="username">Username:</label>
     <input id="username" type="text" name="user[username]" value="<%= user.escape('username') %>">
@@ -18,6 +19,6 @@
     <label for="age_max">Max target age:</label>
     <input id="age_max" type="number" name="user[age_max]" value="<%= user.get('age_max') %>">
     <br>
-    <button class="submit">Update!</button>
+    <button class="btn" id="submit-update">Update</button>
   </form>
 </div>

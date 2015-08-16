@@ -1,10 +1,6 @@
 Breedly.Views.RootView = Backbone.CompositeView.extend({
   template: JST['root'],
 
-  events: {
-    'click button#update-user-button': 'redirectToUpdate'
-  },
-
   initialize: function(options) {
     this.addFeedsIndexBar();
     this.addNavBar();
@@ -22,7 +18,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   showFeedContent: function(activeFeedId) {
-    //question bomb
+    //question bomb for monday theres a leak here
     var activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
     var that = this;
     if (this._activeFeedView) { 
