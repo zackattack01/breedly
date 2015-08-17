@@ -8,6 +8,11 @@ class Api::FeedTopicsController < ApplicationController
     end
   end
 
+  def index
+    feed = Feed.find(params[:feed_id])
+    @feed_topics = feed.topics
+  end
+
   private
   def feed_topic_params
     params.require(:feed_topic).permit(:feed_id, :topic_id)

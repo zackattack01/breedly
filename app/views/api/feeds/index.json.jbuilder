@@ -1,3 +1,3 @@
 json.array! @feeds do |feed|
-  json.extract!(feed, :id, :url, :user_id, :title, :description)
+  json.extract!(feed, :id, :url, :user_id, :title, :description, :topics)
 end

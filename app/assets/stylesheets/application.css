@@ -218,7 +218,7 @@ a:hover, a:focus, a:active {
 }
 
 #main-content a {
-  display: inline-block;
+  display: inline;
 }
 
 #main-content div {
@@ -241,6 +241,33 @@ a:hover, a:focus, a:active {
   padding: 10px;
   line-height: 1.4;
   text-align: left;
+}
+
+#main-overlay .feed-teaser {
+  overflow: scroll;
+  position: fixed;
+  top: 50px;
+  left: 17%;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 150px);
+  width: calc(66% - 100px);
+  z-index: 2;
+  padding: 50px;
+  background: linear-gradient(to right, white 80%, #EBEBEB);
+}
+
+#main-content h3 {
+  color: #AA1111;
+}
+
+#main-content h4 {
+  font-size: 1.4em;
+  margin: 15px;
+}
+
+#main-overlay .feed-teaser .btn {
+  margin: 20px;
 }
 
 /* entries */

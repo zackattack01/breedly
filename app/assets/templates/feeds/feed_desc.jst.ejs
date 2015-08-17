@@ -1,0 +1,16 @@
+<div class="feed-teaser">
+  <h3><%= feed.get('description') %></h3>
+    <% var topics = feed.topics(); %>
+    <% if (topics.length > 0) { %>
+    <h4>Topics</h4>
+      <ul>
+        <% topics.each(function(topic) { %>
+          <li class="topic-list-item"><%= topic.get('title') %></li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>There are currently no topics associated with this feed.</p>
+    <% }; %>
+    
+  <button class="btn">TODO Add a Topic with current_user conditional</button>
+</div>

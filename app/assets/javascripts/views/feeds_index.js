@@ -1,7 +1,8 @@
 Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
   template: JST['feeds/feeds_index'],
 
-  initialize: function() {
+  initialize: function(options) {
+    this.rootView = options.rootView;
     this.listenTo(this.collection, 'add', this.addFeedIndexItemView);
     this.listenTo(this.collection, 'remove', this.removeFeedItemView);
     var that = this;
@@ -15,7 +16,7 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
   },
 
   addFeedIndexItemView: function(feed) {
-    var feedItem = new Breedly.Views.FeedIndexItem({ model: feed });
+    var feedItem = new Breedly.Views.FeedIndexItem({ model: feed, rootView: this.rootView });
     this.addSubview('.feed-list', feedItem);
   },
 

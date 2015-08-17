@@ -18,13 +18,14 @@ class Api::FeedsController < ApplicationController
     render 'show'
   end 
 
+  ##ADD INCLUDES
   def show
-    @feed = Feed.find(params[:id])
+    @feed = Feed.includes(:topics).find(params[:id])
   end
 
   def index
     #eventually-> @feeds = current_user.sorted_feeds
-    @feeds = Feed.all
+    @feeds = Feed.includes(:topics).all
   end
 
   private

@@ -13,7 +13,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addFeedsIndexBar: function(feeds) {
-    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.collection });
+    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.collection, rootView: this });
     this.addSubview('#feeds-index', feedsIndex);
   },
 
@@ -24,19 +24,32 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     //clean this shit up 
     this._activeFeed.fetch({
       success: function() {
-        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed });
+        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that });
         that.swapActiveEntries(entriesView);
+        activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed });   
+        that.swapActiveFeed(activeFeedView);
       }
-    });
-    var activeFeedView = new Breedly.Views.FeedShow({ model: this._activeFeed });   
-    this.swapActiveFeed(activeFeedView);
+    }); 
   },
 
-  swapActiveFeed: function() {
-    var syncedFeedView = new Breedly.Views.FeedShow({ model: this._activeFeed });
+  showFeedDescription: function(feedDescView) {
+    this._hoveredFeedDesc = feedDescView;
+    this.$('#main-overlay').append(feedDescView.render().$el);
+  },
+
+  removeFeedDescription: function() {
+    this._hoveredFeedDesc && this._hoveredFeedDesc.remove();
+  },
+
+  // affixDescription: function(descView) {
+  //   this._activeDescView && this._activeDescView.remove();
+  //   this._activeDescView = descView;
+  // },  
+
+  swapActiveFeed: function(activeFeedView) {
     this._activeFeedView && this._activeFeedView.remove();
-    this._activeFeedView = syncedFeedView;
-    this.$('#main-content').html(syncedFeedView.render().$el);
+    this._activeFeedView = activeFeedView;
+    this.$('#main-content').html(activeFeedView.render().$el);
   },
 
   swapActiveEntries: function(activeEntriesView) {

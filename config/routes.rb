@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do 
     resources :users, only: [:show, :update, :destroy]
     resources :feeds, except: [:new, :update] do 
-      resources :feed_topics, only: [:create]
+      resources :feed_topics, only: [:create, :index]
     end
     resources :feed_topics, only: [:show, :destroy]
     resources :topics, only: [:create, :destroy, :show, :index] 

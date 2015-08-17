@@ -3,6 +3,7 @@ Breedly.Views.EntriesIndex = Backbone.View.extend({
 
   initialize: function(options) {
     this.entries = this.model.entries;
+    this.rootView = options.rootView;
   },
 
   events: {
@@ -12,6 +13,7 @@ Breedly.Views.EntriesIndex = Backbone.View.extend({
   selectEntry: function(e) {
     e.preventDefault();
     this.model.set('selectedEntryIdx', $(e.currentTarget).data('idx')); 
+    this.rootView.removeFeedDescription();
   },
 
   render: function() {

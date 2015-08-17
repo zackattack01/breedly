@@ -1,21 +1,35 @@
 Breedly.Views.FeedIndexItem = Backbone.View.extend({
+  initialize: function(options) {
+    this.rootView = options.rootView;
+    this.clicked = false;
+  },
+
   tagName: 'li',
   template: JST['feeds/feeds_index_item'],
 
-  //figure out how to remove on mouseleave of just the link
   events: {
-    'mouseenter .feed-list-item .feed-list-link': 'addDescription',
-    'mouseleave .feed-list-link': 'removeDescription'
+    'mouseenter .feed-list-item': 'addDescription',
+    'click .feed-list-item': 'leaveDesc',
+    'mouseleave .feed-list-item': 'removeDescription'
+  },
+
+  leaveDesc: function() {
+    this.clicked = true;
   },
 
   addDescription: function(e) {
     e.preventDefault();
-    $(e.currentTarget).append('<p class="desc">' + this.model.get('description') + '</p>');
+    var descriptionView = new Breedly.Views.FeedDescription({ model: this.model });
+    this.rootView.showFeedDescription(descriptionView);
   },
 
   removeDescription: function(e) {
     e.preventDefault();
-    $(e.currentTarget).find('.desc').remove();
+    if (this.clicked) {
+      this.clicked = false;
+    } else {
+      this.rootView.removeFeedDescription();
+    }
   },
 
   render: function() {
