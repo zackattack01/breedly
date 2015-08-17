@@ -63,6 +63,10 @@ input:focus, input:hover {
   background: none;
 }
 
+input.auth-btn {
+  background-color: rgba(235,235,235,0.3);;
+}
+
 .btn:focus, .btn:hover {
   border: 2px solid #EBEBEB;
   box-shadow: 0 0 10px #EBEBEB;

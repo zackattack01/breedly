@@ -33,10 +33,10 @@ class Feed < ActiveRecord::Base
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     rescue Feedjira::NoParserAvailable 
       errors.add(:no_parser, FEED_ERRORS[:no_parser])
-      puts "NO PARSER"
+      puts "NO PARSER FOR #{url}"
     rescue Feedjira::FetchFailure
       errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
-      puts "NO FETCH"
+      puts "NO FETCH FOR #{url}"
     else 
       self.title = parsed_feed_data.title.to_s.sanitize
       self.description = parsed_feed_data.description.to_s.sanitize
@@ -45,6 +45,7 @@ class Feed < ActiveRecord::Base
 
   def generate_topics
     entries.each do |entry|
+      return unless entry['categories']
       JSON.parse(entry['categories']).each do |category|
         topic = Topic.find_by_title(category)
         unless topic

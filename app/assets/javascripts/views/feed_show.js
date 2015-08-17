@@ -6,7 +6,6 @@ Breedly.Views.FeedShow = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("RENDER FROM FEEDSHOW")
     var content = this.template({ feed: this.model });
     this.$el.html(content);
     return this;
