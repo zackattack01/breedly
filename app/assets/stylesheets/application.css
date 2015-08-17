@@ -184,7 +184,7 @@ a:hover, a:focus, a:active {
 }
 
 /* main content feed show */
-#main-content {
+#main-content, #main-overlay .feed-teaser {
   position: relative;
   border: thin solid #EBEBEB;
   border-radius: 25px;
@@ -221,7 +221,7 @@ a:hover, a:focus, a:active {
   display: inline;
 }
 
-#main-content div {
+#main-content div, #main-overlay div {
   font-size: 1em;
   text-align: center;
 }
@@ -234,7 +234,7 @@ a:hover, a:focus, a:active {
   margin: 20px 0 40px 0;
 }
 
-#main-content p {
+#main-content p, #main-overlay p {
   margin: 10px;
   font-size: 1.0em;
   text-indent: 40px;
@@ -257,16 +257,16 @@ a:hover, a:focus, a:active {
   background: linear-gradient(to right, white 80%, #EBEBEB);
 }
 
-#main-content h3 {
+#main-content h3, #main-overlay h3 {
   color: #AA1111;
 }
 
-#main-content h4 {
+#main-content h4, #main-overlay h4 {
   font-size: 1.4em;
   margin: 15px;
 }
 
-#main-overlay .feed-teaser .btn {
+#main-overlay .feed-teaser .btn, #main-content .feed-teaser .btn {
   margin: 20px;
 }
 

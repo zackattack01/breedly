@@ -1,1 +1,1 @@
-json.extract!(@feed, :id, :url, :user_id, :title, :entries, :topics)
+json.extract!(@feed, :id, :url, :user_id, :title, :entries, :topics, :description)
