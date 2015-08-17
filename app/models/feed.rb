@@ -9,6 +9,8 @@ class Feed < ActiveRecord::Base
   ### validates :url, uniqueness: true
   validate :parsable
 
+  after_commit :generate_topics
+
   belongs_to :user
   has_many :feed_topics
   has_many :topics, through: :feed_topics
@@ -37,6 +39,19 @@ class Feed < ActiveRecord::Base
       puts "NO FETCH"
     else 
       self.title = parsed_feed_data.title.to_s.sanitize
+      self.description = parsed_feed_data.description.to_s.sanitize
     end
   end 
+
+  def generate_topics
+    entries.each do |entry|
+      JSON.parse(entry['categories']).each do |category|
+        topic = Topic.find_by_title(category)
+        unless topic
+          topic = Topic.create(title: category)
+        end
+        FeedTopic.create(feed_id: id, topic_id: topic.id)
+      end
+    end
+  end
 end

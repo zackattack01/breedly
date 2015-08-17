@@ -1,5 +1,5 @@
 <ul class="entries-list">
-  <% entries.forEach(function(idx, entry){ %>
+  <% entries && entries.forEach(function(entry, idx){ %>
     <li data-idx="<%= idx %>" class="entry-list-item"><%= entry.title %></li>
   <% }); %>
 </ul>

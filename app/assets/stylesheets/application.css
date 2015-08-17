@@ -139,7 +139,7 @@ a:hover, a:focus, a:active {
 }
 
 #feeds-index-container {
-  background: linear-gradient(to bottom, black, #60605F 75%, rgba(235,235,235,0));
+  background: linear-gradient(to bottom, black 55%, #60605F 90%, rgba(122,122,122,0.4));
   width: 17%;
   height: 100%;
   box-shadow: 5px 0 10px black;
@@ -192,19 +192,56 @@ a:hover, a:focus, a:active {
   padding: 50px;
 }
 
-#main-content img {
+#main-content a.feed-title {
+  font-size: 2.8em;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  color: #AA1111;
+  margin: 20px 0 20px 0;
+}
+
+#main-content a.feed-title:hover {
+  color: #EBEBEB;
+  text-shadow: 0 0 15px #AA1111;
+}
+
+#main-content img, #main-content a img {
   margin-left: 50%;
   transform: translateX(-50%);
+  display: block;
+  margin-bottom: 30px;
 }
 
 #main-content a {
   display: inline-block;
 }
 
+#main-content div {
+  font-size: 1em;
+  text-align: center;
+}
+
+#main-content a.entry-title {
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5em;
+  display: block;
+  margin: 20px 0 40px 0;
+}
+
+#main-content p {
+  margin: 10px;
+  font-size: 1.0em;
+  text-indent: 40px;
+  padding: 10px;
+  line-height: 1.4;
+  text-align: left;
+}
 
 /* entries */
 #entries-index-container {
-  background: linear-gradient(to bottom, #AA1111 50%, black);
+  background: linear-gradient(to bottom, #AA1111 60%, black);
   position: fixed;
   top: 0;
   left: 83%;

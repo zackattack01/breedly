@@ -1,17 +1,11 @@
-<h1><%= feed.get('title') %></h1>
+<a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>
 <% if (feed && feed.entries) { %>
-<h3>
-  <% if (feed && feed.selectedEntryIdx) { %>
-    <%= feed.entries[feed.selectedEntryIdx]['title'] %>
-  <% } else { %>
-    <%= feed.entries[0]['title'] %>
+  <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
+  <a class="entry-title" href="<%= activeEntry['url'] %>">
+    <%= activeEntry['title'] %>
+  </a>
+  <% if  (activeEntry['image']) { %>
+    <img src="<%= activeEntry['image'] %>">
   <% }; %>
-</h3>
-<p>
-  <% if (feed && feed.selectedEntryIdx) { %>
-    <%= feed.entries[feed.selectedEntryIdx]['summary'] %>
-  <% } else { %>
-    <%= feed.entries[0]['summary'] %>
-  <% }; %>
-</p>
+  <%= feed.entries[feed.get('selectedEntryIdx')]['summary'] %>
 <% }; %>

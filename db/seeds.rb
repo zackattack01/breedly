@@ -36,15 +36,7 @@ Feed.generate_feed_object("http://zactal.tumblr.com/rss", 1)
     password: "password",
     age_min: rand(18..26),
     age_max: rand(27..100)
-    )
+  )
 
   Feed.generate_feed_object(feeds.sample, i + 2)
-end
-
-%w{ Sports News Tech Health Food Travel Photography }.each do |topic_title|
-  Topic.create(title: topic_title)
-end
-
-1000.times do |i|
-  FeedTopic.create(topic_id: rand(1..7), feed_id: rand(1..95))
 end
