@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :feeds
+  has_many :user_topics
+  has_many :topics, through: :user_topics
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

@@ -5,7 +5,7 @@
         <a class="entry-title" href="<%= activeEntry['url'] %>">
           <%= activeEntry['title'] %>
         </a>
-        <% if  (activeEntry['image']) { %>
+        <% if (activeEntry['image']) { %>
           <img src="<%= activeEntry['image'] %>">
         <% }; %>
       <%= feed.entries[feed.get('selectedEntryIdx')]['summary'] %>
@@ -23,8 +23,7 @@
       </ul>
     <% } else { %>
       <p>There are currently no topics associated with this feed.</p>
-    <% }; %>
-    
+    <% }; %>   
     <button class="btn">TODO Add a Topic with current_user conditional</button>
   </div>
 <% }; %>

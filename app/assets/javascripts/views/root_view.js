@@ -21,7 +21,6 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this._activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
 
     var that = this;
-    //clean this shit up 
     this._activeFeed.fetch({
       success: function() {
         var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that });

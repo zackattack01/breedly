@@ -4,7 +4,14 @@ Breedly.Views.NavBar = Backbone.View.extend({
   events: {
     'click #update-user-btn': 'updateModal',
     'click #add-feed-btn': 'addFeedModal',
-    'click #logout-btn': 'logoutUser'
+    'click #logout-btn': 'logoutUser',
+    'click #user-topic-btn': 'addUserTopic'
+  },
+
+  addUserTopic: function(e) {
+    e.preventDefault();
+    var modalTopic = new Breedly.Views.NewTopic();
+    $('body').append(modalTopic.render().$el); 
   },
 
   addFeedModal: function(e) {

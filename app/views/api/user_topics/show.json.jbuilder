@@ -1,0 +1,1 @@
+json.extract!(@user_topic, :user_id, :topic_id)

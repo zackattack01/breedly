@@ -1,4 +1,3 @@
-##START HERE
 class Api::TopicsController < ApplicationController
   def create 
     @topic = Topic.new(topic_params)
@@ -7,6 +6,14 @@ class Api::TopicsController < ApplicationController
     else
       render :json => @topic.errors.full_messages, status: 422
     end
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
+  end
+
+  def index 
+    @topics = Topic.all
   end
 
   private
