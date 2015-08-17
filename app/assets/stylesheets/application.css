@@ -36,7 +36,7 @@ form.auth-form input {
 
 .auth-form { color: #EBEBEB; }
 
-.auth-form input, #user-update input, input#feed-url #topic-title {
+.auth-form input, #user-update input, input#feed-url, #topic-title {
   margin: 10px;
   border: none;
   border-bottom: thin solid #EBEBEB; 
@@ -323,7 +323,7 @@ a:hover, a:focus, a:active {
   transform: translateX(-50%);
 }
 
-.modal-content #user-update input, input#feed-url {
+.modal-content #user-update input, input#feed-url, input#topic-title {
   border-color: black;
   border-bottom: thin solid black; 
 }
