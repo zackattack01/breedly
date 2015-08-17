@@ -34,4 +34,9 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
+
+  # def generate_sorted_feeds
+  #   feeds = Feed.all
+  #   feedTopics = FeedTopic.all
+  # end
 end

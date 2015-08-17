@@ -36,7 +36,7 @@ form.auth-form input {
 
 .auth-form { color: #EBEBEB; }
 
-.auth-form input, #user-update input, input#feed-url {
+.auth-form input, #user-update input, input#feed-url #topic-title {
   margin: 10px;
   border: none;
   border-bottom: thin solid #EBEBEB; 

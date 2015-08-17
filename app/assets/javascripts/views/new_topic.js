@@ -8,12 +8,14 @@ Breedly.Views.NewTopic = Backbone.View.extend({
   template: JST['topics/new_topic'],
 
   events: {
-    'click button.add-topic': 'addTopic',
+    'click button.add-user-topic': 'addUserTopic',
+    'click button.add-feed-topic': 'addFeedTopic',
     'click .close': 'remove',
     'click .modal-background': 'remove'
   },
 
-  addTopic: function(e) {
+  //if the topic doesn't exist, create it
+  addUserTopic: function(e) {
     e.preventDefault();
     var topicTitle = $('#topic-title').val();
     var newTopic = this.topics.getOrFetch(topicTitle);
@@ -23,11 +25,11 @@ Breedly.Views.NewTopic = Backbone.View.extend({
     userTopic.save({}, {
       success: function() {
         that.remove();
-        console.log("new user topic created")
       },
 
       error: function(resp) {
         console.log(resp);
+        $('#topic-title').val("")
       }, 
     });
   },
