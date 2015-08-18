@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_many :feeds
+  has_many :personal_feeds, foreign_key: :user_id, class_name: 'Feed'
   has_many :user_topics
   has_many :topics, through: :user_topics
+  has_many :feed_topics, through: :topics
+  has_many :feeds, through: :feed_topics
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
@@ -30,11 +32,8 @@ class User < ActiveRecord::Base
     self.save!
   end
   
-  ## ask why this looks like shit anywhere but the rails console
   def sorted_feeds
-    topics.includes(:feeds).map { |t| t.feeds }.sort_by do |f| 
-      -f.length 
-    end.flatten.uniq
+    feeds.includes(:topics)
   end
   
   private

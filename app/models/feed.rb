@@ -4,14 +4,14 @@ class Feed < ActiveRecord::Base
     fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL"
   }
 
-  validates :user, :url, presence: true
+  validates :author, :url, presence: true
   ### validate uniqueness when there's more seed data
   ### validates :url, uniqueness: true
   validate :parsable
 
   after_commit :generate_topics
 
-  belongs_to :user
+  belongs_to :author, foreign_key: :user_id, class_name: 'User'
   has_many :feed_topics
   has_many :topics, through: :feed_topics
 

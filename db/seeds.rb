@@ -97,7 +97,7 @@ end
 
 topic_ids = Topic.all.map { |topic| topic.id }
 
-User.all[0..-1].each do |user|
+User.all[1..-1].each do |user|
   15.times do 
     UserTopic.create(user_id: user.id, topic_id: topic_ids.sample)
   end

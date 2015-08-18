@@ -1,4 +1,8 @@
 Breedly.Views.NavBar = Backbone.View.extend({
+  initialize: function(options) {
+    this.rootView = options.rootView;
+  },
+
   template: JST['navbar'],
 
   events: {
@@ -10,7 +14,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
 
   addUserTopic: function(e) {
     e.preventDefault();
-    var modalTopic = new Breedly.Views.NewTopic();
+    var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
     $('body').append(modalTopic.render().$el); 
   },
 

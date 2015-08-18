@@ -5,17 +5,14 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
     this.rootView = options.rootView;
     this.listenTo(this.collection, 'add', this.addFeedIndexItemView);
     this.listenTo(this.collection, 'remove', this.removeFeedItemView);
-    var that = this;
-    this.collection.fetch({
-      success: function() {
-        that.collection.each(function(feed) {
-          that.addFeedIndexItemView(feed);
-        });
-      }
+    this.collection.fetch()
+    this.collection.each(function(feed) {
+      that.addFeedIndexItemView(feed);
     });
   },
 
   addFeedIndexItemView: function(feed) {
+    console.log("SUBVIEW ADDED");
     var feedItem = new Breedly.Views.FeedIndexItem({ model: feed, rootView: this.rootView });
     this.addSubview('.feed-list', feedItem);
   },

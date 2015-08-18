@@ -18,7 +18,6 @@ class Api::FeedsController < ApplicationController
     render 'show'
   end 
 
-  ##ADD INCLUDES
   def show
     @feed = Feed.includes(:topics).find(params[:id])
   end

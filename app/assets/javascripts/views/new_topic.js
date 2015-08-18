@@ -1,5 +1,6 @@
 Breedly.Views.NewTopic = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
+    this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
     this.topics = new Breedly.Collections.Topics();
     this.topics.fetch();
@@ -29,6 +30,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
       userTopic.save({}, {
         success: function() {
           that.remove();
+          that.rootView.refreshFeedsIndex();
         },
 
         error: function(obj, resp) {
