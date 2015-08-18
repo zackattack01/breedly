@@ -4,13 +4,7 @@
 <script>
 
 $(document).ready(function(){
-  var logo = $('.logo');
-  logo.css('width', '18%')
-      .css('left', '0px')
-      .css('top', '0')
-      .css('z-index', '3')
-      .css('position', 'relative');
-  logo.removeClass('logo-full');
+  $('.logo-full').removeClass('logo-full').addClass('logo-small');
   
   Breedly.CURRENT_USER_ID = "<%= current_user.id %>";
   Breedly.RAILS_ENV = "<%= Rails.env %>";

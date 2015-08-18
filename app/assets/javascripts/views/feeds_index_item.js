@@ -9,11 +9,12 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
 
   events: {
     'mouseenter .feed-list-item': 'addDescription',
-    'mouseleave .feed-list-item': 'removeDescription'
+    'mouseleave .feed-list-item': 'removeDescription',
+    'click .feed-list-item': 'whirly'
   },
 
-  leaveDesc: function() {
-    this.clicked = true;
+  whirly: function() {
+    this.rootView.whirl();
   },
 
   addDescription: function(e) {

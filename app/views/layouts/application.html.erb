@@ -2,14 +2,15 @@
 <html>
 <head>
   <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://css-spinners.com/css/spinner/whirly.css" type="text/css">
   <link rel="icon" href="<%= asset_path("favicon.ico") %>" type="image/x-icon">
-  <title>Breedly</title>
+  <title>breedly</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<img class="logo logo-full" src="<%= asset_path('logo_full.png') %>">
+<img class="logo-full" src="<%= asset_path('logo_full.png') %>">
 <%= yield %>
 </body>
 </html>
