@@ -23,7 +23,7 @@ class Api::FeedsController < ApplicationController
   end
 
   def index
-    @feeds = current_user.sorted_feeds
+    @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
   end
 
   private

@@ -16,12 +16,14 @@ Breedly.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
     $('body').append(modalTopic.render().$el); 
+    $('#topic-title').focus();
   },
 
   addFeedModal: function(e) {
     e.preventDefault();
     var modalFeed = new Breedly.Views.NewFeed();
     $('body').append(modalFeed.render().$el); 
+    $('#feed-url').focus();
   },
 
   updateModal: function(e) {

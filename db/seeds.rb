@@ -72,6 +72,7 @@ public_feeds = [
   "http://www.ft.com/rss/home/us"
   ]
 
+public_feed_author = User.create(username: "public", password: "public_feeds")
 admin = User.create(username: "admin", real_name: "zack", password: "password", age: 23, age_min: 20, age_max: 80)
 Feed.generate_feed_object("http://zactal.tumblr.com/rss", admin.id)
 
@@ -89,15 +90,14 @@ user_feeds.each do |url|
   Feed.generate_feed_object(url, user.id)
 end
 
-public = User.create(username: "public", password: "password")
 
 public_feeds.each do |url|
-  Feed.generate_feed_object(url, public.id)
+  Feed.generate_feed_object(url, public_feed_author.id)
 end
 
 topic_ids = Topic.all.map { |topic| topic.id }
 
-User.all[1..-1].each do |user|
+User.all[2..-1].each do |user|
   15.times do 
     UserTopic.create(user_id: user.id, topic_id: topic_ids.sample)
   end

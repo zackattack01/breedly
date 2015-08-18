@@ -17,7 +17,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   refreshFeedsIndex: function() {
-    
+    this.collection.fetch();
   },
 
   addFeedsIndexBar: function(feeds) {
