@@ -14,24 +14,29 @@ Breedly.Views.NewTopic = Backbone.View.extend({
     'click .modal-background': 'remove'
   },
 
-  //if the topic doesn't exist, create it
+  //todo search and autocomplete
   addUserTopic: function(e) {
     e.preventDefault();
     var topicTitle = $('#topic-title').val();
-    var newTopic = this.topics.getOrFetch(topicTitle);
-    var that = this;
-    var userTopic = new Breedly.Models.UserTopic();
-    userTopic.set({ topic_id: newTopic.id });
-    userTopic.save({}, {
-      success: function() {
-        that.remove();
-      },
+    var newTopic = this.topics.where({ title: topicTitle })[0];
+    if (typeof newTopic === "undefined") {
+      $('#topic-title').val("")
+      this.$('.errors').html('<p>-There are currently no feeds with that topic.')
+    } else {
+      var that = this;
+      var userTopic = new Breedly.Models.UserTopic();
+      userTopic.set({ topic_id: newTopic.id });
+      userTopic.save({}, {
+        success: function() {
+          that.remove();
+        },
 
-      error: function(resp) {
-        console.log(resp);
-        $('#topic-title').val("")
-      }, 
-    });
+        error: function(resp) {
+          console.log(resp);
+          $('#topic-title').val("")
+        }, 
+      });
+    }
   },
 
   handleEscape: function(e) {

@@ -1,5 +1,6 @@
 <div class="modal-background"></div>
-<div class="feed-teaser">
+<div class="feed-desc">
+  <h2><%= feed.get('title') %></h2>
   <h3><%= feed.get('description') %></h3>
     <% var topics = feed.topics(); %>
     <h4>Topics</h4>

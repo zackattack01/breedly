@@ -13,7 +13,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   whirl: function() {
-    this.$('#errors-and-whirly').html('<div class="whirly-loader"></div>');
+    this.$('#whirly').html('<div class="whirly-loader"></div>');
   },
 
   addFeedsIndexBar: function(feeds) {
