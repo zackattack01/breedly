@@ -31,12 +31,16 @@ Breedly.Views.NewTopic = Backbone.View.extend({
         success: function() {
           that.remove();
           that.rootView.refreshFeedsIndex();
+          that.rootView.addSuccess("Your interest has been noted!");
         },
 
         error: function(obj, resp) {
-          this.$('.errors').html('<p>-' + resp['responseJSON'][0].slice(6) + '</p>')
-          $('#topic-title').val("")
-        }, 
+          resp['responseJSON'].forEach(function(error) {
+            that.$('.errors').html('<p>-' + error.slice(6) + '</p>');
+          });
+          
+          $('#topic-title').val("");
+        }
       });
     }
   },

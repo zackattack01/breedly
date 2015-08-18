@@ -1,7 +1,7 @@
 class Feed < ActiveRecord::Base
   FEED_ERRORS = { 
-    no_parser: "We were unable to parse your feed, make sure your feed is in a valid xml format",
-    fetch_failure: "Sorry, we were unable to connect to your feed, make sure that you've entered the correct URL"
+    no_parser: "We were unable to parse your feed, make sure you've entered a valid xml format",
+    fetch_failure: "We were unable to connect to your feed, make sure that you've entered the correct URL"
   }
 
   validates :author, :url, presence: true
@@ -34,11 +34,13 @@ class Feed < ActiveRecord::Base
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     rescue Feedjira::NoParserAvailable 
-      errors.add(:no_parser, FEED_ERRORS[:no_parser])
-      puts "NO PARSER FOR #{url}"
+      errors.add(:feed, FEED_ERRORS[:no_parser])
+    rescue NoMethodError
+      errors.add(:feed, FEED_ERRORS[:fetch_failure])
+    rescue URI::InvalidURIError 
+      errors.add(:feed, FEED_ERRORS[:fetch_failure])
     rescue Feedjira::FetchFailure
-      errors.add(:no_fetch, FEED_ERRORS[:fetch_failure])
-      puts "NO FETCH FOR #{url}"
+      errors.add(:feed, FEED_ERRORS[:fetch_failure])
     else 
       self.title = parsed_feed_data.title.to_s.sanitize
       self.description = parsed_feed_data.description.to_s.sanitize

@@ -52,12 +52,34 @@ input:focus, input:hover {
   box-shadow: 0 0 10px #EBEBEB;
 }
 
+#errors-main, #success-main {
+  font-size: 1.0em;
+  position: relative;
+  top: 70px;
+  text-align: center;
+}
+
+#errors-main p, #success-main p{
+  padding: 30px;
+}
+
+#errors-main {
+  color: #AA1111;
+  background-color: rgba(224, 158, 158, 0.5);
+}
+
+#success-main {
+  color: green;
+  background-color: rgba(117, 241, 109, 0.5);
+}
+
 #whirly {
   position: absolute;
   left: 50%;
   top: 30%;
   transform: translateX(-50%);
   z-index: 10;
+  /*background-color: #AA1111;*/
 }
 
 

@@ -1,5 +1,6 @@
 Breedly.Views.NewFeed = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
+    this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
   },
 
@@ -19,10 +20,14 @@ Breedly.Views.NewFeed = Backbone.View.extend({
     newFeed.save({}, {
       success: function() {
         that.remove();
+        that.rootView.addSuccess(newFeed.get('title') + " has been added to your personal feeds.");
       },
 
-      error: function(resp) {
-        console.log(resp);
+      error: function(obj, resp) {
+        resp['responseJSON'].forEach(function(error) {
+           that.$('.errors').html('<p>-' + error.slice(5) + '</p>');
+           $('#feed-url').val("");
+        });
       }, 
     });
   },

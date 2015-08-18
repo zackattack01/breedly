@@ -24,6 +24,7 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
     that.model.save({}, {
       success: function() {
         that.remove();
+        that.rootView.addSuccess("Settings updated!");
       },
 
       error: function(resp) {
