@@ -12,7 +12,8 @@ user_feeds = [
   "http://salonserpenttattoo.tumblr.com/rss",
   "http://deep-dark-fears.tumblr.com/rss",
   "http://foodphotographytravel.tumblr.com/rss",
-  "http://powerlinesinanime.tumblr.com/rss"          
+  "http://powerlinesinanime.tumblr.com/rss",
+  "http://aspiringwebdev.com/feed/"          
   ]
 
 public_feeds = [
@@ -92,4 +93,12 @@ public = User.create(username: "public", password: "password")
 
 public_feeds.each do |url|
   Feed.generate_feed_object(url, public.id)
+end
+
+topic_ids = Topic.all.map { |topic| topic.id }
+
+User.all[0..-1].each do |user|
+  15.times do 
+    UserTopic.create(user_id: user.id, topic_id: topic_ids.sample)
+  end
 end

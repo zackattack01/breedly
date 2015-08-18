@@ -21,7 +21,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
     var newTopic = this.topics.where({ title: topicTitle })[0];
     if (typeof newTopic === "undefined") {
       $('#topic-title').val("")
-      this.$('.errors').html('<p>-There are currently no feeds with that topic.')
+      this.$('.errors').html('<p>-There are currently no feeds with that topic.</p>')
     } else {
       var that = this;
       var userTopic = new Breedly.Models.UserTopic();
@@ -31,8 +31,8 @@ Breedly.Views.NewTopic = Backbone.View.extend({
           that.remove();
         },
 
-        error: function(resp) {
-          console.log(resp);
+        error: function(obj, resp) {
+          this.$('.errors').html('<p>-' + resp['responseJSON'][0].slice(6) + '</p>')
           $('#topic-title').val("")
         }, 
       });

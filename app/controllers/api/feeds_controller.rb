@@ -24,8 +24,7 @@ class Api::FeedsController < ApplicationController
   end
 
   def index
-    #eventually-> @feeds = current_user.sorted_feeds
-    @feeds = Feed.includes(:topics).all
+    @feeds = current_user.sorted_feeds
   end
 
   private

@@ -44,6 +44,7 @@ class Feed < ActiveRecord::Base
   end 
 
   def generate_topics
+    created_topics = {}
     entries.each do |entry|
       return unless entry['categories']
       JSON.parse(entry['categories']).each do |category|
@@ -51,7 +52,10 @@ class Feed < ActiveRecord::Base
         unless topic
           topic = Topic.create(title: category)
         end
-        FeedTopic.create(feed_id: id, topic_id: topic.id)
+        unless created_topics[topic]
+          FeedTopic.create(feed_id: id, topic_id: topic.id)
+          created_topics[topic] = true
+        end
       end
     end
   end
