@@ -53,9 +53,11 @@ input:focus, input:hover {
 }
 
 #errors-and-whirly {
-  text-align: center;
-  z-index: 200;
-  margin-top: 100px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 
@@ -263,7 +265,9 @@ a:hover, a:focus, a:active {
 
 /* entries */
 #entries-index-container {
-  background-color: #AA1111;
+  /*background-color: #AA1111;*/
+  background-color: black;
+  color: #EBEBEB;
   position: fixed;
   top: 0;
   left: 83%;
@@ -286,11 +290,13 @@ a:hover, a:focus, a:active {
   cursor: pointer;
 }
 
-.entries-list h4, .feed-list h4 {
+.feed-list h4 {
   margin-top: 80px;
   text-align: center; 
   font-size: 1.3em;
 }
+
+#entries-index ul:first-child { margin-top: 80px; }
 
 .feed-list h4 {
   color: #EBEBEB;

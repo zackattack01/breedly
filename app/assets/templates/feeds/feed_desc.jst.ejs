@@ -2,8 +2,8 @@
 <div class="feed-teaser">
   <h3><%= feed.get('description') %></h3>
     <% var topics = feed.topics(); %>
-    <% if (topics.length > 0) { %>
     <h4>Topics</h4>
+    <% if (topics.length > 0) { %>
       <ul>
         <% topics.each(function(topic) { %>
           <li class="topic-list-item"><%= topic.get('title') %></li>
