@@ -1,5 +1,6 @@
 Breedly.Views.UserUpdate = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
+    this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
     this.listenTo(this.model, 'sync', this.render);
   },

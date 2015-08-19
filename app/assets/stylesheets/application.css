@@ -84,12 +84,15 @@ input:focus, input:hover {
 /* autocomplete */
 
 ul.ui-widget-content {
-  display: block;
-  z-index: 5;
+  /*display: block;*/
+  /*z-index: 5;*/
   position: relative;
 }
 .ui-autocomplete { 
   height: 100px; 
+  width: 250px;
+  background-color: inherit;
+  border: thin solid black;
   overflow-y: scroll; 
   overflow-x: hidden;
 }

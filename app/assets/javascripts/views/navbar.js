@@ -24,19 +24,19 @@ Breedly.Views.NavBar = Backbone.View.extend({
         });
         $("#topic-title").autocomplete({ 
           source: availableTopics,
-          
+
         });
       }
     })
     var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
-    $('body').append(modalTopic.render().$el); 
+    this.rootView.$('#main-content').append(modalTopic.render().$el); 
     modalTopic.$('#topic-title').focus();
   },
 
   addFeedModal: function(e) {
     e.preventDefault();
     var modalFeed = new Breedly.Views.NewFeed({ rootView: this.rootView });
-    $('body').append(modalFeed.render().$el); 
+    this.rootView.$('#main-content').append(modalFeed.render().$el); 
     $('#feed-url').focus();
   },
 
@@ -45,7 +45,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
     var user = new Breedly.Models.User({ id: Breedly.CURRENT_USER_ID });
     user.fetch();
     var modal = new Breedly.Views.UserUpdate({ model: user, rootView: this.rootView });
-    $('body').append(modal.render().$el);
+    this.rootView.$('#main-content').append(modal.render().$el);
   },
 
   logoutUser: function(e) {
