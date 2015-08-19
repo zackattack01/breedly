@@ -23,7 +23,18 @@ class Api::FeedsController < ApplicationController
   end
 
   def index
-    @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
+    if params[:query]
+      @feeds = case params[:query]
+               when "all"
+                 Feed.all
+               when "public"
+                 Feed.public_feeds
+               else
+                 raise "query probz"
+               end
+    else
+      @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
+    end
   end
 
   private

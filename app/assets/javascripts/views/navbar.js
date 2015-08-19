@@ -9,7 +9,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     'click #update-user-btn': 'updateModal',
     'click #add-feed-btn': 'addFeedModal',
     'click #logout-btn': 'logoutUser',
-    'click #user-topic-btn': 'addUserTopic'
+    'click #user-topic-btn': 'addUserTopic',
+    'click #feed-search-btn': 'addSearchModal'
   },
 
   //TODO redo listeners on modals and reformat
@@ -25,7 +26,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
           availableTopics.push(topic.get('title'));
         });
         $("#topic-title").autocomplete({ 
-          source: availableTopics,
+          source: availableTopics
         });
       }
     });
@@ -39,6 +40,30 @@ Breedly.Views.NavBar = Backbone.View.extend({
     var modalFeed = new Breedly.Views.NewFeed({ rootView: this.rootView });
     $('body').append(modalFeed.render().$el); 
     $('#feed-url').focus();
+  },
+
+  addSearchModal: function(e) {
+    e.preventDefault();
+    var allFeeds = new Breedly.Collections.Feeds();
+    var feedTitles = [];
+
+    allFeeds.fetch({
+      data: {
+        query: "all"
+      },
+
+      success: function() {
+        allFeeds.each(function(feed) {
+          feedTitles.push(feed.get('title'));
+        });
+        $("#feed-title").autocomplete({ 
+          source: feedTitles
+        });
+      }
+    });
+    var modalSearch = new Breedly.Views.FeedSearch({ rootView: this.rootView, collection: allFeeds });
+    $('body').append(modalSearch.render().$el); 
+    $('#feed-title').focus();
   },
 
   updateModal: function(e) {

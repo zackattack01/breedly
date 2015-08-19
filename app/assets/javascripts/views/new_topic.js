@@ -26,7 +26,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
       var that = this;
       var userTopic = new Breedly.Models.UserTopic();
       userTopic.set({ topic_id: newTopic.id });
-      this.rootView.whirly();
+      this.rootView.whirl();
       userTopic.save({}, {
         success: function() {
           that.remove();

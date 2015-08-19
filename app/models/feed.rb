@@ -14,7 +14,7 @@ class Feed < ActiveRecord::Base
   has_many :feed_topics
   has_many :topics, through: :feed_topics
 
-  scope :public_feed, -> { where(user_id: 1) }
+  scope :public_feeds, -> { where(user_id: 1) }
 
   def self.generate_feed_object(url, user_id)
     feed = Feed.create(url: url, user_id: user_id)
