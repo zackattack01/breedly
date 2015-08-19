@@ -5,8 +5,7 @@ class Feed < ActiveRecord::Base
   }
 
   validates :author, :url, presence: true
-  ### validate uniqueness when there's more seed data
-  ### validates :url, uniqueness: true
+  validates :url, uniqueness: true
   validate :parsable
 
   after_commit :generate_topics
@@ -31,14 +30,15 @@ class Feed < ActiveRecord::Base
 
   private
   def parsable
-    retried = false
+    retried = 0
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
-      unless retried
-        self.url = self.url + 'rss'
-        retried = true
+      unless retried == 2
+        try_with = %w{ rss /rss }
+        self.url = self.url + try_with[retried]
+        retried += 1
         retry
       end
       errors.add(:feed, FEED_ERRORS[:no_parser])

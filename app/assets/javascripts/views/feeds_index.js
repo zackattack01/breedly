@@ -13,7 +13,6 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
   },
 
   addFeedIndexItemView: function(feed) {
-    console.log("SUBVIEW ADDED");
     var feedItem = new Breedly.Views.FeedIndexItem({ model: feed, rootView: this.rootView });
     this.addSubview('.feed-list', feedItem);
   },

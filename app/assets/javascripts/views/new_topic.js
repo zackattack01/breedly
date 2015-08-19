@@ -15,7 +15,6 @@ Breedly.Views.NewTopic = Backbone.View.extend({
     'click .modal-background': 'remove'
   },
 
-  //todo search and autocomplete
   addUserTopic: function(e) {
     e.preventDefault();
     var topicTitle = $('#topic-title').val();

@@ -1,7 +1,6 @@
 user_feeds = [
   "http://thebobsburgerexperiment.com/rss",
   "http://gifsboom.net/rss",
-  "http://disney.tumblr.com/rss",
   "http://notdeadbabies.tumblr.com/rss",
   "http://landscapes.ml/rss",
   "http://gifak-net.tumblr.com/rss",
@@ -15,6 +14,20 @@ user_feeds = [
   "http://powerlinesinanime.tumblr.com/rss",
   "http://aspiringwebdev.com/feed/",
   "http://www.craigslist.org/about/best/all/index.rss"          
+  "http://jeremycowart.com/feed/",
+  "http://jmcolberg.com/weblog/atom.xml",
+  "http://kevoto.com/index.php?x=rss",
+  "http://lmajali.wordpress.com/feed/",
+  "http://moosepeterson.com/blog/?feed=rss",
+  "http://feeds.feedburner.com/ChaseJarvis",
+  "http://feeds.feedburner.com/OttoSchulzePhotographers",
+  "http://feeds.feedburner.com/TunneyPhotography",
+  "http://feeds.feedburner.com/Craigfergusonimages",
+  "http://feeds.feedburner.com/EricKimStreetPhotographyBlog",
+  "http://mrelllis.tumblr.com/rss",
+  "http://drewshannon.net/rss",
+  "http://nicolesyblog.com/feed/",
+  "http://photocritic.org/feed/"
   ]
 
 public_feeds = [
@@ -25,6 +38,7 @@ public_feeds = [
   "http://feeds.feedburner.com/techcrunch/startups?format=xml",
   "http://feeds.feedburner.com/TechCrunch/Greentech?format=xml",
   "http://www.eurekalert.org/rss.xml",
+  "http://disney.tumblr.com/rss",
   "http://rss.sciam.com/all-blogs/feed?format=xml",
   "http://www.wired.com/category/gear/feed/",
   "http://www.wired.com/category/science/feed/",
@@ -68,9 +82,38 @@ public_feeds = [
   "http://feeds.nbcnews.com/feeds/worldnews",
   "http://www.cbsnews.com/feeds/rss/main.rss",
   "http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+  "http://www.nytimes.com/services/xml/rss/index.html",
+  "http://espn.go.com/rss",
+  "http://www.reddit.com/.rss",
+  "http://www.cbssports.com/xml/rss",
+  "http://www.nbcnews.com/id/24057171",
+  "http://techcrunch.com/feed/",
+  "http://www.simplyrecipes.com/feed/",
+  "http://mashable.com/rss/",
+  "http://boingboing.net/feed",
+  "http://feeds.feedburner.com/F8Photography",
+  "http://feeds.feedburner.com/FeatureShoot",
+  "http://feeds.feedburner.com/FlakPhoto",
+  "http://brianmatiash.com/feed/",
+  "http://natefernald.com/butttalk/buttfeed.xml",
   "http://feeds.abcnews.com/abcnews/topstories",
   "http://feeds.feedburner.com/cnet/tcoc",
-  "http://www.ft.com/rss/home/us"
+  "http://www.ft.com/rss/home/us",
+  "http://feeds.feedburner.com/flixel",
+  "http://feeds.feedburner.com/handcarryonly",
+  "http://feeds.feedburner.com/ink_on_my_fingers",
+  "http://feeds.feedburner.com/ishootshows",
+  "http://feeds.feedburner.com/joemcnally",
+  "http://feeds.feedburner.com/jorgequinterosphotoblog",
+  "http://feeds.feedburner.com/openorigins",
+  "http://girlwithacamera.co.uk/feed/",
+  "http://iheartfaces.blogspot.com/feeds/posts/default",
+  "http://invisiblephotographer.asia/feed/",
+  "http://jarviestudios.com/blog/feed/",
+  "http://www.jokesareawesome.com/rss/latest/25/",
+  "http://www.jokesareawesome.com/rss/random/",
+  "http://www.jokesareawesome.com/rss/toprated/25/",
+  "http://www.npr.org/rss/rss.php?id=1008"
   ]
 
 public_feed_author = User.create(username: "public", password: "public_feeds")
