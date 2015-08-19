@@ -19,7 +19,13 @@ class Api::FeedsController < ApplicationController
   end 
 
   def show
-    @feed = Feed.includes(:topics).find(params[:id])
+    @feed = Feed.includes(:topics, :subscriptions).find(params[:id])
+    if logged_in?
+      subscription = @feed.subscriptions.find_by_user_id(current_user.id)
+      if subscription
+        @subscribed_id = subscription.id
+      end
+    end
   end
 
   def index

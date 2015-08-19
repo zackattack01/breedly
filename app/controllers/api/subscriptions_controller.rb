@@ -13,6 +13,12 @@ class Api::SubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy
+    render 'show'
+  end
+
   def index
     @subscriptions = current_user.subscriptions
   end

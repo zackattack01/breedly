@@ -1,0 +1,1 @@
+json.extract!(@subscription, :user_id, :feed_id, :id)

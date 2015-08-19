@@ -13,8 +13,6 @@ Breedly.Views.NavBar = Backbone.View.extend({
     'click #feed-search-btn': 'addSearchModal'
   },
 
-  //TODO redo listeners on modals and reformat
-
   addUserTopic: function(e) {
     e.preventDefault();
     var availableTopics = [];

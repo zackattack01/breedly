@@ -1,5 +1,11 @@
   <a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>
-  <button id="add-this-feed-btn" class="btn">Subscribe to this Feed</button>
+  <button class="toggle-subscribe-btn" class="btn">
+    <% if (feed.get('subscribed') === "subscribed") { %>
+      Unsubscribe
+    <% } else { %>
+      Subscribe
+    <% } %>
+  </button>
   <% if (feed && feed.entries) { %>
       <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
         <a class="entry-title" href="<%= activeEntry['url'] %>">
@@ -9,4 +15,4 @@
           <img src="<%= activeEntry['image'] %>">
         <% }; %>
       <%= feed.entries[feed.get('selectedEntryIdx')]['summary'] %>
-  <% }; %>
+  <% }; %>  

@@ -5,6 +5,8 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this.addFeedsIndexBar();
     this.addNavBar();
     this.rendered = false;
+    this.subscriptions = new Breedly.Collections.Subscriptions();
+    this.subscriptions.fetch();
   },
 
   addNavBar: function() {
@@ -37,7 +39,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
       success: function() {
         var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that });
         that.swapActiveEntries(entriesView);
-        activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed });   
+        activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed, rootView: that });   
         that.swapActiveFeed(activeFeedView);
         that.endWhirly();
       }
@@ -51,7 +53,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
       this.dumpMessages();
     }.bind(this), 3000);
   },
-  
+
   dumpMessages: function() {
     this.$("#success-main").empty();
     this.$("#errors-main").empty();
