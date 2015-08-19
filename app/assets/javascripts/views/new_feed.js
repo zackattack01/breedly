@@ -17,18 +17,21 @@ Breedly.Views.NewFeed = Backbone.View.extend({
     var feedUrl = $('#feed-url').serializeJSON();
     var newFeed = new Breedly.Models.Feed(feedUrl);
     var that = this;
+    this.rootView.whirl();
     newFeed.save({}, {
       success: function() {
         that.remove();
-        that.rootView.addSuccess(newFeed.get('title') + " has been added to your personal feeds.");
+        that.rootView.endWhirly();
+        that.rootView.addMessage(newFeed.get('title') + " has been added to your personal feeds.", "success");
       },
 
       error: function(obj, resp) {
         resp['responseJSON'].forEach(function(error) {
-           that.$('.errors').html('<p>-' + error.slice(5) + '</p>');
-           $('#feed-url').val("");
-           $('#feed-url').focus();
+          that.$('.errors').html('<p>-' + error.slice(5) + '</p>');
         });
+        $('#feed-url').val("");
+        $('#feed-url').focus();
+        that.rootView.endWhirly();
       }, 
     });
   },

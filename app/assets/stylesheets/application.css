@@ -71,11 +71,12 @@ table td {
   padding: 5px;
 }
 
-.new-feed-block {
-  display: block;
-}
-
 .new-feed-block label, .new-feed-block input, .new-feed-block button {
+  float: left;
+  margin-left: 20px;
+} 
+
+.new-topic-block label, .new-topic-block input, .new-topic-block button {
   float: left;
   margin-left: 20px;
 } 
@@ -105,9 +106,10 @@ input:focus, input:hover {
 
 #errors-main, #success-main {
   font-size: 1.0em;
-  position: relative;
-  top: 70px;
+  position: absolute;
+  top: 50px;
   text-align: center;
+  z-index: 20;
 }
 
 #errors-main p, #success-main p{
