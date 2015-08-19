@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :user_topics, only: [:create, :destroy]
     resources :feed_topics, only: [:show, :destroy]
-    resources :topics, only: [:create, :destroy, :show, :index] 
+    resources :topics, only: [:create, :destroy, :show, :index]
+    resources :subscriptions, only: [:create, :destroy, :show, :index] 
   end
 end

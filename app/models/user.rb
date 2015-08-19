@@ -8,10 +8,15 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :personal_feeds, foreign_key: :user_id, class_name: 'Feed'
+  
   has_many :user_topics
   has_many :topics, through: :user_topics
+  
   has_many :feed_topics, through: :topics
   has_many :feeds, through: :feed_topics
+
+  has_many :subscriptions
+  has_many :subscribed_feeds, through: :subscriptions, source: :feed
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

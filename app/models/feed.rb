@@ -14,6 +14,9 @@ class Feed < ActiveRecord::Base
   has_many :feed_topics
   has_many :topics, through: :feed_topics
 
+  has_many :subscriptions
+  has_many :subscribed_users, through: :subscriptions, source: :user
+
   scope :public_feeds, -> { where(user_id: 1) }
 
   def self.generate_feed_object(url, user_id)

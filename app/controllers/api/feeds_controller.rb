@@ -29,6 +29,8 @@ class Api::FeedsController < ApplicationController
                  Feed.all
                when "public"
                  Feed.public_feeds
+               when "subscriptions"
+                 current_user.subscribed_feeds
                else
                  raise "query probz"
                end

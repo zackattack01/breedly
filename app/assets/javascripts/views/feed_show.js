@@ -5,8 +5,9 @@ Breedly.Views.FeedShow = Backbone.View.extend({
     'click #add-this-feed-btn': 'subscribeToFeed'
   },
 
-  subscribeToFeed: function() {
-    
+  subscribeToFeed: function(e) {
+    e.preventDefault();
+    debugger;
   },
 
   initialize: function(options) {
