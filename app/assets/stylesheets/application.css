@@ -79,9 +79,20 @@ input:focus, input:hover {
   top: 30%;
   transform: translateX(-50%);
   z-index: 10;
-  /*background-color: #AA1111;*/
 }
 
+/* autocomplete */
+
+ul.ui-widget-content {
+  display: block;
+  z-index: 5;
+  position: relative;
+}
+.ui-autocomplete { 
+  height: 100px; 
+  overflow-y: scroll; 
+  overflow-x: hidden;
+}
 
 /* buttons */
 .centered {

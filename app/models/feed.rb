@@ -31,9 +31,16 @@ class Feed < ActiveRecord::Base
 
   private
   def parsable
+    retried = false
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
+    ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
+      unless retried
+        self.url = self.url + 'rss'
+        retried = true
+        retry
+      end
       errors.add(:feed, FEED_ERRORS[:no_parser])
     rescue NoMethodError
       errors.add(:feed, FEED_ERRORS[:fetch_failure])

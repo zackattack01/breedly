@@ -14,9 +14,23 @@ Breedly.Views.NavBar = Backbone.View.extend({
 
   addUserTopic: function(e) {
     e.preventDefault();
+    var availableTopics = [];
+    var topics = new Breedly.Collections.Topics();
+    var that = this;
+    topics.fetch({
+      success: function() {
+        topics.each(function(topic) {
+          availableTopics.push(topic.get('title'));
+        });
+        $("#topic-title").autocomplete({ 
+          source: availableTopics,
+          
+        });
+      }
+    })
     var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
     $('body').append(modalTopic.render().$el); 
-    $('#topic-title').focus();
+    modalTopic.$('#topic-title').focus();
   },
 
   addFeedModal: function(e) {

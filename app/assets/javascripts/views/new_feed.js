@@ -27,6 +27,7 @@ Breedly.Views.NewFeed = Backbone.View.extend({
         resp['responseJSON'].forEach(function(error) {
            that.$('.errors').html('<p>-' + error.slice(5) + '</p>');
            $('#feed-url').val("");
+           $('#feed-url').focus();
         });
       }, 
     });

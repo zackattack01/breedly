@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
-
   ## todo
   # def generate_subscribed_feeds
 

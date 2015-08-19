@@ -13,7 +13,8 @@ user_feeds = [
   "http://deep-dark-fears.tumblr.com/rss",
   "http://foodphotographytravel.tumblr.com/rss",
   "http://powerlinesinanime.tumblr.com/rss",
-  "http://aspiringwebdev.com/feed/"          
+  "http://aspiringwebdev.com/feed/",
+  "http://www.craigslist.org/about/best/all/index.rss"          
   ]
 
 public_feeds = [

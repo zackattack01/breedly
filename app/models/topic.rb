@@ -6,4 +6,6 @@ class Topic < ActiveRecord::Base
 
   has_many :user_topics
   has_many :users, through: :user_topics
+
+  # default_scope { order(:title) }
 end
