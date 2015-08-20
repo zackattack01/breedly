@@ -33,10 +33,14 @@ form input, input {
 
 form.auth-form input { color: #EBEBEB; }
 
-.auth-form, #user-update {
+.auth-form {
   padding: 0;
   display: block;
   font-size: 1.2em;
+}
+
+#user-input table tr:nth-of-type(2) {
+  background-color: rbga(17, 17, 17, 0.4);
 }
 
 .auth-form { color: #EBEBEB; }
@@ -278,10 +282,9 @@ input#feed-url, input#topic-title {
   position: relative;
   border: thin solid #EBEBEB;
   height: inherit;
-  overflow: scroll;
-  width: inherit;
-  padding: 50px;
-  margin: auto;
+  width: 100%;
+  padding: 0;
+  margin: 30px auto 30px auto;
 }
 
 #main-content a.feed-title {
@@ -316,6 +319,7 @@ input#feed-url, input#topic-title {
 #main-content div {
   font-size: 1em;
   text-align: center;
+  margin: auto 50px auto 50px;
 }
 
 #main-content a.entry-title {
@@ -384,8 +388,10 @@ input#feed-url, input#topic-title {
   padding: 30px;
   text-align: center;
   border: 2px solid maroon;
+  border-bottom: none;
   border-radius: 5px;
   box-shadow: 0 0 10px #AA1111;
+  overflow: scroll;
 }
 
 .desc-layer-bg {
@@ -475,6 +481,12 @@ input#feed-url, input#topic-title {
 
 .auth-screen form.guest-hidden {
   margin-top: 30px;
+}
+
+#main-content p.timestamp {
+  color: gray;
+  text-align: left;
+  margin-top: -20px;
 }
 
 .auth-screen a {

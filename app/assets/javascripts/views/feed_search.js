@@ -32,7 +32,7 @@ Breedly.Views.FeedSearch = Backbone.CompositeView.extend({
     topic_feeds.fetch({
       data: { query: 'topic=' + topic },
       success: function(obj, resp) {
-        var searchResult = new Breedly.Views.SearchResults({ collection: topic_feeds });
+        var searchResult = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
         that.addSubview('.search-result-content', searchResult);
       },
 

@@ -23,7 +23,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
         topics.each(function(topic) {
           availableTopics.push(topic.get('title'));
         });
-        $(".feed-topic").autocomplete({ 
+        $("#topic-title").autocomplete({ 
           source: availableTopics
         });
       }

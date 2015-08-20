@@ -5,16 +5,18 @@
     <% } else { %>
       <button class="toggle-subscribe-btn green btn">Subscribe</button>
     <% } %>
-  <% if (feed && feed.entries) { %>
+  <% if (feed && feed.entries.length > 0) { %>
       <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
         <a class="entry-title" href="<%= activeEntry['url'] %>">
           <%= activeEntry['title'] %>
         </a>
         <% if (activeEntry['timestamp']) { %>
-          <p><%= activeEntry['timestamp'] %></p>
+          <p class='timestamp'><%= activeEntry['timestamp'] %></p>
         <% }; %>
         <% if (activeEntry['image']) { %>
           <img src="<%= activeEntry['image'] %>">
         <% }; %>
       <%= feed.entries[feed.get('selectedEntryIdx')]['summary'] %>
+  <% } else { %>
+      <h4 style='margin-top:30px'>This feed has no entries at this time :(</h4>
   <% }; %>  

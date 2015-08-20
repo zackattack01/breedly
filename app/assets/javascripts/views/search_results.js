@@ -9,13 +9,14 @@ Breedly.Views.SearchResults = Backbone.CompositeView.extend({
     // this.collection.fetch({
     //   data: { query: "subscribed" }
     // });
-    this.collection.each(function(feed) {
-      that.addFeedIndexItemView(feed);
+    var that = this;
+    this.collection.each(function(result) {
+      that.addSearchResultView(result);
     });
   },
 
   addSearchResultView: function(result) {
-    var resultItem = new Breedly.Views.SearchResult({ model: result });
+    var resultItem = new Breedly.Views.SearchResult({ model: result, rootView: this.rootView });
     this.addSubview('.search-list', resultItem);
   },
 

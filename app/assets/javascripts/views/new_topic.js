@@ -10,7 +10,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
-    'click button.add-feed-topic': 'addFeedTopic',
+    // 'click button.add-feed-topic': 'addFeedTopic',
     'click .close': 'remove',
     'click .modal-background': 'remove'
   },

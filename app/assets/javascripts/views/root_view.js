@@ -47,7 +47,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
 
       error: function() {
         that.endWhirly();
-        that.addMessage("We were unable to retrieve your feed at this time", "error");
+        that.addMessage("We're sorry, we were unable to retrieve your feed at this time.", "error");
         Backbone.history.navigate('/', { trigger: true });
       }
     }); 
