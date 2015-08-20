@@ -87,13 +87,16 @@ table td {
   line-height: 3em;
 }
 
-#user-update .btn {
-  margin-top: 20px;
+.btn:not(.nav-btn) {
+  margin: 0px 20px 0px 20px;
 }
 
-#user-update .btn:hover, button.add-feed:hover {
+#user-update .btn { margin-top: 20px; }
+
+/*#user-update .btn:hover, button.add-feed:hover {
   box-shadow: 0 0 10px #AA1111;
 }
+*/
 
 .errors {
   color: #AA1111;
@@ -116,20 +119,33 @@ button.toggle-subscribe-btn {
   margin-bottom: 30px;
 }
 
-button.toggle-subscribe-btn.sub.btn, button.btn.find-titled-feed {
-  box-shadow: 0 0 10px green;
-  border-radius: none;
-  /*border: thin solid green;*/
-  background-color: rgba(45, 135, 45, 0.4);
+/*button.toggle-subscribe-btn.sub.btn, button.btn.find-titled-feed {
 }
 
 button.btn.find-titled-feed {
   margin-left: 30px;
+}*/
+
+button.green {
+  border: none;
+  box-shadow: 0 0 10px green;
+  background-color: rgba(45, 135, 45, 0.6);
 }
 
-button.toggle-subscribe-btn.unsub.btn {
-  box-shadow: 0 0 10px #AA1111;
-  background-color: rgba(255, 177, 177, 0.4);
+button.green:hover {
+  box-shadow: 0 0 10px black;
+  background-color: rgba(45, 135, 45, 0.9)
+}
+
+button.red {
+  /*border: none;*/
+  box-shadow: 0 0 10px black;
+  background-color: rgba(255, 177, 177, 0.6);  
+}
+
+button.red:hover {
+  box-shadow: 0 0 10px black;
+  background-color: rgba(255, 177, 177, 0.9); 
 }
 
 table tr {
@@ -206,7 +222,7 @@ li.ui-menu-item {
   background-color: rgba(235,235,235,0.3);
 }
 
-.btn:focus, .btn:hover {
+.auth-form .btn:focus, .auth-form .btn:hover {
   border: 2px solid #EBEBEB;
   box-shadow: 0 0 10px #EBEBEB;
   background-color: rgba(235,235,235,0.6);
@@ -218,14 +234,14 @@ li.ui-menu-item {
   color: #EBEBEB;
 }
 
-
-
 a:hover, a:focus, a:active {
   color: red;
   outline: none;
 }
 
-
+input#feed-url, input#topic-title {
+  padding: 10px;
+}
 
 /* positioning for containers  */
 #navbar {
@@ -294,8 +310,7 @@ a:hover, a:focus, a:active {
   overflow: scroll;
   width: inherit;
   padding: 50px;
-  margin-left: 50%;
-  transform: translate(-50%);
+  margin: auto;
 }
 
 #main-content a.feed-title {

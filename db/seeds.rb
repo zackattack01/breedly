@@ -531,9 +531,11 @@ public_feeds.each do |url|
 end
 
 topic_ids = Topic.all.map { |topic| topic.id }
+feed_ids = Feed.all.map { |feed| feed.id }
 
 User.all[2..-1].each do |user|
   15.times do 
     UserTopic.create(user_id: user.id, topic_id: topic_ids.sample)
+    Subscription.create(user_id: user.id, feed_id: feed_ids.sample)
   end
 end

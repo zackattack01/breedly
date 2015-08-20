@@ -1,4 +1,6 @@
 class Feed < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   FEED_ERRORS = { 
     no_parser: "We were unable to parse your feed, make sure you've entered a valid xml format",
     fetch_failure: "We were unable to connect to your feed, make sure that you've entered the correct URL"
@@ -27,32 +29,41 @@ class Feed < ActiveRecord::Base
   def entries
     entries = Feedjira::Feed.fetch_and_parse(url).entries
     entries.map! do |entry|
-      entry.map { |x, y| [x.to_s.sanitize, y.to_s.sanitize] }.to_h
+      entry.map do |key, value| 
+        if key == "published"
+          ["timestamp", "posted #{time_ago_in_words(value)} ago."]
+        else
+          [key.sanitize, value.to_s.sanitize] 
+        end
+      end.to_h
     end
   end
 
   private
   def parsable
-    retried = 0
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
-      unless retried == 2
-        try_with = %w{ rss /rss }
-        self.url = self.url + try_with[retried]
-        retried += 1
+      unless url =~ /\/rss$/ || url =~ /\.xml$/
+        self.url = self.url + '/rss'
+        puts "#{url} PARSE ERROR TRIED /RSS"
         retry
       end
+      puts "#{url} PARSE ERROR"
       errors.add(:feed, FEED_ERRORS[:no_parser])
     rescue NoMethodError
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
+      puts "#{url} NO METHOD ERROR"
     rescue URI::InvalidURIError 
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
+      puts "#{url} INVALID URI"
     rescue Feedjira::FetchFailure
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
+      puts "#{url} NO FETCH ERROR"
     else 
-      self.title = parsed_feed_data.title.to_s.sanitize
+      self.title = parsed_feed_data.title.to_s.sanitize 
+      self.title = url if title == ""
       self.description = parsed_feed_data.description.to_s.sanitize
     end
   end 
@@ -62,9 +73,9 @@ class Feed < ActiveRecord::Base
     entries.each do |entry|
       return unless entry['categories']
       JSON.parse(entry['categories']).each do |category|
-        topic = Topic.find_by_title(category)
+        topic = Topic.find_by_title(category.downcase)
         unless topic
-          topic = Topic.create(title: category)
+          topic = Topic.create(title: category.downcase)
         end
         unless created_topics[topic]
           FeedTopic.create(feed_id: id, topic_id: topic.id)
