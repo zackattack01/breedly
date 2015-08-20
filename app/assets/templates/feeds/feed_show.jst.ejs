@@ -1,11 +1,10 @@
   <a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>
-  <button class="toggle-subscribe-btn" class="btn">
+  
     <% if (feed.get('subscribed') === "subscribed") { %>
-      Unsubscribe
+      <button class="toggle-subscribe-btn unsub btn">Unsubscribe</button>
     <% } else { %>
-      Subscribe
+      <button class="toggle-subscribe-btn sub btn">Subscribe</button>
     <% } %>
-  </button>
   <% if (feed && feed.entries) { %>
       <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
         <a class="entry-title" href="<%= activeEntry['url'] %>">

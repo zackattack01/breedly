@@ -91,12 +91,23 @@ table td {
   margin-top: 20px;
 }
 
-#user-update .btn:hover, button.add-feed:hover, button.subscribe-feed-btn:hover {
+#user-update .btn:hover, button.add-feed:hover {
   box-shadow: 0 0 10px #AA1111;
 }
 
-button.unsubscribe-feed-btn:hover {
- box-shadow: 0 0 10px black; 
+
+button.toggle-subscribe-btn {
+  margin-bottom: 30px;
+}
+
+button.toggle-subscribe-btn.sub.btn {
+  box-shadow: 0 0 10px rgb(45, 135, 45);
+  background-color: rgba(45, 135, 45, 0.4);
+}
+
+button.toggle-subscribe-btn.unsub.btn {
+  box-shadow: 0 0 10px #AA1111;
+  background-color: rgba(255, 177, 177, 0.4);
 }
 
 table tr {
@@ -285,7 +296,7 @@ a:hover, a:focus, a:active {
   font-size: 2.8em;
   text-decoration: none;
   text-align: center;
-  display: inline-block;
+  display: block;
   color: #AA1111;
   margin: 20px 0 20px 0;
 }

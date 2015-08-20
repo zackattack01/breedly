@@ -5,8 +5,8 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this.addFeedsIndexBar();
     this.addNavBar();
     this.rendered = false;
-    this.subscriptions = new Breedly.Collections.Subscriptions();
-    this.subscriptions.fetch();
+    // this.subscriptions = new Breedly.Collections.Subscriptions();
+    // this.subscriptions.fetch();
   },
 
   addNavBar: function() {
