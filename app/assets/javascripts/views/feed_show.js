@@ -14,25 +14,7 @@ Breedly.Views.FeedShow = Backbone.View.extend({
   toggleSubscribe: function(e) {
     e.preventDefault();
     this.model.toggleSubscribe();
-  },
-
-  subscribeToFeed: function(e) {
-    e.preventDefault();
-    var subscription = new Breedly.Models.Subscription({ feed_id: this.model.id });
-    var that = this;
-    this.rootView.whirl();
-    subscription.save({}, {
-      success: function() {
-        that.rootView.refreshFeedsIndex();
-        that.rootView.addMessage("Subscribed!", "success");
-        that.rootView.endWhirly();
-        that.render();
-      },
-
-      error: function(obj, resp) {
-        that.rootView.addMessage(resp.responseJSON[0].slice(5), "error");
-      }
-    });
+    this.rootView.refreshSubscribedFeeds();
   },
 
   render: function() {

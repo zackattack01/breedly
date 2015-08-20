@@ -6,7 +6,9 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addFeedIndexItemView);
     this.listenTo(this.collection, 'remove', this.removeFeedItemView);
-    this.collection.fetch()
+    this.collection.fetch({
+      data: { query: "subscribed" }
+    });
     this.collection.each(function(feed) {
       that.addFeedIndexItemView(feed);
     });

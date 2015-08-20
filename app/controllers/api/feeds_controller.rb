@@ -35,11 +35,13 @@ class Api::FeedsController < ApplicationController
         @feeds = Feed.all
         render 'search_by_title'
       when "public"
-        @feeds = Feed.public_feeds
-        render 'index'
-      when "subscriptions"
-        @feeds = current_user.subscribed_feeds
-        render 'index'
+        @feeds = Feed.public_feeds.includes(:topics)
+        # render 'index'
+      when "subscribed"
+        @feeds = current_user.subscribed_feeds.includes(:topics)
+        # render 'index'
+      when "sorted"
+        @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
       else
         raise "query probz"
       end

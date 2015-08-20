@@ -30,7 +30,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
       userTopic.save({}, {
         success: function() {
           that.remove();
-          that.rootView.refreshFeedsIndex();
+          that.rootView.refreshSubscribedFeeds();
           that.rootView.addMessage("Your interest has been noted!", "success");
           that.rootView.endWhirly();
         },

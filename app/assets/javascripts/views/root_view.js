@@ -2,11 +2,10 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   template: JST['root'],
 
   initialize: function(options) {
+    this.subscriptions = new Breedly.Collections.Feeds();
     this.addFeedsIndexBar();
     this.addNavBar();
     this.rendered = false;
-    // this.subscriptions = new Breedly.Collections.Subscriptions();
-    // this.subscriptions.fetch();
   },
 
   addNavBar: function() {
@@ -22,12 +21,14 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this.$('#whirly').empty();
   },
 
-  refreshFeedsIndex: function() {
-    this.collection.fetch();
+  refreshSubscribedFeeds: function() {
+    this.subscriptions.fetch({
+      data: { query: "subscribed" }
+    });
   },
 
   addFeedsIndexBar: function(feeds) {
-    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.collection, rootView: this });
+    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.subscriptions, rootView: this });
     this.addSubview('#feeds-index', feedsIndex);
   },
 

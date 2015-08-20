@@ -100,7 +100,7 @@ button.toggle-subscribe-btn {
   margin-bottom: 30px;
 }
 
-button.toggle-subscribe-btn.sub.btn {
+button.toggle-subscribe-btn.sub.btn, button.btn.find-titled-feed {
   box-shadow: 0 0 10px rgb(45, 135, 45);
   background-color: rgba(45, 135, 45, 0.4);
 }
@@ -122,7 +122,8 @@ input:focus, input:hover {
 #errors-main, #success-main {
   font-size: 1.0em;
   position: absolute;
-  top: 50px;
+  top: 0;
+  width: 100%;
   text-align: center;
   z-index: 20;
 }
@@ -445,7 +446,6 @@ a:hover, a:focus, a:active {
   box-shadow: 0 0 10px #EBEBEB;
 }
 
-/* don't need to touch again */
 /* logo */
 .logo-small {
   width: 17%;
