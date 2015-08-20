@@ -37,7 +37,7 @@ Breedly.Views.NewTopic = Backbone.View.extend({
 
         error: function(obj, resp) {
           resp['responseJSON'].forEach(function(error) {
-            that.$('.errors').html('<p>-' + error.slice(6) + '</p>');
+            that.$('.errors').append('<p>-' + error.slice(6) + '</p>');
           });
           that.rootView.endWhirly();
           $('#topic-title').val("");
