@@ -8,7 +8,11 @@
     <form id="feed-search-form">
       <label for="feed-title">Search by title:</label>
       <input id="feed-title" type="text" name="feed[title]">
-      <button class="btn find-titled-feed green">Show me.</button>
+      <button class="btn find-titled-feed green" data-scope="title">Show me this feed.</button>
+      <br><br>
+      <label for="feed-topic">Search by Topic:</label>
+      <input id="feed-topic" type="text" name="feed[topic]">
+      <button class="btn find-topic-feeds green" data-scope="topic">Find me these feeds.</button>
       <br><br>
       <h4>Include:</h4>
       <br>
@@ -17,5 +21,6 @@
       <label for="personal-feeds">personal feeds:</label>
       <input type="checkbox" name="feed[personal]" value="1">
     </form>
+    <div class="search-result-content"></div>
   </div>
 </div>

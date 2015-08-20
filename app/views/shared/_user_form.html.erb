@@ -1,6 +1,6 @@
-<%= flash_errors %>
 <br><br>
 <form class="auth-form" action="<%= action %>" method="POST">
+  <%= flash_errors %>
   <%= csrf_tag %>
   <label for="username">Username: </label>
   <input type="text" autocomplete="off" id="username" name="user[username]">

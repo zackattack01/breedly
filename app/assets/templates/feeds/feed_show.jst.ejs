@@ -10,6 +10,9 @@
         <a class="entry-title" href="<%= activeEntry['url'] %>">
           <%= activeEntry['title'] %>
         </a>
+        <% if (activeEntry['timestamp']) { %>
+          <p><%= activeEntry['timestamp'] %></p>
+        <% }; %>
         <% if (activeEntry['image']) { %>
           <img src="<%= activeEntry['image'] %>">
         <% }; %>

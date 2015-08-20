@@ -23,7 +23,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
         topics.each(function(topic) {
           availableTopics.push(topic.get('title'));
         });
-        $("#topic-title").autocomplete({ 
+        $(".feed-topic").autocomplete({ 
           source: availableTopics
         });
       }
@@ -44,7 +44,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     var allFeeds = new Breedly.Collections.Feeds();
     var feedTitles = [];
-
+    var allTopics = new Breedly.Collections.Topics();
+    var feedTopics = [];
     allFeeds.fetch({
       data: {
         query: "all"
@@ -59,6 +60,18 @@ Breedly.Views.NavBar = Backbone.View.extend({
         });
       }
     });
+
+     allTopics.fetch({
+      success: function() {
+        allTopics.each(function(topic) {
+          feedTopics.push(topic.get('title'));
+        });
+        $("#feed-topic").autocomplete({ 
+          source: feedTopics
+        });
+      }
+    });
+
     var modalSearch = new Breedly.Views.FeedSearch({ rootView: this.rootView, collection: allFeeds });
     $('body').append(modalSearch.render().$el); 
     $('#feed-title').focus();

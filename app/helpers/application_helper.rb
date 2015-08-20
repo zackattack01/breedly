@@ -7,7 +7,7 @@ module ApplicationHelper
 
   def flash_errors
     if flash[:errors]
-      "<ul><li>#{flash[:errors].join('</li><li>')}</li></ul>".html_safe
+      "<ul class='errors'><li>#{flash[:errors].join('</li><li>')}</li></ul>".html_safe
     end
   end
 end

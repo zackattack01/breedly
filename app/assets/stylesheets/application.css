@@ -21,7 +21,7 @@ form input, input {
   font: inherit; 
   cursor: default;
   display: inline-block;
-  padding-left: 10px;
+  padding: 5px;
   cursor: text;
 }
 
@@ -40,18 +40,12 @@ form.auth-form input { color: #EBEBEB; }
 }
 
 .auth-form { color: #EBEBEB; }
+input.btn.auth-btn { margin: 20px; }
 
 .auth-form input {
   margin: 10px;
   border: none;
   border-bottom: thin solid #EBEBEB; 
-}
-
-table tr td input#feed-url, table tr td input#topic-title, table tr td #user-update input {
-  border: none;
-  font-size: 0.8em;
-  border-bottom: 1px groove black;
-  border-radius: 5px;
 }
 
 input#topic-title.ui-autocomplete-input {
@@ -91,61 +85,38 @@ table td {
   margin: 0px 20px 0px 20px;
 }
 
+.nav-btn.btn:hover {
+  box-shadow: 0 0 10px #EBEBEB;
+  background-color: rgba(235, 235, 235, 0.6); 
+  border: 2px solid #EBEBEB;
+}
+
 #user-update .btn { margin-top: 20px; }
-
-/*#user-update .btn:hover, button.add-feed:hover {
-  box-shadow: 0 0 10px #AA1111;
-}
-*/
-
-.errors {
-  color: #AA1111;
-}
-
-.feathered-bg {
-  background: url("upfeathers.png"); 
-}
-
-.symphony-bg {
-  background: url("symphony.png"); 
-}
-
-.china-bg {
-  background: url("contemporary_china.png"); 
-}
 
 
 button.toggle-subscribe-btn {
   margin-bottom: 30px;
 }
 
-/*button.toggle-subscribe-btn.sub.btn, button.btn.find-titled-feed {
-}
-
-button.btn.find-titled-feed {
-  margin-left: 30px;
-}*/
-
 button.green {
-  border: none;
-  box-shadow: 0 0 10px green;
-  background-color: rgba(45, 135, 45, 0.6);
+  border: thin solid #1DDA1D;
+  box-shadow: 0 0 10px #00DE00;
+  background-color: #00DE00;
 }
 
 button.green:hover {
   box-shadow: 0 0 10px black;
-  background-color: rgba(45, 135, 45, 0.9)
+  background-color: #1DDA1D;
 }
 
 button.red {
-  /*border: none;*/
-  box-shadow: 0 0 10px black;
-  background-color: rgba(255, 177, 177, 0.6);  
+  box-shadow: 0 0 10px #AA1111;
+  background-color: #D22727;  
 }
 
 button.red:hover {
   box-shadow: 0 0 10px black;
-  background-color: rgba(255, 177, 177, 0.9); 
+  background-color: #AA1111; 
 }
 
 table tr {
@@ -222,7 +193,7 @@ li.ui-menu-item {
   background-color: rgba(235,235,235,0.3);
 }
 
-.auth-form .btn:focus, .auth-form .btn:hover {
+.auth-screen .btn:focus, .auth-screen .btn:hover {
   border: 2px solid #EBEBEB;
   box-shadow: 0 0 10px #EBEBEB;
   background-color: rgba(235,235,235,0.6);
@@ -502,7 +473,28 @@ input#feed-url, input#topic-title {
   text-align: center;
 }
 
+.auth-screen form.guest-hidden {
+  margin-top: 30px;
+}
+
 .auth-screen a {
   display: inline-block;
   color: black;
+}
+
+.errors li {
+  color: #AA1111;
+  list-style: circle;
+}
+
+.feathered-bg {
+  background: url("upfeathers.png"); 
+}
+
+.symphony-bg {
+  background: url("symphony.png"); 
+}
+
+.china-bg {
+  background: url("contemporary_china.png"); 
 }

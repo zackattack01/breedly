@@ -1,0 +1,7 @@
+<form class="guest-hidden" action="<%= session_url %>" method="POST">
+  <p style="color:#A11111">Just wanna look around?</p>
+  <%= csrf_tag %>
+  <input type="hidden" name="user[username]" value="Guest">
+  <input type="hidden" name="user[password]" value="guest_login">
+  <input class="btn auth-btn guest-btn" style="color:black" type="submit" value="Be my guest.">
+</form>

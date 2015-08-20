@@ -43,6 +43,12 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
         activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed, rootView: that });   
         that.swapActiveFeed(activeFeedView);
         that.endWhirly();
+      },
+
+      error: function() {
+        that.endWhirly();
+        that.addMessage("We were unable to retrieve your feed at this time", "error");
+        Backbone.history.navigate('/', { trigger: true });
       }
     }); 
   },

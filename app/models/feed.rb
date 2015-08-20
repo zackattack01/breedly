@@ -27,15 +27,20 @@ class Feed < ActiveRecord::Base
   end
 
   def entries
-    entries = Feedjira::Feed.fetch_and_parse(url).entries
-    entries.map! do |entry|
-      entry.map do |key, value| 
-        if key == "published" && value && value.class == Time
-          ["timestamp", "posted #{time_ago_in_words(value)} ago."]
-        else
-          [key.sanitize, value.to_s.sanitize] 
-        end
-      end.to_h
+    begin
+      entries = Feedjira::Feed.fetch_and_parse(url).entries
+    rescue StandardError
+      return []
+    else
+      entries.map! do |entry|
+        entry.map do |key, value| 
+          if key == "published" && value && value.class == Time
+            ["timestamp", "posted #{time_ago_in_words(value)} ago."]
+          else
+            [key.sanitize, value.to_s.sanitize] 
+          end
+        end.to_h
+      end
     end
   end
 
