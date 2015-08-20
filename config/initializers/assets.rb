@@ -3,8 +3,8 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( jquery-ui.min.css )
-Rails.application.config.assets.precompile += %w( jquery-ui.structure.min.css )
-Rails.application.config.assets.precompile += %w( jquery-ui.theme.min.css )
+Rails.application.config.assets.precompile += %w( whirly.css )
+
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

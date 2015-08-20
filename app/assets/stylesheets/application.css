@@ -99,6 +99,18 @@ table td {
   color: #AA1111;
 }
 
+.feathered-bg {
+  background: url("upfeathers.png"); 
+}
+
+.symphony-bg {
+  background: url("symphony.png"); 
+}
+
+.china-bg {
+  background: url("contemporary_china.png"); 
+}
+
 
 button.toggle-subscribe-btn {
   margin-bottom: 30px;
@@ -206,48 +218,20 @@ li.ui-menu-item {
   color: #EBEBEB;
 }
 
-.close {
-  border: none;
-  background: none;
-  cursor: pointer;
-  position: fixed;
-  top: 55px;
-  width: calc(66% - 55px);
-  font-size: 1.0em;
-  color: #AA1111;
-  margin: 0;
-  padding: 0;
-}
+
 
 a:hover, a:focus, a:active {
   color: red;
   outline: none;
 }
 
-.auth-screen {
-  background: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  text-align: center;
-}
 
-.auth-screen a {
-  display: inline-block;
-  color: black;
-}
 
 /* positioning for containers  */
-#navbar, #feeds-index-container, #main-container {
+#navbar {
   position: fixed;
   top: 0;
   left: 0;
-  overflow: scroll;
-}
-
-#navbar {
   background: linear-gradient(to right, black, #AA1111);
   height: 50px;
   width: 100%;
@@ -257,15 +241,23 @@ a:hover, a:focus, a:active {
 }
 
 #feeds-index-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 17%;
   width: 17%;
   background-color: black;
-  height: 100%;
+  height: calc(100% - 50px);
   box-shadow: 5px 0 10px black;
+  overflow: scroll;
 }
 
 #main-container {
+  position: fixed;
   top: 50px;
   left: 17%;
+  right: 83%;
+  overflow: scroll;
   width: 66%;
   z-index: -1;
   height: calc(100% - 50px);
@@ -273,7 +265,7 @@ a:hover, a:focus, a:active {
 
 /* feeds index */
 #feeds-index {
-  left: 0;
+  position: relative;
   width: 90%;
 }
 
@@ -291,7 +283,7 @@ a:hover, a:focus, a:active {
 }
 
 .feed-list {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 /* main content feed show */
@@ -300,7 +292,10 @@ a:hover, a:focus, a:active {
   border: thin solid #EBEBEB;
   height: inherit;
   overflow: scroll;
+  width: inherit;
   padding: 50px;
+  margin-left: 50%;
+  transform: translate(-50%);
 }
 
 #main-content a.feed-title {
@@ -312,16 +307,18 @@ a:hover, a:focus, a:active {
   margin: 20px 0 20px 0;
 }
 
+.feed-title { color: #A11111; }
+
 #main-content a.feed-title:hover {
   color: #EBEBEB;
   text-shadow: 0 0 15px #AA1111;
 }
 
-#main-content img, #main-content a img {
-  margin-left: 50%;
-  transform: translateX(-50%);
+#main-content div img, #main-content a img {
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 20px !important;
   max-width: 75%;
 }
 
@@ -329,9 +326,6 @@ a:hover, a:focus, a:active {
   display: inline;
 }
 
-.autocomplete {
-  z-index: 6;
-}
 
 #main-content div {
   font-size: 1em;
@@ -355,17 +349,17 @@ a:hover, a:focus, a:active {
   text-align: left;
 }
 
-#main-content .feed-desc {
-  overflow: scroll;
+.feed-desc {
+  overflowY: scroll;
   position: fixed;
   top: 50px;
   left: 17%;
-  right: 0;
-  bottom: 0;
+  right: 83%;
   height: calc(100% - 150px);
   width: calc(66% - 100px);
-  z-index: 3;
+  z-index: 10;
   padding: 50px;
+  text-align: center;
 }
 
 #main-content h3 {
@@ -377,58 +371,35 @@ a:hover, a:focus, a:active {
   margin: 15px;
 }
 
-#main-content .feed-desc .btn, #main-content .modal-content .btn {
+#main-content .modal-content .btn {
   margin: 20px;
 }
 
-/* entries */
-#entries-index-container {
-  background-color: #AA1111;
-  color: #EBEBEB;
-  position: fixed;
-  top: 0;
-  left: 83%;
-  width: 17%;
-  height: 100%;
-  box-shadow: -5px 0 10px black;
-  overflow: scroll;
-}
-
-#entries-index li {
-  text-decoration: none;
-  margin: 10px;
-  margin-left: 20px;
-  display: block;
-}
-
-#entries-index li:hover {
-  color: black;
-  text-shadow: 0 0 10px #EBEBEB;
-  cursor: pointer;
-}
-
-.feed-list h4 {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  text-align: center; 
-  font-size: 1.3em;
-}
-
-#entries-index ul:first-child { margin-top: 80px; }
-
-.feed-list h4 {
-  color: #EBEBEB;
-}
 
 /* modals */
 .modal-background {
-  background-color: rgba(60, 60, 60, 0.85); 
+  background-color: rgba(235, 235, 235, 0.8); 
   position: fixed;
   top:0;
   bottom:0;
   left:0;
   right:0;
   z-index: 5;
+}
+
+
+.modal-content {
+  position: fixed;
+  top: 50px;
+  left: 17%;
+  width: calc(66% - 60px);
+  bottom: 0;
+  z-index: 6;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid maroon;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #AA1111;
 }
 
 .desc-layer-bg {
@@ -439,21 +410,6 @@ a:hover, a:focus, a:active {
   left:0;
   right:0;
   z-index: 3;
-}
-
-.modal-content {
-  background: url("cubes.jpg"); 
-  position: fixed;
-  top: 50px;
-  left: 17%;
-  width: calc(66% - 60px);
-  bottom: 0;
-  z-index: 6;
-  padding: 30px;
-  text-align: center;
-  border: 2px solid #EBEBEB;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #EBEBEB;
 }
 
 /* logo */
@@ -472,4 +428,66 @@ a:hover, a:focus, a:active {
   left: 50%;
   top: 10px;
   transform: translateX(-50%);
+}
+
+/* entries */
+#entries-index-container {
+  background-color: #AA1111;
+  color: #EBEBEB;
+  position: fixed;
+  top: 50px;
+  left: 83%;
+  right: 100%;
+  width: 17%;
+  height: calc(100% - 50px);
+  box-shadow: -5px 0 10px black;
+  overflow: scroll;
+}
+
+#entries-index li {
+  text-decoration: none;
+  margin: 10px;
+  margin-left: 20px;
+  display: block;
+}
+
+#entries-index li:hover {
+  color: black;
+  text-shadow: 0 0 10px #EBEBEB;
+  cursor: pointer;
+}
+
+#entries-index ul:first-child { margin-top: 30px; }
+
+/* close button */
+.close {
+  border: none;
+  background: none;
+  display: inline;
+  cursor: pointer;
+  float: right;
+  font-size: 2.0em;
+  color: #AA1111;
+  margin: -10px -5px 0 0;
+  padding: 0;
+}
+
+.close:hover {
+  text-shadow: 0 0 10px red;
+}
+
+/* auth */
+.auth-screen {
+  background: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.auth-screen a {
+  display: inline-block;
+  color: black;
 }
