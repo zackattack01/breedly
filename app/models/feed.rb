@@ -30,7 +30,7 @@ class Feed < ActiveRecord::Base
     entries = Feedjira::Feed.fetch_and_parse(url).entries
     entries.map! do |entry|
       entry.map do |key, value| 
-        if key == "published"
+        if key == "published" && value && value.class == Time
           ["timestamp", "posted #{time_ago_in_words(value)} ago."]
         else
           [key.sanitize, value.to_s.sanitize] 
@@ -45,9 +45,9 @@ class Feed < ActiveRecord::Base
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
-      unless url =~ /\/rss$/ || url =~ /\.xml$/
-        self.url = self.url + '/rss'
-        puts "#{url} PARSE ERROR TRIED /RSS"
+      unless url =~ /\/rss\/?$/ || url =~ /\.xml\/?$/
+        self.url = self.url + (url[-1] == "/" ? "rss" : "/rss")
+        puts "#{url} PARSE ERROR RETRYING"
         retry
       end
       puts "#{url} PARSE ERROR"
