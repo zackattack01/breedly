@@ -39,22 +39,17 @@ form.auth-form input { color: #EBEBEB; }
   font-size: 1.2em;
 }
 
-/*#user-input table tr:nth-of-type(2) {
-  background-color: rbga(17, 17, 17, 0.4);
-}*/
-
 .auth-form { color: #EBEBEB; }
-input.btn.auth-btn { margin: 20px; }
+input.btn.auth-btn { margin: 20px; border: none;}
 
 .auth-form input {
   margin: 10px;
-  border: none;
-  border-bottom: thin solid #EBEBEB; 
+  border: thin solid #EBEBEB; 
 }
 
-input#topic-title.ui-autocomplete-input {
+/*input#topic-title.ui-autocomplete-input {
   padding: 10px;
-}
+}*/
 
 table tr td {
   border: none;
@@ -161,6 +156,8 @@ input:focus, input:hover {
   left: 50%;
   top: 30%;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   z-index: 10;
 }
 
@@ -224,7 +221,10 @@ input#feed-url, input#topic-title {
   position: fixed;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, black, #AA1111);
+  background-image: -webkit-linear-gradient(right, black, #AA1111); 
+  background-image:    -moz-linear-gradient(right, black, #AA1111); 
+  background-image:      -o-linear-gradient(right, black, #AA1111);
+  background-image: linear-gradient(to right, black, #AA1111);
   height: 50px;
   width: 100%;
   z-index: 2;
@@ -307,6 +307,8 @@ input#feed-url, input#topic-title {
 #main-content div img, #main-content a img {
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
+  -webkit-transform: translateX(-50%) !important;
+  -ms-transform: translateX(-50%) !important;
   display: block;
   margin-bottom: 20px !important;
   max-width: 75%;
@@ -425,6 +427,8 @@ h4 {
   left: 50%;
   top: 10px;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
 }
 
 /* entries */
@@ -475,7 +479,10 @@ h4 {
 
 /* auth */
 .auth-screen {
-  background: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
+  background-image: -webkit-radial-gradient(at top, black, rgba(235,235,235,0) 80%); 
+  background-image:    -moz-radial-gradient(at top, black, rgba(235,235,235,0) 80%); 
+  background-image:      -o-radial-gradient(at top, black, rgba(235,235,235,0) 80%);
+  background-image: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
   position: fixed;
   left: 0;
   right: 0;

@@ -2,11 +2,9 @@
 <form class="auth-form" action="<%= action %>" method="POST">
   <%= flash_errors %>
   <%= csrf_tag %>
-  <label for="username">Username: </label>
-  <input type="text" autocomplete="off" id="username" name="user[username]">
+  <input type="text" autocomplete="off" id="username" name="user[username]" placeholder="username">
   <br>
-  <label for="password">Password: </label>
-  <input type="password" id="password" name="user[password]">
+  <input type="password" id="password" name="user[password]" placeholder="password">
   <br>
   <input class="btn auth-btn" style="color:black" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
 </form>
