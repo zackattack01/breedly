@@ -34,6 +34,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
   },
 
   addFeedModal: function(e) {
+        debugger;
+
     e.preventDefault();
     var modalFeed = new Breedly.Views.NewFeed({ rootView: this.rootView });
     $('body').append(modalFeed.render().$el); 
@@ -89,6 +91,10 @@ Breedly.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     var session = new Breedly.Models.Session();
     session.logout();
+  },
+
+  onRender: function() {
+    this.delegateEvents();
   },
 
   render: function() {

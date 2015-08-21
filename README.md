@@ -9,9 +9,9 @@ Users can:
 - [x] Sign up 
 - [x] Sign in
 - [x] Provide or update a link to their own blog
-- [ ] Select topics they're interested in
-- [ ] Select age ranges that they're interested in
-- [ ] Subscribe to another user's blog
+- [x] Select topics they're interested in
+- [x] Select age ranges that they're interested in
+- [x] Subscribe to another user's blog
 - [ ] Select a user that they are interested in
 - [ ] Send and recieve messages
 - [ ] Recieve loveNudge notifications when there is a mutual interest
