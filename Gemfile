@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'ejs'
 gem 'faker'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'byebug'
   gem 'better_errors'

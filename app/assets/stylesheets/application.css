@@ -114,13 +114,14 @@ button.green:hover {
 }
 
 button.red {
+  border: thin solid #CA3D3D;
   box-shadow: 0 0 10px #AA1111;
-  background-color: #D22727;  
+  background-color: none;  
 }
 
 button.red:hover {
   box-shadow: 0 0 10px black;
-  background-color: #AA1111; 
+  background-color: rgba(110, 20, 20, 0.5); 
 }
 
 table tr {
