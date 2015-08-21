@@ -1,15 +1,14 @@
 Breedly.Views.FeedIndexItem = Backbone.View.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
-    this.clicked = false;
   },
 
   tagName: 'li',
   template: JST['feeds/feeds_index_item'],
 
   events: {
-    'mouseenter .feed-list-item': 'addDescription',
-    'mouseleave .feed-list-item': 'removeDescription'
+    'mouseenter .feed-list-link': 'addDescription',
+    'mouseleave .feed-list-link': 'removeDescription'
   },
 
   addDescription: function(e) {

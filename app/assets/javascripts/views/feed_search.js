@@ -34,10 +34,12 @@ Breedly.Views.FeedSearch = Backbone.CompositeView.extend({
       success: function(obj, resp) {
         var searchResult = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
         that.addSubview('.search-result-content', searchResult);
+        that.$('#feed-topic').val("");
       },
 
       error: function(obj, resp) {
-        debugger;
+        that.$('.errors').html('<ul><li>There are currently no feeds with that topic.</li></ul>');
+        that.$('#feed-topic').val("");
       }
     });
   },

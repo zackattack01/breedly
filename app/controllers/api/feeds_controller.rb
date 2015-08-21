@@ -3,7 +3,8 @@ class Api::FeedsController < ApplicationController
     if current_user.nil?
       render json: "You must be signed in to add a feed", status: 422
     else
-      @feed = Feed.generate_feed_object(feed_params[:url], current_user.id)
+      user_id = feed_params[:public] ? 1 : current_user.id
+      @feed = Feed.generate_feed_object(feed_params[:url], user_id)
       if @feed.save
         render 'show'
       else
@@ -54,6 +55,6 @@ class Api::FeedsController < ApplicationController
 
   private
   def feed_params
-    params.require(:feed).permit(:url)
+    params.require(:feed).permit(:url, :public)
   end
 end

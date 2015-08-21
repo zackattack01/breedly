@@ -356,7 +356,7 @@ input#feed-url, input#topic-title {
   color: #AA1111;
 }
 
-#main-content h4 {
+h4 {
   font-size: 1.4em;
   margin: 15px;
 }
@@ -383,12 +383,11 @@ input#feed-url, input#topic-title {
   top: 50px;
   left: 17%;
   width: calc(66% - 60px);
-  bottom: 0;
+  bottom: 50px;
   z-index: 6;
   padding: 30px;
   text-align: center;
   border: 2px solid maroon;
-  border-bottom: none;
   border-radius: 5px;
   box-shadow: 0 0 10px #AA1111;
   overflow: scroll;
@@ -493,10 +492,10 @@ input#feed-url, input#topic-title {
   display: inline-block;
   color: black;
 }
-
+.errors { display: inline-block; }
 .errors li {
   color: #AA1111;
-  list-style: circle;
+  display: inherit
 }
 
 .feathered-bg {
