@@ -13,8 +13,9 @@ Breedly.Views.FeedShow = Backbone.View.extend({
     'click .delete-btn': 'destroyFeed',
   },
 
-  alertDestroy: function() {
-    this.$el.append('<button class="delete-btn">For Real.</button>');
+  alertDestroy: function(e) {
+    $(e.currentTarget).remove();
+    this.$el.append('<button class="delete-btn btn red">For Real?</button>');
   },
 
   destroyFeed: function(e) {
