@@ -1,10 +1,13 @@
 Breedly.Views.FeedSearch = Backbone.ModalView.extend({
+  initialize: function(options) {
+    Backbone.ModalView.prototype.initialize.call(this, "symphony-bg");
+  },
+  
   template: JST['feeds/feed_search'],
 
   events: {
     'click button.find-titled-feed': 'searchForFeed',
-    'click button.find-topic-feeds': 'searchForFeed',
-    'click .close, .modal-background, .search-result-link': 'remove'
+    'click button.find-topic-feeds': 'searchForFeed'
   },
 
   searchForFeed: function(e) {
@@ -21,17 +24,14 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
 
   searchByTopic: function(topic) {
     var topic_feeds = new Breedly.Collections.Feeds();
-    var that = this;
     this.whirl();
+    var that = this;
     topic_feeds.fetch({
       data: { query: 'topic=' + topic },
       success: function(obj, resp) {
         var searchResult = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
         var included = false;
-        // that.eachSubview(function(subview) {
-        //   if (subview.model.get()) {};
-          
-        // });
+        //todo remove 
         that.addSubview('.search-result-content', searchResult);
         that.$('#feed-topic').val("");
         that.endWhirly();
@@ -58,5 +58,6 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
 
   onRender: function() {
     this.delegateEvents();
+    Backbone.ModalView.prototype.onRender.call(this);
   }
 });
