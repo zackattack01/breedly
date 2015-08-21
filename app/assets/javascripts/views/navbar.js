@@ -28,7 +28,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
         });
       }
     });
-    var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
+    var modalTopic = new Breedly.Views.NewTopic({ bg: "china-bg", rootView: this.rootView });
     $('body').append(modalTopic.render().$el); 
     modalTopic.$('#topic-title').focus();
   },

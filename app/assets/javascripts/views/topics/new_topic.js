@@ -1,7 +1,7 @@
-Breedly.Views.NewTopic = Backbone.View.extend({
-  initialize: function(options) {
+Breedly.Views.NewTopic = Backbone.ModalView.extend({
+  postInitialize: function(options) {
     this.rootView = options.rootView;
-    $(document).on('keyup', this.handleEscape.bind(this));
+    // $(document).on('keyup', this.handleEscape.bind(this));
     this.topics = new Breedly.Collections.Topics();
     this.topics.fetch();
   },
@@ -10,7 +10,6 @@ Breedly.Views.NewTopic = Backbone.View.extend({
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
-    // 'click button.add-feed-topic': 'addFeedTopic',
     'click .close': 'remove',
     'click .modal-background': 'remove'
   },
@@ -26,20 +25,19 @@ Breedly.Views.NewTopic = Backbone.View.extend({
       var that = this;
       var userTopic = new Breedly.Models.UserTopic();
       userTopic.set({ topic_id: newTopic.id });
-      this.rootView.whirl();
+      this.whirl();
       userTopic.save({}, {
         success: function() {
           that.remove();
-          that.rootView.refreshSubscribedFeeds();
           that.rootView.addMessage("Your interest has been noted!", "success");
-          that.rootView.endWhirly();
+          that.endWhirly();
         },
 
         error: function(obj, resp) {
-          resp['responseJSON'].forEach(function(error) {
-            that.$('.errors').append('<p>-' + error.slice(6) + '</p>');
-          });
-          that.rootView.endWhirly();
+          for(var errorType in resp['responseJSON']) {
+            that.$('.errors').html('<li>' + resp['responseJSON'][errorType] + '</li>');
+          };
+          that.endWhirly();
           $('#topic-title').val("");
         }
       });
@@ -50,11 +48,11 @@ Breedly.Views.NewTopic = Backbone.View.extend({
     if (e.keyCode === 27) {
       this.remove();
     }
-  },
-
-  render: function() {
-    var content = this.template();
-    this.$el.html(content);
-    return this;
   }
+
+  // render: function() {
+  //   var content = this.template();
+  //   this.$el.html(content);
+  //   return this;
+  // }
 });

@@ -368,7 +368,7 @@ h4 {
 
 
 /* modals */
-.modal-background {
+.modal-bg {
   background-color: rgba(235, 235, 235, 0.8); 
   position: fixed;
   top:0;
