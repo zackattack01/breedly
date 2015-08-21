@@ -1,5 +1,6 @@
-Breedly.Views.NewFeed = Backbone.View.extend({
+Breedly.Views.NewFeed = Backbone.ModalView.extend({
   initialize: function(options) {
+    debugger;
     this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
   },
@@ -20,6 +21,7 @@ Breedly.Views.NewFeed = Backbone.View.extend({
     newFeed.set("public", true);
     var that = this;
     this.rootView.whirl();
+
     debugger;
     newFeed.save({}, {
 
@@ -32,24 +34,24 @@ Breedly.Views.NewFeed = Backbone.View.extend({
 
       error: function(obj, resp) {
         resp['responseJSON'].forEach(function(error) {
-          that.$('.errors').html('<ul><li>' + error.slice(5) + '</li></ul>');
+          that.$('.errors').html('<ul><li>' + error + '</li></ul>');
         });
         $('#pulic-feed-url').val("");
         $('#pulic-feed-url').focus();
         that.rootView.endWhirly();
       }, 
     });
-  },
-
-  handleEscape: function(e) {
-    if (e.keyCode === 27) {
-      this.remove();
-    }
-  },
-
-  render: function() {
-    var content = this.template();
-    this.$el.html(content);
-    return this;
   }
+
+  // handleEscape: function(e) {
+  //   if (e.keyCode === 27) {
+  //     this.remove();
+  //   }
+  // },
+
+  // render: function() {
+  //   var content = this.template();
+  //   this.$el.html(content);
+  //   return this;
+  // }
 });

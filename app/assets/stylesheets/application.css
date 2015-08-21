@@ -156,7 +156,7 @@ input:focus, input:hover {
   background-color: rgba(117, 241, 109, 0.5);
 }
 
-#whirly {
+.whirly {
   position: absolute;
   left: 50%;
   top: 30%;

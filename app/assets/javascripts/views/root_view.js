@@ -6,6 +6,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this.addFeedsIndexBar();
     this.addNavBar();
     this.rendered = false;
+    this.whirlyView = new Breedly.Views.Whirly();
   },
 
   addNavBar: function() {
@@ -14,11 +15,14 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   whirl: function() {
-    this.$('#whirly').html('<div class="whirly-loader"></div>');
+    // debugger;
+    this.addSubview('.whirly', this.whirlyView);
+
+    // this.$('#whirly').html('<div class="whirly-loader"></div>');
   },
 
   endWhirly: function() {
-    this.$('#whirly').empty();
+    this.removeSubview('.whirly', this.whirlyView);
   },
 
   refreshSubscribedFeeds: function() {
