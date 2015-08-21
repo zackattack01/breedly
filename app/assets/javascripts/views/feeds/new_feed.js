@@ -1,10 +1,12 @@
 Breedly.Views.NewFeed = Backbone.ModalView.extend({
+  initialize: function(options) {
+    Backbone.ModalView.prototype.initialize.call(this, "china-bg");
+  },
+  
   template: JST['feeds/new_public_feed'],
 
   events: {
     'click button.add-public-feed': 'addPublicFeed',
-    'click .close': 'remove',
-    'click .modal-background': 'remove'
   },
 
   addPublicFeed: function(e) {

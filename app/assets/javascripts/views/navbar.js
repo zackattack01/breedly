@@ -28,15 +28,17 @@ Breedly.Views.NavBar = Backbone.View.extend({
         });
       }
     });
-    var modalTopic = new Breedly.Views.NewTopic({ bg: "china-bg", rootView: this.rootView });
-    $('body').append(modalTopic.render().$el); 
+    var modalTopic = new Breedly.Views.NewTopic({ rootView: this.rootView });
+    $('body').append(modalTopic.$el); 
+    modalTopic.render();
     modalTopic.$('#topic-title').focus();
   },
 
   addFeedModal: function(e) {
     e.preventDefault();
     var modalFeed = new Breedly.Views.NewFeed({ rootView: this.rootView });
-    $('body').append(modalFeed.render().$el); 
+    $('body').append(modalFeed.$el);
+    modalFeed.render(); 
     $('#feed-url').focus();
   },
 

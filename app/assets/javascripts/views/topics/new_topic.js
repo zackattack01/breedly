@@ -1,17 +1,17 @@
 Breedly.Views.NewTopic = Backbone.ModalView.extend({
-  postInitialize: function(options) {
+  initialize: function(options) {
     this.rootView = options.rootView;
-    // $(document).on('keyup', this.handleEscape.bind(this));
     this.topics = new Breedly.Collections.Topics();
     this.topics.fetch();
+    Backbone.ModalView.prototype.initialize.call(this, "china-bg");
   },
 
   template: JST['topics/new_topic'],
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
-    'click .close': 'remove',
-    'click .modal-background': 'remove'
+    // 'click .close': 'remove',
+    // 'click .modal-background': 'remove'
   },
 
   addUserTopic: function(e) {
@@ -42,17 +42,5 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
         }
       });
     }
-  },
-
-  handleEscape: function(e) {
-    if (e.keyCode === 27) {
-      this.remove();
-    }
   }
-
-  // render: function() {
-  //   var content = this.template();
-  //   this.$el.html(content);
-  //   return this;
-  // }
 });

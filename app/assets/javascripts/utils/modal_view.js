@@ -1,12 +1,11 @@
 Backbone.ModalView = Backbone.CompositeView.extend({
-  initialize: function(options) {
-    $(document).on('keyup', this.handleEscape.bind(this));
+  initialize: function(bg) {
     this.whirlyView = new Breedly.Views.Whirly();
     this.templateStart = '<div class="modal-bg"></div><div class="modal-content ' + 
-                            options.bg + '"><div class="errors"><ul></ul></div>' +
-                            '<button class="close">&times;</button>'
+                          bg + '"><div class="errors"><ul></ul></div>' +
+                          '<div class="whirly"></div>' +
+                          '<button class="close">&times;</button>'
     this.templateFin = '</div>'
-    this.postInitialize && this.postInitialize(options);
   },
 
   handleEscape: function(e) {
@@ -23,9 +22,18 @@ Backbone.ModalView = Backbone.CompositeView.extend({
     this.removeSubview('.whirly', this.whirlyView);
   },
 
+  onRender: function() {
+    $(document).on('keyup', this.handleEscape.bind(this));
+    this.$('.close').on('click', this.remove.bind(this));
+    this.$('.modal-bg').on('click', this.remove.bind(this));
+  },
+
   render: function() {
-    var content = this.templateStart + this.template() + this.templateFin;
+    var content = this.templateStart + 
+                  this.template({ model: this.model, collection: this.collection }) + 
+                  this.templateFin;
     this.$el.html(content);
+    this.onRender();
     return this;
   }
 });

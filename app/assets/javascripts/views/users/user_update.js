@@ -3,6 +3,7 @@ Breedly.Views.UserUpdate = Backbone.ModalView.extend({
     this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
     this.listenTo(this.model, 'sync', this.render);
+
   },
 
   template: JST['users/update'],
@@ -60,17 +61,11 @@ Breedly.Views.UserUpdate = Backbone.ModalView.extend({
         that.endWhirly();
       }, 
     });
-  },
-
-  // handleEscape: function(e) {
-  //   if (e.keyCode === 27) {
-  //     this.remove();
-  //   }
-  // },
-
-  render: function() {
-    var content = this.template({ user: this.model });
-    this.$el.html(content);
-    return this;
   }
+
+  // render: function() {
+  //   var content = this.template({ model: this.model, collection: this.collection });
+  //   this.$el.html(content);
+  //   return this;
+  // }
 });
