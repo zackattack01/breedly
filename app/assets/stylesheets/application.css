@@ -21,7 +21,7 @@ form input, input {
   font: inherit; 
   cursor: default;
   display: inline-block;
-  padding: 5px;
+  padding: 2px;
   cursor: text;
 }
 
@@ -39,9 +39,9 @@ form.auth-form input { color: #EBEBEB; }
   font-size: 1.2em;
 }
 
-#user-input table tr:nth-of-type(2) {
+/*#user-input table tr:nth-of-type(2) {
   background-color: rbga(17, 17, 17, 0.4);
-}
+}*/
 
 .auth-form { color: #EBEBEB; }
 input.btn.auth-btn { margin: 20px; }
@@ -105,12 +105,12 @@ button.toggle-subscribe-btn {
 button.green {
   border: thin solid #1DDA1D;
   box-shadow: 0 0 10px #00DE00;
-  background-color: #00DE00;
+  background-color: none;
 }
 
 button.green:hover {
   box-shadow: 0 0 10px black;
-  background-color: #1DDA1D;
+  background-color: rgba(75, 150, 75, 0.5);
 }
 
 button.red {
