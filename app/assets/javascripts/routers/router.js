@@ -11,12 +11,14 @@ Breedly.Routers.Router = Backbone.Router.extend({
   },
 
   userRoot: function() {
-    this.$rootEl.html(this.rootView.render().$el);
+    this.$rootEl.html(this.rootView.$el);
+    this.rootView.render();
   },
 
   feedShow: function(id) {
     if (!this.rootView.rendered) {
-      this.$rootEl.html(this.rootView.render().$el);
+      this.$rootEl.html(this.rootView.$el);
+      this.rootView.render();
     };
     this.rootView.showFeedContent(id);
   }

@@ -34,8 +34,6 @@ Breedly.Views.NavBar = Backbone.View.extend({
   },
 
   addFeedModal: function(e) {
-        debugger;
-
     e.preventDefault();
     var modalFeed = new Breedly.Views.NewFeed({ rootView: this.rootView });
     $('body').append(modalFeed.render().$el); 

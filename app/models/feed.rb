@@ -48,6 +48,7 @@ class Feed < ActiveRecord::Base
   def parsable
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
+    
     ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
       unless url =~ /\/rss\/?$/ || url =~ /\.xml\/?$/

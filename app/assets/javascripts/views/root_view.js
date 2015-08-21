@@ -89,11 +89,8 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     activeEntriesView.render();
   },
 
-  onRender: function() {
-    Backbone.CompositeView.prototype.onRender.call(this)
-  },
-
   render: function() {
+    this.rendered = true;
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();

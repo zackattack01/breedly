@@ -8,7 +8,19 @@ Breedly.Views.FeedShow = Backbone.View.extend({
   template: JST['feeds/feed_show'],
 
   events: {
-    'click .toggle-subscribe-btn': 'toggleSubscribe'
+    'click .toggle-subscribe-btn': 'toggleSubscribe',
+    'click .attempt-destroy-btn': 'alertDestroy',
+    'click .delete-btn': 'destroyFeed',
+  },
+
+  alertDestroy: function() {
+    this.$el.append('<button class="delete-btn">For Real.</button>');
+  },
+
+  destroyFeed: function(e) {
+    e.preventDefault();
+    this.model.destroy();
+    Backbone.history.navigate('/', { trigger: true });
   },
 
   toggleSubscribe: function(e) {

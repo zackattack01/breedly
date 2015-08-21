@@ -7,12 +7,12 @@ Breedly.Views.NewFeed = Backbone.View.extend({
   template: JST['feeds/new_public_feed'],
 
   events: {
-    'click button.add-public-feed': 'addFeed',
+    'click button.add-public-feed': 'addPublicFeed',
     'click .close': 'remove',
     'click .modal-background': 'remove'
   },
 
-  addFeed: function(e) {
+  addPublicFeed: function(e) {
     e.preventDefault();
     var feedUrl = $('#public-feed-url').serializeJSON();
     
@@ -20,6 +20,7 @@ Breedly.Views.NewFeed = Backbone.View.extend({
     newFeed.set("public", true);
     var that = this;
     this.rootView.whirl();
+    debugger;
     newFeed.save({}, {
 
       success: function() {
