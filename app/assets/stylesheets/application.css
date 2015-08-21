@@ -47,10 +47,6 @@ input.btn.auth-btn { margin: 20px; border: none;}
   border: thin solid #EBEBEB; 
 }
 
-/*input#topic-title.ui-autocomplete-input {
-  padding: 10px;
-}*/
-
 table tr td {
   border: none;
 }
@@ -64,21 +60,21 @@ table td {
   padding: 5px;
 }
 
-.new-feed-block label, .new-feed-block input, .new-feed-block button {
-  float: left;
-  margin-left: 20px;
-} 
-
-.new-topic-block label, .new-topic-block input, .new-topic-block button {
-  float: left;
-  margin-left: 20px;
-} 
-
-.new-feed-block label, .new-topic-block label {
-  margin-left: 20%;
-  font: inherit;
-  line-height: 3em;
+.new-feed-block {
+  position: relative;
 }
+
+.new-feed-block label, .new-feed-block button {
+  margin: 20px;
+} 
+
+.new-feed-block input, .new-topic-block input {
+  background: rgba(160, 160, 160, 0.4);
+}
+
+.new-topic-block label, .new-topic-block button {
+  margin: 20px;
+} 
 
 .btn:not(.nav-btn) {
   margin: 0px 20px 0px 20px;
@@ -175,6 +171,12 @@ li.ui-menu-item {
   overflow-x: hidden;
 }
 
+
+/* starting point fix button */
+.ui-widget button {
+  font-family: 'Oxygen', sans-serif;
+}
+
 /* buttons */
 .centered {
   margin-left: 50%;
@@ -188,17 +190,21 @@ li.ui-menu-item {
   color: black;
   border: none;
   font-size: 1.0em;
-  padding: 10px;
   font-family: 'Oxygen', sans-serif;
   cursor: pointer;
   box-shadow: 0 0 10px black;
   background-color: rgba(235,235,235,0.3);
 }
 
+
 .auth-screen .btn:focus, .auth-screen .btn:hover {
   border: 2px solid #EBEBEB;
   box-shadow: 0 0 10px #EBEBEB;
   background-color: rgba(235,235,235,0.6);
+}
+
+.nav-btn, .auth-btn {
+  padding: 10px;
 }
 
 .nav-btn {
@@ -212,9 +218,9 @@ a:hover, a:focus, a:active {
   outline: none;
 }
 
-input#feed-url, input#topic-title {
+/*input#feed-url, input#topic-title {
   padding: 10px;
-}
+}*/
 
 /* positioning for containers  */
 #navbar {
