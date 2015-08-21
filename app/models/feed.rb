@@ -13,10 +13,10 @@ class Feed < ActiveRecord::Base
   after_commit :generate_topics
 
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
-  has_many :feed_topics
+  has_many :feed_topics, dependent: :destroy
   has_many :topics, through: :feed_topics
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :subscribed_users, through: :subscriptions, source: :user
 
   scope :public_feeds, -> { where(user_id: 1) }
