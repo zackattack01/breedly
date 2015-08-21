@@ -1,4 +1,4 @@
-Breedly.Views.UserUpdate = Backbone.View.extend({
+Breedly.Views.UserUpdate = Backbone.ModalView.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
     $(document).on('keyup', this.handleEscape.bind(this));
@@ -43,7 +43,7 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
     var feedUrl = $('#feed-url').serializeJSON();
     var newFeed = new Breedly.Models.Feed(feedUrl);
     var that = this;
-    this.rootView.whirl();
+    this.whirl();
     newFeed.save({}, {
       success: function() {
         that.remove();
@@ -52,21 +52,21 @@ Breedly.Views.UserUpdate = Backbone.View.extend({
       },
 
       error: function(obj, resp) {
-        resp['responseJSON'].forEach(function(error) {
-          that.$('.errors').html('<p>-' + error.slice(5) + '</p>');
-        });
+        for(var errorType in resp['responseJSON']) {
+          that.$('.errors').html('<li>' + resp['responseJSON'][errorType] + '</li>');
+        };
         $('#feed-url').val("");
         $('#feed-url').focus();
-        that.rootView.endWhirly();
+        that.endWhirly();
       }, 
     });
   },
 
-  handleEscape: function(e) {
-    if (e.keyCode === 27) {
-      this.remove();
-    }
-  },
+  // handleEscape: function(e) {
+  //   if (e.keyCode === 27) {
+  //     this.remove();
+  //   }
+  // },
 
   render: function() {
     var content = this.template({ user: this.model });

@@ -15,8 +15,6 @@ Breedly.Views.NewFeed = Backbone.ModalView.extend({
     newFeed.set("public", true);
     var that = this;
     this.whirl();
-    var feedRe = /^Feed/;
-    var urlRe = /^Url/;
     newFeed.save({}, {
 
       success: function() {
@@ -28,7 +26,7 @@ Breedly.Views.NewFeed = Backbone.ModalView.extend({
 
       error: function(obj, resp) {
         for(var errorType in resp['responseJSON']) {
-          that.$('.errors').html('<ul><li>' + resp['responseJSON'][errorType] + '</li></ul>');
+          that.$('.errors').html('<li>' + resp['responseJSON'][errorType] + '</li>');
         };
         $('#public-feed-url').val("");
         $('#public-feed-url').focus();
