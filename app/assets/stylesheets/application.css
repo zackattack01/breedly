@@ -381,6 +381,7 @@ h4 {
 
 .modal-content {
   position: fixed;
+  background-color: #EBEBEB;
   top: 50px;
   left: 17%;
   width: calc(66% - 60px);
@@ -392,6 +393,10 @@ h4 {
   border-radius: 5px;
   box-shadow: 0 0 10px #AA1111;
   overflow: scroll;
+}
+
+.modal-content h2, .modal-content h3 {
+  color: #AA1111;
 }
 
 .desc-layer-bg {
