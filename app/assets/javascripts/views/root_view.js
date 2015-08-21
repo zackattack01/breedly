@@ -15,10 +15,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   whirl: function() {
-    // debugger;
     this.addSubview('.whirly', this.whirlyView);
-
-    // this.$('#whirly').html('<div class="whirly-loader"></div>');
   },
 
   endWhirly: function() {

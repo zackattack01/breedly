@@ -8,7 +8,7 @@ class Api::FeedsController < ApplicationController
       if @feed.save
         render 'show'
       else
-        render json: @feed.errors.full_messages, status: 422
+        render json: @feed.errors, status: 422
       end
     end
   end

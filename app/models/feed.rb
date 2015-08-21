@@ -7,7 +7,7 @@ class Feed < ActiveRecord::Base
   }
 
   validates :author, :url, presence: true
-  validates :url, uniqueness: true
+  validates_uniqueness_of :url, message: "This feed has already been added."
   validate :parsable
 
   after_commit :generate_topics

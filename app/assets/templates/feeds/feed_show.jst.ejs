@@ -5,7 +5,7 @@
     <% } else { %>
       <button class="toggle-subscribe-btn green btn">Subscribe</button>
     <% } %>
-  <% if (feed && feed.entries.length > 0) { %>
+  <% if (feed.entries && feed.entries.length > 0) { %>
       <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
         <a class="entry-title" href="<%= activeEntry['url'] %>">
           <%= activeEntry['title'] %>

@@ -1,10 +1,4 @@
 Breedly.Views.NewFeed = Backbone.ModalView.extend({
-  initialize: function(options) {
-    debugger;
-    this.rootView = options.rootView;
-    $(document).on('keyup', this.handleEscape.bind(this));
-  },
-
   template: JST['feeds/new_public_feed'],
 
   events: {
@@ -20,38 +14,26 @@ Breedly.Views.NewFeed = Backbone.ModalView.extend({
     var newFeed = new Breedly.Models.Feed(feedUrl);
     newFeed.set("public", true);
     var that = this;
-    this.rootView.whirl();
-
-    debugger;
+    this.whirl();
+    var feedRe = /^Feed/;
+    var urlRe = /^Url/;
     newFeed.save({}, {
 
       success: function() {
+        that.endWhirly();
         that.remove();
-        that.rootView.endWhirly();
         that.rootView.addMessage(newFeed.get('title') + " added!", "success");
         Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });
       },
 
       error: function(obj, resp) {
-        resp['responseJSON'].forEach(function(error) {
-          that.$('.errors').html('<ul><li>' + error + '</li></ul>');
-        });
-        $('#pulic-feed-url').val("");
-        $('#pulic-feed-url').focus();
-        that.rootView.endWhirly();
+        for(var errorType in resp['responseJSON']) {
+          that.$('.errors').html('<ul><li>' + resp['responseJSON'][errorType] + '</li></ul>');
+        };
+        $('#public-feed-url').val("");
+        $('#public-feed-url').focus();
+        that.endWhirly();
       }, 
     });
   }
-
-  // handleEscape: function(e) {
-  //   if (e.keyCode === 27) {
-  //     this.remove();
-  //   }
-  // },
-
-  // render: function() {
-  //   var content = this.template();
-  //   this.$el.html(content);
-  //   return this;
-  // }
 });
