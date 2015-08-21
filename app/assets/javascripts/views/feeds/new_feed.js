@@ -1,8 +1,8 @@
 Breedly.Views.NewFeed = Backbone.ModalView.extend({
   initialize: function(options) {
-    Backbone.ModalView.prototype.initialize.call(this, "china-bg");
+    Backbone.ModalView.prototype.initialize.call(this, "symphony-bg");
   },
-  
+
   template: JST['feeds/new_public_feed'],
 
   events: {
@@ -27,9 +27,11 @@ Breedly.Views.NewFeed = Backbone.ModalView.extend({
       },
 
       error: function(obj, resp) {
+        var errorContent = ""
         for(var errorType in resp['responseJSON']) {
-          that.$('.errors').html('<li>' + resp['responseJSON'][errorType] + '</li>');
+          errorContent += ('<li>' + resp['responseJSON'][errorType] + '</li>');
         };
+        that.$('.errors').html(errorContent);
         $('#public-feed-url').val("");
         $('#public-feed-url').focus();
         that.endWhirly();

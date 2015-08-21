@@ -1,38 +1,33 @@
-<div class="modal-background"></div>
-<div class="modal-content feathered-bg">
-  <div class="errors"><ul></ul></div>
-  <button class="close">&times;</button>
-  <h2>Update Your Profile</h2>
-  <br>
-    <form id="user-update">
-      <table class="centered">
-        <tr>
-          <td><label for="username">Username:</label></td>
-          <td><input id="username" type="text" name="user[username]" value="<%= user.escape('username') %>"></td>
-        </tr>
-        <tr>
-          <td><label for="real-name">Your Name:</label></td>
-          <td><input id="real-name" type="text" name="user[real_name]" value="<%= user.escape('real_name') %>"></td>
-        </tr>
-        <tr>
-          <td><label for="age">Age:</label></td>
-          <td><input id="age" type="number" name="user[age]" value="<%= user.escape('age') %>"></td>
-        </tr>
-        <tr>
-          <td><label for="age_min">Minimum target age:</label></td>
-          <td><input id="age_min" type="number" name="user[age_min]" value="<%= user.get('age_min') %>"></td>
-        </tr>
-        <tr>
-          <td><label for="age_max">Max target age:</label></td>
-          <td><input id="age_max" type="number" name="user[age_max]" value="<%= user.get('age_max') %>"></td>
-        </tr>
-      </table>
-      <button class="btn green" id="submit-update">Update</button>
-    </form>
-
-  <div class="new-feed-block">
-    <label for="feed-url"><h3>Or add your personal feed:</h3></label>
-    <input id="feed-url" type="text" name="feed[url]">
-    <button class="btn green add-feed">Submit!</button>
-  </div>
+<h2>Update Your Profile</h2>
+<br>
+  <form id="user-update">
+    <table class="centered">
+      <tr>
+        <td><label for="username">Username:</label></td>
+        <td><input id="username" type="text" name="user[username]" value="<%= model.escape('username') %>"></td>
+      </tr>
+      <tr>
+        <td><label for="real-name">Your Name:</label></td>
+        <td><input id="real-name" type="text" name="user[real_name]" value="<%= model.escape('real_name') %>"></td>
+      </tr>
+      <tr>
+        <td><label for="age">Age:</label></td>
+        <td><input id="age" type="number" name="user[age]" value="<%= model.escape('age') %>"></td>
+      </tr>
+      <tr>
+        <td><label for="age_min">Minimum target age:</label></td>
+        <td><input id="age_min" type="number" name="user[age_min]" value="<%= model.get('age_min') %>"></td>
+      </tr>
+      <tr>
+        <td><label for="age_max">Max target age:</label></td>
+        <td><input id="age_max" type="number" name="user[age_max]" value="<%= model.get('age_max') %>"></td>
+      </tr>
+    </table>
+    <button class="btn green" id="submit-update">Update</button>
+  </form>
+  
+<div class="new-feed-block">
+  <label for="feed-url"><h3>Or add your personal feed:</h3></label>
+  <input id="feed-url" type="text" name="feed[url]">
+  <button class="btn green add-feed">Submit!</button>
 </div>

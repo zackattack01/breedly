@@ -9,9 +9,7 @@ Backbone.ModalView = Backbone.CompositeView.extend({
   },
 
   handleEscape: function(e) {
-    if (e.keyCode === 27) {
-      this.remove();
-    }
+    if (e.keyCode === 27) { this.remove(); }
   },
 
   whirl: function() {

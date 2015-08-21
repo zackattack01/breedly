@@ -10,8 +10,6 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
-    // 'click .close': 'remove',
-    // 'click .modal-background': 'remove'
   },
 
   addUserTopic: function(e) {
@@ -34,9 +32,11 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
         },
 
         error: function(obj, resp) {
+          var errorContent = ""
           for(var errorType in resp['responseJSON']) {
-            that.$('.errors').html('<li>' + resp['responseJSON'][errorType] + '</li>');
+            errorContent += ('<li>' + resp['responseJSON'][errorType] + '</li>');
           };
+          that.$('.errors').html(errorContent);
           that.endWhirly();
           $('#topic-title').val("");
         }
