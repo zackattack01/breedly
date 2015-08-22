@@ -1,18 +1,15 @@
-<br><br>
-<form class="auth-form" action="<%= action %>" method="POST">
-  <%= flash_errors %>
-  <%= csrf_tag %>
-  <input type="text" autocomplete="off" id="username" name="user[username]" placeholder="username">
-  <br>
-  <input type="password" id="password" name="user[password]" placeholder="password">
-  <br>
-  <input class="btn auth-btn" style="color:black" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
-</form>
-
-<script>
-  $(function() {
-      var mTop = ($('.logo-full').width() * 0.35);
-      $('.auth-form').css('margin-top', mTop);
-      $('.auth-form #username').focus();
-    });
-</script>
+<img class="logo-full centered" src="<%= asset_path('logo_full.png') %>">
+<div class="auth-div">
+  <form class="auth-form form-group" action="<%= action %>" method="POST">
+    <%= flash_errors %>
+    <%= csrf_tag %>
+    <input type="text" autocomplete="off" class="form-control" id="username" name="user[username]" placeholder="username" autofocus>
+    <br>
+    <input type="password" id="password" class="form-control" name="user[password]" placeholder="password">
+    <br>
+    <input class="btn auth-btn btn-lg submit" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
+    <% label, path = (action == session_url ? ['Or Sign Up', new_user_url] : ['Or Sign In', new_session_url]) %>
+  </form>
+    <%= link_to label, path, style: "color:#A11111" %>
+    <%= render 'shared/guest_login' %>
+</div>

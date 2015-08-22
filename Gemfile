@@ -14,6 +14,7 @@ gem 'backbone-on-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'ejs'
 gem 'faker'
+gem 'bootstrap-sass'
 gem 'seed_dump'
 
 gem 'rails_12factor', group: :production

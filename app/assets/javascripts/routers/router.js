@@ -2,7 +2,7 @@ Breedly.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.feeds = new Breedly.Collections.Feeds();
     this.$rootEl = options.$rootEl;
-    this.rootView = new Breedly.Views.RootView({ collection: this.feeds, $el: options.$rootEl }); 
+    this.rootView = new Breedly.Views.RootView({ collection: this.feeds }); 
   },
 
   routes: {

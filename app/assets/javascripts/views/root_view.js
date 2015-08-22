@@ -10,7 +10,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addNavBar: function() {
-    var navBar = new Breedly.Views.NavBar({ rootView: this });
+    var navBar = new Breedly.Views.NavBar({ rootView: this, $el: this.$('#navbar') });
     this.addSubview('#navbar', navBar);
   },
 

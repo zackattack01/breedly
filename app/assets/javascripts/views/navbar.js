@@ -4,6 +4,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
   },
 
   template: JST['navbar'],
+  tagName: 'nav',
+  className: 'navbar navbar-primary',
 
   events: {
     'click #update-user-btn': 'updateModal',

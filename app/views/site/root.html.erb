@@ -1,29 +1,8 @@
-<div id="all-content">
-
-</div>
+<div id="all-content"></div>
 <script>
-
 $(document).ready(function(){
-  $('.logo-full').removeClass('logo-full').addClass('logo-small');
-  
   Breedly.CURRENT_USER_ID = "<%= current_user.id %>";
   Breedly.RAILS_ENV = "<%= Rails.env %>";
   Breedly.initialize();
 });
 </script>
-
-<!-- questions for monday
-  - how to start above transition on login success, not this page load
-    - or how to make it smooth
-  - how to justify or float input fields in modals
-  - how to monitor topics for uniqueness without downcasing or validating case insensitive
-  - transactions without rolling back
-  - how to display block but hover effect on text
-
-
-  TODO:
-    -fix scrolling lockup on resize
-    -remove description from topic table
-    -put a constraint on image sizes
-    -add -webkit stuff for safari and firefox
- -->
