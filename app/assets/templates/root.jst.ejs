@@ -1,16 +1,40 @@
 <div id="navbar"></div>
 
-<div id="feeds-index-container">
-  <div id="feeds-index"></div>
-</div>
-
-<div id="main-container">
-  <div id="errors-main"></div>
-  <div id="success-main"></div>
-  <div class="whirly"></div>
-  <div id="main-content"></div>
-</div>
-
-<div id="entries-index-container">
-  <div id="entries-index"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sidebar-nav-fixed affix" id="feeds-index-container">
+            <h4 style="color:#EBEBEB" class="index-title"> My Feeds </h4>
+                <div class="well pre-scrollable" style="background-color:black">
+                    <ul class="nav" id="feeds-index">
+             
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/sidebar-nav-fixed -->
+        </div>
+        <!--/span-->
+        <div class="col-md-6">
+          <div id="main-container">
+            <div id="errors-main"></div>
+            <div id="success-main"></div>
+            <div class="whirly"></div>
+            <div id="main-content"></div>
+          </div> 
+        </div>
+        <!--/span-->
+        <div class="col-md-3" id="entries-index-container">
+            <div class="sidebar-nav-fixed pull-right affix">
+                <div class="well">
+                    <ul class="nav" id="entries-index">
+         
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/sidebar-nav-fixed -->
+        </div>
+        <!--/span-->
+    </div>
 </div>

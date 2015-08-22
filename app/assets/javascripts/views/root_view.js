@@ -29,7 +29,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addFeedsIndexBar: function(feeds) {
-    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.subscriptions, rootView: this });
+    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.subscriptions, rootView: this, $el: this.$('#feeds-index') });
     this.addSubview('#feeds-index', feedsIndex);
   },
 

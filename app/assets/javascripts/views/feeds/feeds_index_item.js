@@ -8,7 +8,13 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
 
   events: {
     'mouseenter .feed-list-link': 'addDescription',
-    'mouseleave .feed-list-link': 'removeDescription'
+    'mouseleave .feed-list-link': 'removeDescription',
+    'click .feed-list-link': 'addActive'
+  },
+
+  addActive:function(e) {
+    $('.feed-list-link').removeClass('activeLink');
+    $(e.currentTarget).addClass('activeLink');
   },
 
   addDescription: function(e) {
