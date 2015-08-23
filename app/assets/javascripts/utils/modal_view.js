@@ -2,9 +2,10 @@ Backbone.ModalView = Backbone.CompositeView.extend({
   initialize: function(bg) {
     this.whirlyView = new Breedly.Views.Whirly();
     this.templateStart = '<div class="modal-bg"></div><div class="modal-content ' + 
-                          bg + '"><div class="errors"><ul></ul></div>' +
-                          '<div class="whirly"></div>' +
-                          '<button class="close">&times;</button>'
+                          bg + '"><button class="close">&times;</button>' +
+                          '<div class="errors"><ul></ul></div>' +
+                          '<div class="whirly"></div>'
+                          
     this.templateFin = '</div>'
   },
 

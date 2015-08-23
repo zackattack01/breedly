@@ -1,7 +1,12 @@
 <h3>Add A Public Feed</h3>
 <br>
-<div class="new-feed-block centered">
-  <label for="public-feed-url">Feed url:</label>
-  <input id="public-feed-url" type="text" name="feed[url]">
-  <button class="btn green add-public-feed">Submit!</button>
-</div>
+<form class="form-group">
+  <input id="public-feed-url" class="form-control" type="text" name="feed[url]" placeholder="feed URL">
+  <br>
+  <input type="submit" class="btn add-public-feed plain" value="Submit!">
+</form>
+<script>
+$(function() {
+  $('#public-feed-url').focus();
+});
+</script>

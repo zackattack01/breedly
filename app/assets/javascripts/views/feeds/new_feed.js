@@ -1,12 +1,12 @@
 Breedly.Views.NewFeed = Backbone.ModalView.extend({
   initialize: function(options) {
-    Backbone.ModalView.prototype.initialize.call(this, "symphony-bg");
+    Backbone.ModalView.prototype.initialize.call(this, "feathered");
   },
 
   template: JST['feeds/new_public_feed'],
 
   events: {
-    'click button.add-public-feed': 'addPublicFeed',
+    'submit': 'addPublicFeed'
   },
 
   addPublicFeed: function(e) {

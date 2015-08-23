@@ -2,7 +2,7 @@ Breedly.Views.UserUpdate = Backbone.ModalView.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
     this.listenTo(this.model, 'sync', this.render);
-    Backbone.ModalView.prototype.initialize.call(this, "feathered-bg");
+    Backbone.ModalView.prototype.initialize.call(this, "circled");
   },
 
   template: JST['users/update'],
