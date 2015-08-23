@@ -102,14 +102,45 @@ li.active-feed > a {
 
 .btn {
   background-color: gainsboro;
+}
+
+
+.btn.submit {
   box-shadow: 0 0 10px #A11111;
 }
 
-.btn:hover {
-  background-color: lightgray;
-  box-shadow: 0 0 10px #EBEBEB;
+.btn:hover, .btn:focus {
   outline: none;
+  color: black;
+  box-shadow: 0 0 10px #EBEBEB;
 }
+
+#navbar .btn { 
+  box-shadow: 0 0 8px black;
+  border: thin solid lightgray
+}
+
+#navbar .btn:hover, #navbar .btn:focus { 
+  box-shadow: 0 0 8px #337AB7;
+  border: thin solid #337AB7;
+  color: #337AB7;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: black;
+}
+
+button.btn.green {
+  box-shadow: 0 0 10px #28B708;
+  border: thin solid #3CE616;
+}
+
+button.btn.red {
+  box-shadow: 0 0 10px #A11111;
+  border: thin solid #D86F6F;
+}
+
+
 
 #ui-id-1.ui-autocomplete {
   max-height: 500px;
@@ -123,42 +154,45 @@ li.active-feed > a {
   background-repeat: repeat;
 }
 
-a { margin: 10px; }
-a:hover { text-shadow: 0 0 10px #EBEBEB; }
-
-
-#entries-index li a.entry-list-item.active-entry { 
-  margin-left: -10px;
-  padding-left: 20px; 
-  background-color: black;
-  outline: none;
-}
-
 #entries-index li a.entry-list-item { color: #EBEBEB; }
 /* positioning for containers  */
 
-.navbar a { 
-  margin: 0; 
-  /*color: gray;*/
+#navbar .nav > li > a:focus, #navbar .nav > li > a:hover {
+  background-color: black;
+  color: #EBEBEB;
 }
 
-#navbar .btn { 
-  box-shadow: 0 0 8px black;
-  border: thin solid lightgray
+.dropdown-menu li:hover > a, .dropdown-menu li:focus > a {
+  color: #337AB7;
 }
-#navbar .btn:hover { color:black; }
+
+ul.dropdown-menu {
+  border: 2px solid #EBEBEB;
+}
+
+
+.ui-autocomplete-input {
+  border: thin solid #337AB7;   
+}
+
+.ui-autocomplete-input:focus {
+  border: 2px outset #337AB7; 
+  color: #337AB7;  
+  box-shadow: 0 0 8px #337AB7;
+}
 #feeds-index li a.feed-list-link, #entries-index li a.entry-list-item { margin: 7px 0px 7px 5px; }
 .navbar {
   background-image: url('symphony.png');
   margin: 0px;
   border-radius: 0px;
+  border: none;
   box-shadow: 0 5px 10px black;
   z-index: 4;
 }
 #entries-index li > a:hover, #entries-index li > a:focus { background-color: black; }
-#entries-index li:hover, #entries-index li:focus {
+#entries-index li:hover, #entries-index li:focus, #entries-index li.active-entry {
   margin-left: -10px;
-  padding-left: 15px; 
+  padding-left: 10px; 
   background-color: black;
   outline: none;
 }

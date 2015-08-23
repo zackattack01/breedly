@@ -92,9 +92,9 @@ Breedly.Views.NavBar = Backbone.View.extend({
       }
     });
 
-    var modalSearch = new Breedly.Views.FeedSearch({ rootView: this.rootView, collection: allFeeds });
+    var modalSearch = new Breedly.Views.FeedSearch({ rootView: this.rootView, collection: this.feeds });
     $('body').append(modalSearch.render().$el); 
-    $('#feed-title').focus();
+    $('#topic-title').focus();
   },
 
   updateModal: function(e) {
