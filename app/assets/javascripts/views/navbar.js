@@ -1,6 +1,22 @@
 Breedly.Views.NavBar = Backbone.View.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
+    var allFeeds = new Breedly.Collections.Feeds();
+    var feedTitles = [];
+    allFeeds.fetch({
+      data: {
+        query: "all"
+      },
+
+      success: function() {
+        allFeeds.each(function(feed) {
+          feedTitles.push(feed.get('title'));
+        });
+        $("#feed-title").autocomplete({ 
+          source: feedTitles
+        });
+      }
+    });
   },
 
   template: JST['navbar'],
@@ -12,7 +28,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     'click #add-feed-btn': 'addFeedModal',
     'click #logout-btn': 'logoutUser',
     'click #user-topic-btn': 'addUserTopic',
-    'click #feed-search-btn': 'addSearchModal'
+    'click #feed-search-btn': 'addCustomSearchModal',
+    'click #nav-feed-search': 'searchByTitle'
   },
 
   addUserTopic: function(e) {
@@ -44,26 +61,10 @@ Breedly.Views.NavBar = Backbone.View.extend({
     $('#feed-url').focus();
   },
 
-  addSearchModal: function(e) {
+  addCustomSearchModal: function(e) {
     e.preventDefault();
-    var allFeeds = new Breedly.Collections.Feeds();
-    var feedTitles = [];
     var allTopics = new Breedly.Collections.Topics();
     var feedTopics = [];
-    allFeeds.fetch({
-      data: {
-        query: "all"
-      },
-
-      success: function() {
-        allFeeds.each(function(feed) {
-          feedTitles.push(feed.get('title'));
-        });
-        $("#feed-title").autocomplete({ 
-          source: feedTitles
-        });
-      }
-    });
 
      allTopics.fetch({
       success: function() {

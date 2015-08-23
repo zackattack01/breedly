@@ -111,6 +111,18 @@ li.active-feed > a {
   outline: none;
 }
 
+#ui-id-1.ui-autocomplete {
+  max-height: 500px;
+  overflow-y: scroll;
+  max-width: 300px;
+  border: 2px solid gray;
+  box-shadow: 0 0 10px black;
+  border-top: none;
+  border-radius: 3px;
+  background-image: url("symphony.png");
+  background-repeat: repeat;
+}
+
 a { margin: 10px; }
 a:hover { text-shadow: 0 0 10px #EBEBEB; }
 
