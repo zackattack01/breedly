@@ -39,7 +39,7 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     var that = this;
     this._activeFeed.fetch({
       success: function() {
-        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that });
+        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that, $el: that.$('#entries-index') });
         that.swapActiveEntries(entriesView);
         activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed, rootView: that });   
         that.swapActiveFeed(activeFeedView);
