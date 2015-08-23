@@ -45,16 +45,16 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
     });
   },
 
-  searchByTitle: function(title) {
-    var newFeed = this.collection.where({ title: title })[0];
-    if (typeof newFeed === "undefined") {
-      this.$('#feed-title').val("")
-      this.$('.errors').html('<li>There are currently no feeds with that title.</li>')
-    } else {
-      this.remove();
-      Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });  
-    }
-  },
+  // searchByTitle: function(title) {
+  //   var newFeed = this.collection.where({ title: title })[0];
+  //   if (typeof newFeed === "undefined") {
+  //     this.$('#feed-title').val("")
+  //     this.$('.errors').html('<li>There are currently no feeds with that title.</li>')
+  //   } else {
+  //     this.remove();
+  //     Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });  
+  //   }
+  // },
 
   onRender: function() {
     this.delegateEvents();

@@ -1,15 +1,16 @@
 Breedly.Views.NavBar = Backbone.View.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
-    var allFeeds = new Breedly.Collections.Feeds();
+    this.feeds = new Breedly.Collections.Feeds();
     var feedTitles = [];
-    allFeeds.fetch({
+    var that = this;
+    this.feeds.fetch({
       data: {
         query: "all"
       },
 
       success: function() {
-        allFeeds.each(function(feed) {
+        that.feeds.each(function(feed) {
           feedTitles.push(feed.get('title'));
         });
         $("#feed-title").autocomplete({ 
@@ -51,6 +52,19 @@ Breedly.Views.NavBar = Backbone.View.extend({
     $('body').append(modalTopic.$el); 
     modalTopic.render();
     modalTopic.$('#topic-title').focus();
+  },
+
+  searchByTitle: function(e) {
+    e.preventDefault();
+    var title = this.$('#feed-title').val();
+    var newFeed = this.feeds.where({ title: title })[0];
+    if (typeof newFeed === "undefined") {
+      // this.$('#feed-title').val("")
+      // this.$('.errors').html('<li>There are currently no feeds with that title.</li>')
+    } else {
+      // this.remove();
+      Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });  
+    }
   },
 
   addFeedModal: function(e) {
