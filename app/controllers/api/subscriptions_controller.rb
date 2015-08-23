@@ -23,8 +23,21 @@ class Api::SubscriptionsController < ApplicationController
     @subscriptions = current_user.subscriptions
   end
 
+  def show
+    @subscription = Subscription.find(params[:id])
+  end
+
+  def update
+    @subscription = Subscription.find(params[:id])
+    if @subscription.update(subscription_params)
+      render 'show'
+    else
+      render :json => @subscription.errors.full_messages, status: 422
+    end
+  end
+
   private
   def subscription_params
-    params.require(:subscription).permit(:feed_id)
+    params.require(:subscription).permit(:feed_id, :ord)
   end
 end

@@ -12,6 +12,20 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
     this.collection.each(function(feed) {
       that.addFeedIndexItemView(feed);
     });
+    this.subscriptions = new Breedly.Collections.Subscriptions();
+    this.subscriptions.fetch();
+  },
+
+  events: {
+    'sortstop': 'saveOrder'
+  },
+
+  saveOrder: function(e) {
+    var that = this;
+    this.$('#feed-list li').each(function(idx, feed) {
+      var sub = that.subscriptions.where({ feed_id: $(feed).data("feed-id") })[0];
+      sub.save({ ord: idx });
+    });
   },
 
   addFeedIndexItemView: function(feed) {
@@ -24,7 +38,6 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
   },
 
   onRender: function() {
-    debugger;
     this.$('#feed-list').sortable();
   },
 

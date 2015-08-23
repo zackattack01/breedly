@@ -5,10 +5,14 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
 
   tagName: 'li',
   template: JST['feeds/feeds_index_item'],
+  
+  attributes: function() {
+    return { "data-feed-id": this.model.id };
+  },
 
   events: {
-    'mouseenter .feed-list-link': 'addDescription',
-    'mouseleave .feed-list-link': 'removeDescription',
+    // 'mouseenter .feed-list-link': 'addDescription',
+    // 'mouseleave .feed-list-link': 'removeDescription',
     'click .feed-list-link': 'addActive'
   },
 
@@ -17,16 +21,16 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
     $(e.delegateTarget).addClass('active-feed');
   },
 
-  addDescription: function(e) {
-    e.preventDefault();
-    var descriptionView = new Breedly.Views.FeedDescription({ model: this.model });
-    this.rootView.showFeedDescription(descriptionView);
-  },
+  // addDescription: function(e) {
+  //   e.preventDefault();
+  //   var descriptionView = new Breedly.Views.FeedDescription({ model: this.model });
+  //   this.rootView.showFeedDescription(descriptionView);
+  // },
 
-  removeDescription: function(e) {
-    e.preventDefault();
-    this.rootView.removeFeedDescription();
-  },
+  // removeDescription: function(e) {
+  //   e.preventDefault();
+  //   this.rootView.removeFeedDescription();
+  // },
 
   render: function() {
     var content = this.template({ feed: this.model });
