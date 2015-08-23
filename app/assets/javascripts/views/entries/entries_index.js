@@ -19,7 +19,7 @@ Breedly.Views.EntriesIndex = Backbone.View.extend({
   },
 
   render: function() {
-    var content = this.template({ entries : this.entries });
+    var content = this.template({ entries: this.entries, activeIdx: this.model.get('selectedEntryIdx') });
     this.$el.html(content);
     return this;
   }

@@ -13,14 +13,7 @@ body {
   clear: both;
 }
 
-.row {
-  margin: 0px;
-  padding: 0px;
-}
-
-.navbar {
-  margin: 0px;
-}
+.sidebar-nav-fixed { width:20%; }
 
 .form-control:focus {
   box-shadow: 0 0 10px #EBEBEB;
@@ -47,6 +40,7 @@ body {
 }
 .well { 
   border: none; 
+  border-radius: 0px;
   padding: 0;
   min-height: inherit;
   margin-bottom: 15px;
@@ -55,6 +49,10 @@ body {
 a.feed-list-link, a.entry-list-item {
   padding: 0;
 }
+
+#entries-index .entry-list-item:first-child { margin-top: 0px; }
+
+#feeds-index .feed-list-link:first-child { margin-top: -11px; }
 
 #feeds-index li a { 
   border-top: 1px inset  gray; 
@@ -75,6 +73,7 @@ a.feed-list-link, a.entry-list-item {
 .index-title {
   font-size: 22px;
   padding: 10px 5px 10px 10px;
+  border-bottom: 2px solid;
   margin: 0;
 }
 
@@ -88,22 +87,8 @@ a.feed-list-link, a.entry-list-item {
   min-height: calc(100% - 60px);
 }
 
-/*ul#feed-list {
-  overflow: scroll;
-}*/
-
 /* buttons */
 
-/*.btn {
-  outline: none;
-  color: black;
-  border: none;
-  font-size: 1.0em;
-  font-family: 'Oxygen', sans-serif;
-  cursor: pointer;
-  box-shadow: 0 0 10px black;
-  background-color: rgba(235,235,235,0.3);
-}*/
 
 .btn {
   background-color: initial;
@@ -118,10 +103,7 @@ a.feed-list-link, a.entry-list-item {
 
 a { margin: 10px; }
 a:hover { text-shadow: 0 0 10px #EBEBEB; }
-.active-feed { 
-  background-color: #eeeeee;
-  color: black;
-}
+
 
 #entries-index li a.entry-list-item.active-entry { 
   margin-left: -10px;
@@ -139,7 +121,7 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
 #feeds-index li a.feed-list-link, #entries-index li a.entry-list-item { margin: 7px 0px 7px 5px; }
 .navbar {
   background-color: black;
-  /*border: none;*/
+  margin: 0px;
   border-radius: 0px;
   box-shadow: 0 5px 10px black;
   z-index: 4;
@@ -151,18 +133,8 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
   background-color: black;
   outline: none;
 }
-/*#feeds-index-container {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 17%;
-  width: 17%;
-  background-color: black;
-  height: calc(100% - 50px);
-  box-shadow: 5px 0 10px black;
-  overflow: scroll;
-  z-index: -1;
-}*/
+
+/* main content */
 
 #main-container {
   position: fixed;
@@ -175,55 +147,23 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
   height: calc(100% - 50px);
 }
 
-/* feeds index */
-/*#feeds-index {
+#main-content {
   position: relative;
-  width: 90%;
-}
-
-feeds-index a {
-  color: #EBEBEB;
-  text-decoration: none;
-  margin: 10px;
-  margin-left: 20px;
-  display: block;
-}
-
-#feeds-index a:hover, .auth-screen a:hover {
-  color: #AA1111;
-  outline: none;
-}
-*/
-
-/*.feed-list {
-  margin-top: 70px;
-  overflow: scroll;
-}*/
-
-.scrollable {
-  overflow-y: scroll;
-}
-
-/* main content feed show */
-/*#main-content {
-  position: relative;
-  border: thin solid #EBEBEB;
+  /*border: thin solid #EBEBEB;*/
   height: inherit;
   width: 100%;
   padding: 0;
   margin: 30px auto 30px auto;
-}*/
+}
 
-/*#main-content a.feed-title {
-  font-size: 2.8em;
+#main-content a.feed-title {
+  font-size: 2.2em;
   text-decoration: none;
   text-align: center;
   display: block;
   color: #AA1111;
   margin: 20px 0 20px 0;
-}*/
-
-/*.feed-title { color: #A11111; }*/
+}
 
 #main-content a.feed-title:hover {
   color: #EBEBEB;
@@ -240,16 +180,11 @@ feeds-index a {
   max-width: 75%;
 }
 
-#main-content a {
-  display: inline;
-}
-
-
-/*#main-content div {
+#main-content div {
   font-size: 1em;
-  text-align: center;
+  /*text-align: center;*/
   margin: auto 50px auto 50px;
-}*/
+}
 
 #main-content a.entry-title {
   text-align: center;
@@ -268,26 +203,28 @@ feeds-index a {
   text-align: left;
 }
 
-.feed-desc {
-/*
-
-*/
-  padding: 50px;
-  z-index: 3;
-  text-align: center;
-}
-
 #main-content h3 {
   color: #AA1111;
 }
 
-h4 {
-  font-size: 1.4em;
-  margin: 15px;
-}
-
 #main-content .modal-content .btn {
   margin: 20px;
+}
+
+#main-content p.timestamp {
+  color: gray;
+  text-align: left;
+  margin-top: -20px;
+}
+
+.feed-header {
+  text-align: center;
+}
+
+.feed-desc {
+  padding: 50px;
+  z-index: 3;
+  text-align: center;
 }
 
 
@@ -357,29 +294,6 @@ h4 {
   text-align: center;
 }
 
-.sidebar-nav-fixed {
-  width:20%;
-}
-
-.container {
-  margin: 0px;
-}
-
 .auth-screen form.guest-hidden {
   margin-top: 30px;
 }
-
-#main-content p.timestamp {
-  color: gray;
-  text-align: left;
-  margin-top: -20px;
-}
-/*
-.auth-screen a {
-  display: inline-block;
-  color: black;
-}
-.errors { display: inline-block; }
-.errors li {
-  color: #AA1111;
-}*/
