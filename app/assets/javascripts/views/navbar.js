@@ -58,6 +58,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     var title = this.$('#feed-title').val();
     var newFeed = this.feeds.where({ title: title })[0];
+    this.$('#feed-title').val("");
     if (typeof newFeed === "undefined") {
       // this.$('#feed-title').val("")
       // this.$('.errors').html('<li>There are currently no feeds with that title.</li>')

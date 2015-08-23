@@ -101,7 +101,7 @@ li.active-feed > a {
 
 
 .btn {
-  background-color: initial;
+  background-color: gainsboro;
   box-shadow: 0 0 10px #A11111;
 }
 
@@ -142,7 +142,10 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
   /*color: gray;*/
 }
 
-#navbar .btn { color:#EBEBEB; }
+#navbar .btn { 
+  box-shadow: 0 0 8px black;
+  border: thin solid lightgray
+}
 #navbar .btn:hover { color:black; }
 #feeds-index li a.feed-list-link, #entries-index li a.entry-list-item { margin: 7px 0px 7px 5px; }
 .navbar {
