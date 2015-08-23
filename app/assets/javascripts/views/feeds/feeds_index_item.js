@@ -13,8 +13,8 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
   },
 
   addActive:function(e) {
-    $('.feed-list-link').removeClass('active-feed');
-    $(e.currentTarget).addClass('active-feed');
+    $('#feed-list li').removeClass('active-feed');
+    $(e.delegateTarget).addClass('active-feed');
   },
 
   addDescription: function(e) {

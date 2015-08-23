@@ -23,6 +23,11 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
     this.removeModelSubview('#feed-list', feed);
   },
 
+  onRender: function() {
+    debugger;
+    this.$('#feed-list').sortable();
+  },
+
   render: function() {
     var content = this.template();
     this.$el.html(content);

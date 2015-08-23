@@ -44,6 +44,7 @@ body {
   padding: 0;
   min-height: inherit;
   margin-bottom: 15px;
+  max-height: calc(100% - 50px);
 }
 
 a.feed-list-link, a.entry-list-item {
@@ -52,7 +53,7 @@ a.feed-list-link, a.entry-list-item {
 
 #entries-index .entry-list-item:first-child { margin-top: 0px; }
 
-#feeds-index .feed-list-link:first-child { margin-top: -11px; }
+#feeds-index a.feed-list-link:first-child { margin-top: -1px; }
 
 #feeds-index li a { 
   border-top: 1px inset  gray; 
@@ -72,8 +73,7 @@ a.feed-list-link, a.entry-list-item {
 
 .index-title {
   font-size: 22px;
-  padding: 10px 5px 10px 10px;
-  border-bottom: 2px solid;
+  padding: 15px 5px 10px 10px;
   margin: 0;
 }
 
@@ -85,6 +85,16 @@ a.feed-list-link, a.entry-list-item {
   background-color: #A11111;
   box-shadow: -5px 0 5px black;
   min-height: calc(100% - 60px);
+}
+
+.active-feed, #feeds-index .nav > li a:hover, #feeds-index .nav > li a:focus { 
+  background-image: url('cubes.jpg');
+  border: none !important;
+}
+
+li.active-feed > a {
+  border: none !important;
+  color: black;
 }
 
 /* buttons */
@@ -115,12 +125,16 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
 #entries-index li a.entry-list-item { color: #EBEBEB; }
 /* positioning for containers  */
 
-.navbar a { margin: 0; }
+.navbar a { 
+  margin: 0; 
+  /*color: gray;*/
+}
+
 #navbar .btn { color:#EBEBEB; }
 #navbar .btn:hover { color:black; }
 #feeds-index li a.feed-list-link, #entries-index li a.entry-list-item { margin: 7px 0px 7px 5px; }
 .navbar {
-  background-color: black;
+  background-image: url('symphony.png');
   margin: 0px;
   border-radius: 0px;
   box-shadow: 0 5px 10px black;
@@ -149,11 +163,11 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
 
 #main-content {
   position: relative;
-  /*border: thin solid #EBEBEB;*/
-  height: inherit;
+  height: 100%;
   width: 100%;
   padding: 0;
-  margin: 30px auto 30px auto;
+  overflow: scroll;
+  padding: 50px auto 50px auto;
 }
 
 #main-content a.feed-title {
@@ -178,6 +192,11 @@ a:hover { text-shadow: 0 0 10px #EBEBEB; }
   display: block;
   margin-bottom: 20px !important;
   max-width: 75%;
+}
+
+#main-content a:hover {
+  text-decoration: none;
+  color: #A11111;
 }
 
 #main-content div {

@@ -29,7 +29,9 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addFeedsIndexBar: function(feeds) {
-    var feedsIndex = new Breedly.Views.FeedsIndex({ collection: this.subscriptions, rootView: this, $el: this.$('#feeds-index') });
+    var feedsIndex = new Breedly.Views.FeedsIndex({ 
+      collection: this.subscriptions, rootView: this, $el: this.$('#feeds-index') 
+    });
     this.addSubview('#feeds-index', feedsIndex);
   },
 
@@ -39,16 +41,23 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     var that = this;
     this._activeFeed.fetch({
       success: function() {
-        var entriesView = new Breedly.Views.EntriesIndex({ model: that._activeFeed, rootView: that, $el: that.$('#entries-index') });
+        var entriesView = new Breedly.Views.EntriesIndex({ 
+          model: that._activeFeed, rootView: that, $el: that.$('#entries-index') 
+        });
         that.swapActiveEntries(entriesView);
-        activeFeedView = new Breedly.Views.FeedShow({ model: that._activeFeed, rootView: that });   
+        activeFeedView = new Breedly.Views.FeedShow({ 
+          model: that._activeFeed, rootView: that 
+        });   
         that.swapActiveFeed(activeFeedView);
         that.endWhirly();
       },
 
       error: function() {
         that.endWhirly();
-        that.addMessage("We're sorry, we were unable to retrieve your feed at this time.", "error");
+        that.addMessage(
+          "We're sorry, we were unable to retrieve your feed at this time.", 
+          "error"
+        );
         Backbone.history.navigate('/', { trigger: true });
       }
     }); 
