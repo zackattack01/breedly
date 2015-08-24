@@ -37,7 +37,10 @@ class Feed < ActiveRecord::Base
           if key == "published" && value && value.class == Time
             ["timestamp", "posted #{time_ago_in_words(value)} ago."]
           else
-            [key.sanitize, value.to_s.sanitize] 
+            if %w[title author summary content image].include?(key)
+              value = Sanitize.fragment(value, Sanitize::Config::RELAXED)
+            end
+            [key, value] 
           end
         end.to_h
       end
@@ -49,24 +52,18 @@ class Feed < ActiveRecord::Base
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
     
-    ## check if its a tumblr or responds to rss on the end
     rescue Feedjira::NoParserAvailable 
       unless url =~ /\/rss\/?$/ || url =~ /\.xml\/?$/
         self.url = self.url + (url[-1] == "/" ? "rss" : "/rss")
-        puts "#{url} PARSE ERROR RETRYING"
         retry
       end
-      puts "#{url} PARSE ERROR"
       errors.add(:feed, FEED_ERRORS[:no_parser])
     rescue NoMethodError
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
-      puts "#{url} NO METHOD ERROR"
     rescue URI::InvalidURIError 
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
-      puts "#{url} INVALID URI"
     rescue Feedjira::FetchFailure
       errors.add(:feed, FEED_ERRORS[:fetch_failure])
-      puts "#{url} NO FETCH ERROR"
     else 
       self.title = parsed_feed_data.title.to_s.sanitize 
       attempt_regexp_title if (title == "" || title =~ /^http/)
@@ -81,18 +78,20 @@ class Feed < ActiveRecord::Base
   end
 
   def generate_topics
-    created_topics = {}
+    created_topics = Hash.new { |h, k| h[k] = 0 }
     entries.each do |entry|
       return unless entry['categories']
       JSON.parse(entry['categories']).each do |category|
-        topic = Topic.find_by_title(category.downcase)
-        unless topic
-          topic = Topic.create(title: category.downcase)
-        end
-        unless created_topics[topic]
-          FeedTopic.create(feed_id: id, topic_id: topic.id)
-          created_topics[topic] = true
-        end
+        
+
+        # topic = Topic.find_by_title(category.downcase)
+        # unless topic
+        #   topic = Topic.create(title: category.downcase)
+        # end
+        # unless created_topics[topic]
+        #   FeedTopic.create(feed_id: id, topic_id: topic.id)
+        #   created_topics[topic] = true
+        # end
       end
     end
   end
