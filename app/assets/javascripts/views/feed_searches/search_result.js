@@ -1,5 +1,5 @@
 Breedly.Views.SearchResult = Backbone.View.extend({
-  tagName: 'li',
+  tagName: 'tr',
   template: JST['feeds/search_result'],
 
   render: function() {

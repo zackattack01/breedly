@@ -44,6 +44,7 @@ class Api::FeedsController < ApplicationController
       when params[:query] =~ /^topic=/
         @feeds = Topic.includes(:feeds).find_by({ 
           title: params[:query].match(/^topic=(.+)$/)[1] }).feeds
+        @subscribed_ids = Subscription.where({ user_id: current_user.id })
       else
         raise "query probz"
       end
