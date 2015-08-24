@@ -41,16 +41,17 @@ class Api::FeedsController < ApplicationController
         @feeds = current_user.subscribed_feeds.includes(:topics)
       when params[:query] == "sorted"
         @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
-      when params[:query] =~ /^topic=/
-        @feeds = Topic.includes(:feeds).find_by({ 
-          title: params[:query].match(/^topic=(.+)$/)[1] }).feeds
-        @subscribed_ids = Subscription.where({ user_id: current_user.id })
+      when params[:query] =~ /^topics=/
+        topics = JSON.parse(params[:query].match(/^topics=(.+)$/)[1])
+        @feeds = Topic.includes(:feeds).where({ title: topics }).map do |topic|
+          topic.feeds
+        end.flatten
+        @subscriptions = Subscription.where({ user_id: current_user.id })
       else
         raise "query probz"
       end
     else
-      puts "NO QUERY PARAMS"
-      @feeds = current_user.sorted_feeds.group("feeds.id").order("COUNT(feeds.id) DESC")
+      @feeds = Feed.all
     end
   end
 

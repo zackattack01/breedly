@@ -1,38 +1,42 @@
 Breedly.Views.FeedSearch = Backbone.ModalView.extend({
   initialize: function(options) {
+    this.rootView = options.rootView;
+    this.enteredTopics = [];  
     Backbone.ModalView.prototype.initialize.call(this, "symphony");
   },
   
   template: JST['feeds/feed_search'],
 
   events: {
-    'click button.find-topic-feeds': 'searchForFeed'
+    'click button.find-topic-feeds': 'searchByTopic',
+    'click button.clear-selected-topics': 'clearSelectedTopics',
+    'click .search-result-link': 'removeAndRefreshFeeds'
   },
 
-  searchForFeed: function(e) {
+  removeAndRefreshFeeds: function(e) {
+    this.rootView.refreshSubscribedFeeds();
+    this.remove();
+  },
+
+  clearSelectedTopics: function(e) {
     e.preventDefault();
-    var scope = $(e.currentTarget).data('scope');
-    if (scope === "title") {
-      var feedTitle = this.$('#feed-title').val();
-      this.searchByTitle(feedTitle);
-    } else if (scope === "topic") {
-      var topic = this.$('#feed-topic').val();
-      this.searchByTopic(topic);   
-    }
+    this.enteredTopics = [];
   },
 
-  searchByTopic: function(topic) {
+  searchByTopic: function(e) {
+    e.preventDefault();
     var topic_feeds = new Breedly.Collections.Feeds();
+    var topic = this.$('#feed-topic').val();
+    this.enteredTopics.push(topic);
     this.whirl();
     var that = this;
     topic_feeds.fetch({
-      data: { query: 'topic=' + topic },
+      data: { query: 'topics=' + JSON.stringify(that.enteredTopics) },
       success: function(obj, resp) {
-        var searchResult = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
+        var searchResults = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
         that.$('.errors').empty();
         var included = false;
-        //todo remove 
-        that.addSubview('.search-result-content', searchResult);
+        that.swapResults(searchResults);
         that.$('#feed-topic').val("");
         that.endWhirly();
       },
@@ -43,6 +47,12 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
         that.endWhirly();
       }
     });
+  },
+
+  swapResults: function(searchResults) {
+    this._currentResults && this.removeSubview('.search-result-content', this._currentResults);
+    this.addSubview('.search-result-content', searchResults);
+    this._currentResults = searchResults;
   },
 
   onRender: function() {

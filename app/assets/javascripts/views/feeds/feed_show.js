@@ -2,7 +2,7 @@ Breedly.Views.FeedShow = Backbone.View.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
     this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model, 'change:subscribed', this.render)
+    this.listenTo(this.model, 'change:subscribed', this.render);
   },
 
   template: JST['feeds/feed_show'],
