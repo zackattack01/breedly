@@ -7,11 +7,9 @@ Breedly.Views.SearchResults = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'add', this.addSearchResultView);
     this.listenTo(this.collection, 'remove', this.removeSearchResultView);
     var that = this;
-    if (this.collection.length !== 0) {
-      this.collection.each(function(result) {
-        that.addSearchResultView(result);
-      });
-    };
+    this.collection.each(function(result) {
+      that.addSearchResultView(result);
+    });
   },
 
   addSearchResultView: function(result) {

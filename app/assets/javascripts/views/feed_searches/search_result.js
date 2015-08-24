@@ -2,7 +2,7 @@ Breedly.Views.SearchResult = Backbone.View.extend({
   initialize: function(options) {
     this.rootView = options.rootView;
     this.listenTo(this.model, 'change:subscribed', this.render);
-    this.listenTo(this.model, 'change:subscribed', this.rootView.refreshSubscribedFeeds);
+    this.listenTo(this.model, 'change:subscribed', this.rootView.refreshSubscribedFeeds.bind(options.rootView));
   },
   
   tagName: 'tr',

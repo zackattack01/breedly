@@ -38,6 +38,12 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
     this.addSubview('#feed-list', feedItem);
   },
 
+  refreshSubscribedFeeds: function() {
+    this.collection.fetch({
+      data: { query: "subscribed" }
+    });
+  },
+
   removeFeedItemView: function(feed) {
     this.removeModelSubview('#feed-list', feed);
   },
