@@ -674,7 +674,7 @@ rescue NoMethodError
 end
 
 public_feed_author = User.create(username: "public", password: "public_feeds")
-admin = User.create(username: "admin", real_name: "zack", password: "password", age: 23, age_min: 20, age_max: 80)
+admin = User.create(username: "admin", real_name: "zack", password: "password", age: 23)
 User.create(username: "hb", password: "tester")
 User.create(username: "bluebird", password: "tester")
 Feed.generate_feed_object("http://zactal.tumblr.com/rss", admin.id)
@@ -684,9 +684,7 @@ user_feeds.each do |url|
   user = User.create(
     username: username.gsub(/\s+/, ""),
     age: rand(100),
-    password: "password",
-    age_min: rand(18..26),
-    age_max: rand(27..100)
+    password: "password"
   )
 
   Feed.generate_feed_object(url, user.id)

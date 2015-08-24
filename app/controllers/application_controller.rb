@@ -27,9 +27,7 @@ class ApplicationController < ActionController::Base
         :username, 
         :real_name, 
         :password, 
-        :age, 
-        :age_min, 
-        :age_max
+        :age
       )
   end  
 end
