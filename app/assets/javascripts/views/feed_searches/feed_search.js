@@ -10,21 +10,13 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
   events: {
     'click button.find-topic-feeds': 'searchByTopic',
     'click button.clear-selected-topics': 'clearSelectedTopics',
-    'click .search-result-link': 'removeAndRefreshFeeds'
-  },
-
-  removeAndRefreshFeeds: function(e) {
-    this.rootView.refreshSubscribedFeeds();
-    this.remove();
+    'click .search-result-link': 'remove'
   },
 
   clearSelectedTopics: function(e) {
     e.preventDefault();
     this.enteredTopics = [];
-    var searchResults = new Breedly.Views.SearchResults({ 
-      collection: [], rootView: this 
-    });
-    this.swapResults(searchResults);
+    this.$('.search-result-content').empty();
   },
 
   searchByTopic: function(e) {
