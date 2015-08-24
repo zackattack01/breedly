@@ -1,5 +1,9 @@
 <a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>  
 <div class="feed-header">
+    <p class='timestamp' style="text-align:center">
+      <% var author = feed.get('author_name') %>
+      <%= author === "public" ? "Public Feed" : "User Feed: " + author %>
+    </p>
     <% if (feed.get('subscribed') === "subscribed") { %>
       <button class="toggle-subscribe-btn red btn">Unsubscribe</button>
     <% } else { %>

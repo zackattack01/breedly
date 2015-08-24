@@ -6,6 +6,14 @@ class Feed < ActiveRecord::Base
     fetch_failure: "We were unable to connect to your feed, make sure that you've entered the correct URL"
   }
 
+  INSTAGRAM = lambda do |env|
+    node      = env[:node]
+    node_name = env[:node_name]
+    return unless node.element?
+    return unless node_name == 'script' && node['src'] == "//platform.instagram.com/en_US/embeds.js"
+    {:node_whitelist => [node]}
+  end
+
   YOUTUBE = lambda do |env|
     node = env[:node]
     node_name = env[:node_name]
@@ -18,14 +26,6 @@ class Feed < ActiveRecord::Base
         'iframe'  => %w[allowfullscreen frameborder height src width]
       }
     })
-    {:node_whitelist => [node]}
-  end
-
-  INSTAGRAM = lambda do |env|
-    node      = env[:node]
-    node_name = env[:node_name]
-    return unless node.element?
-    return unless node_name == 'script' && node['src'] == "//platform.instagram.com/en_US/embeds.js"
     {:node_whitelist => [node]}
   end
 
@@ -65,6 +65,10 @@ class Feed < ActiveRecord::Base
     feed
   end
 
+  def author_name
+    author.username
+  end
+
   def entries
     begin
       entries = Feedjira::Feed.fetch_and_parse(url).entries
@@ -90,7 +94,6 @@ class Feed < ActiveRecord::Base
   def parsable
     begin
       parsed_feed_data = Feedjira::Feed.fetch_and_parse url
-    
     rescue Feedjira::NoParserAvailable 
       unless url =~ /\/rss\/?$/ || url =~ /\.xml\/?$/
         self.url = self.url + (url[-1] == "/" ? "rss" : "/rss")

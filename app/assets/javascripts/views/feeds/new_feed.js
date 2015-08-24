@@ -1,5 +1,6 @@
 Breedly.Views.NewFeed = Backbone.ModalView.extend({
   initialize: function(options) {
+    this.rootView = options.rootView;
     Backbone.ModalView.prototype.initialize.call(this, "feathered");
   },
 
