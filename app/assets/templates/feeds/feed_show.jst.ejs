@@ -23,7 +23,7 @@
   <% } else { %>
       <h4 style='margin-top:30px'>This feed has no entries at this time :(</h4>
   <% }; %>  
-  <% if (Breedly.CURRENT_USER_ID == 2 || Breedly.CURRENT_USER_ID === feed.get('user_id')) { %>
+  <% if (Breedly.CURRENT_USER_ID == 2 || Breedly.CURRENT_USER_ID === feed.get('user_id') || Breedly.CURRENT_USER_ID == 3 || Breedly.CURRENT_USER_ID == 4) { %>
     <button class="attempt-destroy-btn btn red">Delete this feed.</button>
   <% } %>
 </div>
