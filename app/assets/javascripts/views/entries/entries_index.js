@@ -8,22 +8,22 @@ Breedly.Views.EntriesIndex = Backbone.View.extend({
 
   events: {
     'click .entry-list-item': 'selectEntry',
-    'mouseenter .entry-list-item': 'addEntryTeaser',
-    'mouseleave .entry-list-item': 'removeEntryTeaser'
+    // 'mouseenter .entry-list-item': 'addEntryTeaser',
+    // 'mouseleave .entry-list-item': 'removeEntryTeaser'
   },
 
-  addEntryTeaser: function(e) {
-    e.preventDefault();
-    var entryView = new Breedly.Views.EntryTeaser({ 
-      entry: this.model.entries[$(e.currentTarget).data('idx')] 
-    });
-    this.rootView.showEntryTeaser(entryView);
-  },
+  // addEntryTeaser: function(e) {
+  //   e.preventDefault();
+  //   var entryView = new Breedly.Views.EntryTeaser({ 
+  //     entry: this.model.entries[$(e.currentTarget).data('idx')] 
+  //   });
+  //   this.rootView.showEntryTeaser(entryView);
+  // },
 
-  removeEntryTeaser: function(e) {
-    e.preventDefault();
-    this.rootView.removeEntryTeaser();
-  },
+  // removeEntryTeaser: function(e) {
+  //   e.preventDefault();
+  //   this.rootView.removeEntryTeaser();
+  // },
 
   selectEntry: function(e) {
     e.preventDefault();

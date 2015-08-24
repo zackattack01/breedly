@@ -23,6 +23,9 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   refreshSubscribedFeeds: function() {
+    if (!this.subscriptions) {
+      this.subscriptions = new Breedly.Collections.Feeds();
+    }
     this.subscriptions.fetch({
       data: { query: "subscribed" }
     });

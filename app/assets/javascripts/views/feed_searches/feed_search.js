@@ -21,6 +21,10 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
   clearSelectedTopics: function(e) {
     e.preventDefault();
     this.enteredTopics = [];
+    var searchResults = new Breedly.Views.SearchResults({ 
+      collection: [], rootView: this 
+    });
+    this.swapResults(searchResults);
   },
 
   searchByTopic: function(e) {
@@ -33,16 +37,21 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
     topic_feeds.fetch({
       data: { query: 'topics=' + JSON.stringify(that.enteredTopics) },
       success: function(obj, resp) {
-        var searchResults = new Breedly.Views.SearchResults({ collection: topic_feeds, rootView: that });
+        var searchResults = new Breedly.Views.SearchResults({ 
+          collection: topic_feeds, rootView: that.rootView 
+        });
+
         that.$('.errors').empty();
-        var included = false;
         that.swapResults(searchResults);
         that.$('#feed-topic').val("");
         that.endWhirly();
       },
 
       error: function(obj, resp) {
-        that.$('.errors').html('<li>There are currently no feeds with that topic.</li>');
+        that.$('.errors').html(
+          '<li>There are currently no feeds with that topic.</li>'
+        );
+
         that.$('#feed-topic').val("");
         that.endWhirly();
       }
@@ -50,7 +59,8 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
   },
 
   swapResults: function(searchResults) {
-    this._currentResults && this.removeSubview('.search-result-content', this._currentResults);
+    this._currentResults && 
+    this.removeSubview('.search-result-content', this._currentResults);
     this.addSubview('.search-result-content', searchResults);
     this._currentResults = searchResults;
   },
