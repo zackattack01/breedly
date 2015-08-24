@@ -241,7 +241,8 @@ ul.dropdown-menu {
   text-shadow: 0 0 15px #AA1111;
 }
 
-#main-content div img, #main-content a img {
+#main-content div img, #main-content a img, #main-content video, 
+div.teaser-content img,  div.teaser-content a img, div.teaser-content video {
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
   -webkit-transform: translateX(-50%) !important;
@@ -270,7 +271,7 @@ a.entry-title {
   margin: 20px 0 40px 0;
 }
 
-#main-content p, .teaser-content p {
+#main-content p, div.teaser-content p {
   margin: 10px;
   font-size: 1.0em;
   text-indent: 40px;
