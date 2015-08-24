@@ -1,3 +1,6 @@
 /docs
 /wireframes
 /test
+/log/*
+!/log/.keep
+/tmp
