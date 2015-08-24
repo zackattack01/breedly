@@ -612,7 +612,6 @@ public_feeds = [
   "http://www.snopes.com/info/whatsnew.xml",
   "http://blackmarketnews.blogspot.com/atom.xml",
   "http://z.about.com/6/g/deafness/b/index.xml",
-  "http://www.livejournal.com/community/deaf/data/rss",
   "http://www.hellomagazine.com/rss.xml",
   "http://www.csmonitor.com/rss/learning.rss",
   "http://www.topix.net/rss/news/terrorism.xml",
@@ -692,7 +691,11 @@ end
 
 
 public_feeds.each do |url|
-  Feed.generate_feed_object(url, public_feed_author.id)
+  begin
+    Feed.generate_feed_object(url, public_feed_author.id)
+  rescue StandardError
+    next
+  end
 end
 
 topic_ids = Topic.all.map { |topic| topic.id }

@@ -7,42 +7,42 @@ class Feed < ActiveRecord::Base
   }
 
   YOUTUBE = lambda do |env|
-              node      = env[:node]
-              node_name = env[:node_name]
-              return if env[:is_whitelisted] || !node.element?
-              return unless node_name == 'iframe'
-              return unless node['src'] =~ %r|\A(?:https?:)?//(?:www\.)?youtube(?:-nocookie)?\.com/|
-              Sanitize.node!(node, {
-                :elements => %w[iframe],
-                :attributes => {
-                  'iframe'  => %w[allowfullscreen frameborder height src width]
-                }
-              })
-              {:node_whitelist => [node]}
-            end
+    node = env[:node]
+    node_name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+    return unless node_name == 'iframe'
+    return unless node['src'] =~ %r|\A(?:https?:)?//(?:www\.)?youtube(?:-nocookie)?\.com/|
+    Sanitize.node!(node, {
+      :elements => %w[iframe],
+      :attributes => {
+        'iframe'  => %w[allowfullscreen frameborder height src width]
+      }
+    })
+    {:node_whitelist => [node]}
+  end
 
   INSTAGRAM = lambda do |env|
-                node      = env[:node]
-                node_name = env[:node_name]
-                return unless node.element?
-                return unless node_name == 'script' && node['src'] == "//platform.instagram.com/en_US/embeds.js"
-                {:node_whitelist => [node]}
-              end
+    node      = env[:node]
+    node_name = env[:node_name]
+    return unless node.element?
+    return unless node_name == 'script' && node['src'] == "//platform.instagram.com/en_US/embeds.js"
+    {:node_whitelist => [node]}
+  end
 
   SANITIZATION_OPTIONS = Sanitize::Config.merge(Sanitize::Config::RELAXED,
-                          :elements => Sanitize::Config::RELAXED[:elements] + ['video', 'source'],
-                          :attributes => Sanitize::Config.merge(Sanitize::Config::RELAXED[:attributes], 
-                           'video' => ['width', 'height', 'data-crt-options', 'poster'],
-                           'source' => ['src', 'type'] 
-                          ),
+    :elements => Sanitize::Config::RELAXED[:elements] + ['video', 'source'],
+    :attributes => Sanitize::Config.merge(Sanitize::Config::RELAXED[:attributes], 
+     'video' => ['width', 'height', 'data-crt-options', 'poster'],
+     'source' => ['src', 'type'] 
+    ),
 
-                          :protocols => Sanitize::Config.merge(Sanitize::Config::RELAXED[:protocols],
-                            'a'   => {'href' => ['ftp', 'http', 'https', 'mailto']},
-                            :all => {'src'  => ['http', 'https', :relative]}
-                          ),
+    :protocols => Sanitize::Config.merge(Sanitize::Config::RELAXED[:protocols],
+      'a'   => {'href' => ['ftp', 'http', 'https', 'mailto']},
+      :all => {'src'  => ['http', 'https', :relative]}
+    ),
 
-                          :transformers => [YOUTUBE, INSTAGRAM]
-                        )
+    :transformers => [YOUTUBE, INSTAGRAM]
+  )
   
 
   validates :author, :url, presence: true
