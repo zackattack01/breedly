@@ -74,6 +74,16 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     this.$("#errors-main").empty();
   },
 
+  swapTeaser: function(view) {
+    this._teaser && this._teaser.remove();
+    this._teaser = view;
+    this.$('#main-container').append(view.render().$el);
+  },
+
+  killTeaser: function() {
+    this._teaser && this._teaser.remove();
+  },
+
   showFeedDescription: function(feedDescView) {
     this._hoveredFeedDesc = feedDescView;
     this.$('#main-container').append(feedDescView.render().$el);

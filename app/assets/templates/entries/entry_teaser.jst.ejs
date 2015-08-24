@@ -1,8 +1,11 @@
-<a class="entry-title" href="#"><%= entry['title'] %></a>
-<% if (entry['timestamp']) { %>
-  <p class='timestamp'><%= entry['timestamp'] %></p>
-<% }; %>
-<% if (entry['image']) { %>
-  <img src="<%= entry['image'] %>">
-<% }; %>
-<%= entry['summary'] %>
+<div class="teaser-bg"></div>
+<div class="teaser-content">
+  <a class="entry-title" href="#"><%= entry['title'] %></a>
+  <% if (entry['timestamp']) { %>
+    <p class='timestamp'><%= entry['timestamp'] %></p>
+  <% }; %>
+  <% if (entry['image']) { %>
+    <img src="<%= entry['image'] %>">
+  <% }; %>
+  <%= entry['summary'] %>
+</div>

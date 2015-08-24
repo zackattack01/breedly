@@ -348,7 +348,7 @@ ul.dropdown-menu {
   color: #AA1111;
 }
 
-.desc-layer-bg {
+.teaser-bg {
   background: url("cubes.jpg"); 
   position: fixed;
   top:0;
@@ -378,6 +378,8 @@ ul.dropdown-menu {
   bottom: 0;
   text-align: center;
 }
+
+.auth-form > .form-control { color: black; }
 
 .auth-screen form.guest-hidden {
   margin-top: 30px;
