@@ -262,7 +262,7 @@ ul.dropdown-menu {
   margin: auto 50px auto 50px;
 }
 
-#main-content a.entry-title {
+a.entry-title {
   text-align: center;
   text-decoration: none;
   font-size: 1.5em;
@@ -270,7 +270,7 @@ ul.dropdown-menu {
   margin: 20px 0 40px 0;
 }
 
-#main-content p {
+#main-content p, .teaser-content p {
   margin: 10px;
   font-size: 1.0em;
   text-indent: 40px;
