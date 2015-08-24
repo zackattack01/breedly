@@ -1,11 +1,11 @@
 <div class="desc-layer-bg"></div>
-<div class="feed-desc">
+<div class="teaser-content">
   <h2 class="feed-title"><%= feed.get('title') %></h2>
-  <h3><%= feed.get('description') %></h3>
+  <h3 style="color:#A11111"><%= feed.get('description') %></h3>
     <% var topics = feed.topics(); %>
     <h4>Topics</h4>
     <% if (topics.length > 0) { %>
-      <ul>
+      <ul style="list-style-type:disc">
         <% topics.each(function(topic) { %>
           <li class="topic-list-item"><%= topic.get('title') %></li>
         <% }); %>

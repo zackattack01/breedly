@@ -1,11 +1,13 @@
-  <a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>  
-  <div class="feed-header">
-      <% if (feed.get('subscribed') === "subscribed") { %>
-        <button class="toggle-subscribe-btn red btn">Unsubscribe</button>
-      <% } else { %>
-        <button class="toggle-subscribe-btn green btn">Subscribe</button>
-      <% } %>
-  </div>
+<a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>  
+<div class="feed-header">
+    <% if (feed.get('subscribed') === "subscribed") { %>
+      <button class="toggle-subscribe-btn red btn">Unsubscribe</button>
+    <% } else { %>
+      <button class="toggle-subscribe-btn green btn">Subscribe</button>
+    <% } %>
+</div>
+<div class="entry-teaser-content"></div>
+<div class="entry-content">
   <% if (feed.entries && feed.entries.length > 0) { %>
       <% var activeEntry = feed.entries[feed.get('selectedEntryIdx')]; %>
         <a class="entry-title" href="<%= activeEntry['url'] %>">
@@ -17,13 +19,14 @@
         <% if (activeEntry['image']) { %>
           <img src="<%= activeEntry['image'] %>">
         <% }; %>
-      <%= feed.entries[feed.get('selectedEntryIdx')]['summary'] %>
+      <%= activeEntry['summary'] %>
   <% } else { %>
       <h4 style='margin-top:30px'>This feed has no entries at this time :(</h4>
   <% }; %>  
   <% if (Breedly.CURRENT_USER_ID == 2 || Breedly.CURRENT_USER_ID === feed.get('user_id')) { %>
     <button class="attempt-destroy-btn btn red">Delete this feed.</button>
-<% } %>
+  <% } %>
+</div>
 <script>
   $(function() { $('#main-content a').attr("target","_blank") });
 </script

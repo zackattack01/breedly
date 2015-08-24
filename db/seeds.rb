@@ -712,13 +712,7 @@ public_feeds = [
 "http://gadling.com/feed/",
 "http://geekytraveller.com/feed/",
 "http://feeds.bootsnall.com/travelgearblog",
-"http://feeds.cruisecritic.com/site/cc/articles",
-"http://feeds.cruisecritic.com/site/cc/bargains",
-"http://feeds.cruisecritic.com/site/cc/cruiselineprofiles",
-"http://feeds.cruisecritic.com/site/cc/destination_articles",
-"http://feeds.cruisecritic.com/site/cc/news",
-"http://feeds.cruisecritic.com/site/cc/ports",
-"http://feeds.cruisecritic.com/site/cc/shipreviews"
+"http://feeds.cruisecritic.com/site/cc/articles"
 ]
 
 public_feed_author = User.create(username: "public", password: "public_feeds")

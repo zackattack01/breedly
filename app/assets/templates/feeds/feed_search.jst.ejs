@@ -2,7 +2,7 @@
 <br>
 <form id="feed-search-form" class="form-group">
   <label for="feed-topic">Search by Topic:</label>
-  <input id="feed-topic" type="text" name="feed[topic]" class="form-control">
+  <input id="feed-topic" type="text" name="feed[topic]" class="form-control" autofocus>
   <br>
   <button class="btn find-topic-feeds plain centered">Find me these feeds.</button>
   <button class="clear-selected-topics">clear these topics</button>
@@ -13,10 +13,4 @@
   <label for="personal-feeds">personal feeds:</label>
   <input type="checkbox" name="feed[personal]" value="1"> -->
 </form>
-  <div class="search-result-content"></div>
-
-<script>
-$(function() {
-  $('#feed-topic').focus();
-});
-</script>
+<div class="search-result-content"></div>

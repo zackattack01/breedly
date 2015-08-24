@@ -21,10 +21,11 @@ Breedly.Views.FeedsIndex = Backbone.CompositeView.extend({
   },
 
   saveOrder: function(e) {
+    e.stopPropagation();
     var that = this;
     this.$('#feed-list li').each(function(idx, feed) {
       var sub = that.subscriptions.where({ feed_id: $(feed).data("feed-id") })[0];
-      sub.save({ ord: idx });
+      sub && sub.save({ ord: idx });
     });
   },
 

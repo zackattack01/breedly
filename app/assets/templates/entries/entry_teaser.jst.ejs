@@ -1,0 +1,8 @@
+<a class="entry-title" href="#"><%= entry['title'] %></a>
+<% if (entry['timestamp']) { %>
+  <p class='timestamp'><%= entry['timestamp'] %></p>
+<% }; %>
+<% if (entry['image']) { %>
+  <img src="<%= entry['image'] %>">
+<% }; %>
+<%= entry['summary'] %>
