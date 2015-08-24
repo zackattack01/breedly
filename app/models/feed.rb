@@ -69,10 +69,16 @@ class Feed < ActiveRecord::Base
       puts "#{url} NO FETCH ERROR"
     else 
       self.title = parsed_feed_data.title.to_s.sanitize 
-      self.title = url if title == ""
+      attempt_regexp_title if (title == "" || title =~ /^http/)
       self.description = parsed_feed_data.description.to_s.sanitize
     end
   end 
+
+  def attempt_regexp_title
+    self.title = url.match(/\/\/(w{3}\.)?(.+?)\.(tumblr|com|co|net|org)/)[2]
+  rescue NoMethodError
+    self.title = url 
+  end
 
   def generate_topics
     created_topics = {}

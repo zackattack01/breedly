@@ -674,7 +674,7 @@ User.create(username: "bluebird", password: "tester")
 Feed.generate_feed_object("http://zactal.tumblr.com/rss", admin.id)
 User.create(username: "Guest", password: "guest_login")
 user_feeds.each do |url|
-  name_attempt = url.match(/\/\/(.+?)\.[tumblr|com|net]/)
+  name_attempt = url.match(/\/\/(w{3}\.)?(.+?)\.(tumblr|com|co|net|org)/)
   username = name_attempt ? name_attempt[1] : Faker::Name.name
   user = User.create(
     username: username.gsub(/\s+/, ""),
