@@ -30,7 +30,6 @@ Breedly.Views.EntriesIndex = Backbone.View.extend({
     $('li').removeClass('active-entry');
     $(e.currentTarget).parent().addClass('active-entry');
     this.model.set('selectedEntryIdx', $(e.currentTarget).data('idx')); 
-    this.rootView.removeFeedDescription();
   },
 
   render: function() {

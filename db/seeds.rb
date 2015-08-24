@@ -667,6 +667,12 @@ public_feeds = [
   "http://feeds.cruisecritic.com/site/cc/articles"
 ]
 
+def snag_name(url)
+  url.match(/\/\/(w{3}\.)?(.+?)\.(tumblr|com|co|net|org)/)[2]
+rescue NoMethodError
+  Faker::Name.name.split('').join 
+end
+
 public_feed_author = User.create(username: "public", password: "public_feeds")
 admin = User.create(username: "admin", real_name: "zack", password: "password", age: 23, age_min: 20, age_max: 80)
 User.create(username: "hb", password: "tester")
@@ -674,8 +680,7 @@ User.create(username: "bluebird", password: "tester")
 Feed.generate_feed_object("http://zactal.tumblr.com/rss", admin.id)
 User.create(username: "Guest", password: "guest_login")
 user_feeds.each do |url|
-  name_attempt = url.match(/\/\/(w{3}\.)?(.+?)\.(tumblr|com|co|net|org)/)
-  username = name_attempt ? name_attempt[1] : Faker::Name.name
+  username = snag_name(url)
   user = User.create(
     username: username.gsub(/\s+/, ""),
     age: rand(100),

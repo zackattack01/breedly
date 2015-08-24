@@ -53,7 +53,7 @@ class Feed < ActiveRecord::Base
             if %w[title author summary content image].include?(key)
               value = Sanitize.fragment(value, SANITIZATION_OPTIONS)
             end
-            [key, value] 
+            [key, value.to_s] 
           end
         end.to_h
       end
