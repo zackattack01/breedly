@@ -24,13 +24,11 @@ Breedly.Views.FeedIndexItem = Backbone.View.extend({
   addDescription: function(e) {
     e.preventDefault();
     var descriptionView = new Breedly.Views.FeedDescription({ model: this.model });
-    // this.rootView.showFeedDescription(descriptionView);
     this.rootView.swapTeaser(descriptionView);
   },
 
   removeDescription: function(e) {
     e.preventDefault();
-    // this.rootView.removeFeedDescription();
     this.rootView.killTeaser();
   },
 
