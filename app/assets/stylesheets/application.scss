@@ -147,7 +147,6 @@ li.active-feed > a {
   background-color: rgba(60, 230, 20, 0.5);
 }
 
-
 .ui-autocomplete.ui-widget-content {
   max-height: 500px;
   overflow-y: scroll;
@@ -319,7 +318,6 @@ a.entry-title {
   z-index: 4;
 }
 
-
 .modal-content {
   position: fixed;
   left: 50%;
@@ -328,6 +326,8 @@ a.entry-title {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   z-index: 5;
+  max-height: 90%;
+  max-width: 90%;
   padding: 5px 20px 20px 20px;
   text-align: center;
   border: 2px solid maroon;
@@ -365,10 +365,10 @@ a.entry-title {
 
 /* auth */
 .auth-screen {
+  background-image: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
   background-image: -webkit-radial-gradient(at top, black, rgba(235,235,235,0) 80%); 
   background-image:    -moz-radial-gradient(at top, black, rgba(235,235,235,0) 80%); 
   background-image:      -o-radial-gradient(at top, black, rgba(235,235,235,0) 80%);
-  background-image: radial-gradient(at top, black, rgba(235,235,235,0) 80%);
   position: fixed;
   left: 0;
   right: 0;

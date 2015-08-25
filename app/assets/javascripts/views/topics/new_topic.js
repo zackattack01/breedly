@@ -10,6 +10,7 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
+    'click #generate-suggestions': 'showSortedTopics'
   },
 
   addUserTopic: function(e) {
@@ -29,18 +30,17 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
       this.whirl();
       userTopic.save({}, {
         success: function() {
-          that.remove();
-          that.rootView.addMessage("Your interest has been noted!", "success");
+          var successView = new Breedly.Views.Success({
+            model: "Your interest has been noted!"
+          });
+          this.$('.errors').html(successView.render().$el);
           that.endWhirly();
+          $('#topic-title').val("");
         },
 
         error: function(obj, resp) {
-          var errorContent = ""
-          for(var errorType in resp['responseJSON']) {
-            errorContent += (resp['responseJSON'][errorType] + "\n");
-          };
           var errorView = new Breedly.Views.Error({
-            model: errorContent
+            model: "You're already interested in this topic."
           });
           that.$('.errors').html(errorView.render().$el);
           that.endWhirly();
@@ -48,5 +48,38 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
         }
       });
     }
-  }
+  },
+
+  showSortedTopics: function() {
+    var sortedFeeds = new Breedly.Collections.Feeds();
+    this.whirl();
+    var that = this;
+    sortedFeeds.fetch({
+      data: { query: 'sorted' },
+      success: function(obj, resp) {
+        var searchResults = new Breedly.Views.SearchResults({ 
+          collection: sortedFeeds, rootView: that.rootView 
+        });
+
+        that.$('.errors').empty();
+        that.swapResults(searchResults);
+        that.endWhirly();
+      },
+
+      error: function(obj, resp) {
+        var errorView = new Breedly.Views.Error({
+          model: "You'll need to add more interests!"
+        })
+        that.$('.errors').html(errorView.render().$el);
+        that.endWhirly();
+      }
+    });
+  },
+
+  swapResults: function(searchResults) {
+    this._currentResults && 
+    this.removeSubview('.search-result-content', this._currentResults);
+    this.addSubview('.search-result-content', searchResults);
+    this._currentResults = searchResults;
+  },
 });
