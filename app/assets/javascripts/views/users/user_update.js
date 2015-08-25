@@ -28,9 +28,14 @@ Breedly.Views.UserUpdate = Backbone.ModalView.extend({
       },
 
       error: function(obj, resp) {
+        var errors = ""
         resp['responseJSON'].forEach(function(error) {
-            that.$('.errors').append('<p>-' + error + '</p>');
+            errors += (error + "\n")
           });
+        var errorView = new Breedly.Views.Error({
+          model: errors
+        })
+        that.$('.errors').html(errorView.render().$el);
         that.endWhirly();
       }
     });   

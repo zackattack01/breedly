@@ -3,7 +3,7 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
     this.rootView = options.rootView;
     this.topics = new Breedly.Collections.Topics();
     this.topics.fetch();
-    Backbone.ModalView.prototype.initialize.call(this, "china-bg");
+    Backbone.ModalView.prototype.initialize.call(this, "circled");
   },
 
   template: JST['topics/new_topic'],
@@ -18,7 +18,10 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
     var newTopic = this.topics.where({ title: topicTitle })[0];
     if (typeof newTopic === "undefined") {
       $('#topic-title').val("")
-      this.$('.errors').html('<p>-There are currently no feeds with that topic.</p>')
+      var errorView = new Breedly.Views.Error({
+        model: "There are currently no feeds with that topic."
+      });
+      this.$('.errors').html(errorView.render().$el);
     } else {
       var that = this;
       var userTopic = new Breedly.Models.UserTopic();
@@ -34,9 +37,12 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
         error: function(obj, resp) {
           var errorContent = ""
           for(var errorType in resp['responseJSON']) {
-            errorContent += ('<li>' + resp['responseJSON'][errorType] + '</li>');
+            errorContent += (resp['responseJSON'][errorType] + "\n");
           };
-          that.$('.errors').html(errorContent);
+          var errorView = new Breedly.Views.Error({
+            model: errorContent
+          });
+          that.$('.errors').html(errorView.render().$el);
           that.endWhirly();
           $('#topic-title').val("");
         }

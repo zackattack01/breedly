@@ -222,7 +222,6 @@ ul.dropdown-menu {
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 0;
   overflow: scroll;
   padding: 50px auto 50px auto;
 }
@@ -240,7 +239,7 @@ ul.dropdown-menu {
   color: #EBEBEB;
   text-shadow: 0 0 15px #AA1111;
 }
-/*
+
 #main-content div img, #main-content a img, #main-content video, 
 div.teaser-content img,  div.teaser-content a img, div.teaser-content video {
   margin-left: 50% !important;
@@ -250,7 +249,7 @@ div.teaser-content img,  div.teaser-content a img, div.teaser-content video {
   display: block;
   margin-bottom: 20px !important;
   max-width: 75%;
-}*/
+}
 
 #main-content a:hover {
   text-decoration: none;
@@ -271,14 +270,14 @@ a.entry-title {
   margin: 20px 0 40px 0;
 }
 
-/*#main-content p, div.teaser-content p {
+#main-content p, div.teaser-content p {
   margin: 10px;
   font-size: 1.0em;
   text-indent: 40px;
   padding: 10px;
   line-height: 1.4;
   text-align: left;
-}*/
+}
 
 #main-content h3 {
   color: #AA1111;
@@ -299,12 +298,12 @@ a.entry-title {
 }
 
 .teaser-content {
-  padding: 50px;
   z-index: 5;
   position: fixed;
   top: 50px;
   left: 20%;
   height: calc(100% - 50px);
+  padding: 50px;
   width: 60%;
 }
 
@@ -340,9 +339,7 @@ a.entry-title {
 .close {
   display: block;
   opacity: 0.4;
-/*  margin-right: -15px;
-  margin-top: -15px;
-*/}
+}
 
 .modal-content h3 {
   font-size: 1.3em;
@@ -418,3 +415,9 @@ td {
 
 .errors { color: #AA1111; }
 
+.delete-btn {
+  padding: 2px;
+  margin: 5px;
+  background-color: #A11111;
+  color: black;
+}

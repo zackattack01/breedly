@@ -47,6 +47,11 @@ class Api::FeedsController < ApplicationController
           topic.feeds
         end.flatten
         @subscriptions = Subscription.where({ user_id: current_user.id })
+        if @feeds.empty? 
+          render :json => "There were no feeds with that topic", status: 422 
+        else 
+          render 'index'
+        end
       else
         raise "query probz"
       end

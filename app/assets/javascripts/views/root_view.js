@@ -62,8 +62,16 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   addMessage: function(message, status) {
-    var selector = (status === "error" ? "#errors-main" : "#success-main");
-    this.$(selector).html('<p>' + message + '</p>');
+    var selector;
+    var messageView;
+    if (status === "error") {
+      selector = "#errors-main";
+      messageView = new Breedly.Views.Error({ model: message });
+    } else {
+      selector = "#success-main";
+      messageView = new Breedly.Views.Success({ model: message });
+    } 
+    this.$(selector).html(messageView.render().$el);
     setTimeout(function() {
       this.dumpMessages();
     }.bind(this), 3000);

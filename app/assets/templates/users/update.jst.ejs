@@ -1,4 +1,4 @@
-<h2>Update Your Profile</h2>
+<h3>Update Your Profile</h3>
 <br>
   <form id="user-update">
     <table class="centered">
@@ -15,11 +15,13 @@
         <td><input id="age" type="number" class="form-control" name="user[age]" value="<%= model.escape('age') %>"></td>
       </tr>
     </table>
+    <br>
     <button class="btn green" id="submit-update">Update</button>
   </form>
   
 <div class="new-feed-block">
   <label for="feed-url"><h3>Or add your personal feed:</h3></label>
   <input id="feed-url" class="form-control" type="text" name="feed[url]">
+  <br>
   <button class="btn green add-feed">Submit!</button>
 </div>

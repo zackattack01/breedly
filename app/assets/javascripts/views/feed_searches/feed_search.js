@@ -40,9 +40,10 @@ Breedly.Views.FeedSearch = Backbone.ModalView.extend({
       },
 
       error: function(obj, resp) {
-        that.$('.errors').html(
-          '<li>There are currently no feeds with that topic.</li>'
-        );
+        var errorView = new Breedly.Views.Error({
+          model: "There are currently no feeds with that topic."
+        })
+        that.$('.errors').html(errorView.render().$el);
 
         that.$('#feed-topic').val("");
         that.endWhirly();
