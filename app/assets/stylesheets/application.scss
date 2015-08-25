@@ -250,7 +250,7 @@ div.teaser-content img,  div.teaser-content a img, div.teaser-content video {
   max-width: 75%;
 }
 
-iframe {
+div.teaser-content iframe, #main-content iframe {
   margin-left: 50% !important;
   transform: translateX(-50%) !important;
   -webkit-transform: translateX(-50%) !important;
@@ -311,8 +311,15 @@ a.entry-title {
   height: calc(100% - 50px);
   padding: 50px;
   width: 60%;
+  overflow-y: scroll;
 }
 
+#main-content .help-content p { text-indent: 0px; text-align: left;}
+.help-content ul { list-style-type: disc; margin: 20px; }
+.help-content h4 { 
+  padding: 20px; 
+  color: #A11111;
+}
 
 /* modals */
 .modal-bg {

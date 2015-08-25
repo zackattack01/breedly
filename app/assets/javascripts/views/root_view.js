@@ -34,31 +34,36 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
   },
 
   showFeedContent: function(activeFeedId) {
-    this._activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
-    this.whirl();
-    var that = this;
-    this._activeFeed.fetch({
-      success: function() {
-        var entriesView = new Breedly.Views.EntriesIndex({ 
-          model: that._activeFeed, rootView: that, $el: that.$('#entries-index') 
-        });
-        that.swapActiveEntries(entriesView);
-        activeFeedView = new Breedly.Views.FeedShow({ 
-          model: that._activeFeed, rootView: that 
-        });   
-        that.swapActiveFeed(activeFeedView);
-        that.endWhirly();
-      },
+    if (activeFeedId === "help") {
+      var helpView = new Breedly.Views.Help();
+      this.swapActiveFeed(helpView);
+    } else {
+      this._activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
+      this.whirl();
+      var that = this;
+      this._activeFeed.fetch({
+        success: function() {
+          var entriesView = new Breedly.Views.EntriesIndex({ 
+            model: that._activeFeed, rootView: that, $el: that.$('#entries-index') 
+          });
+          that.swapActiveEntries(entriesView);
+          activeFeedView = new Breedly.Views.FeedShow({ 
+            model: that._activeFeed, rootView: that 
+          });   
+          that.swapActiveFeed(activeFeedView);
+          that.endWhirly();
+        },
 
-      error: function() {
-        that.endWhirly();
-        that.addMessage(
-          "We're sorry, we were unable to retrieve your feed at this time.", 
-          "error"
-        );
-        Backbone.history.navigate('/', { trigger: true });
-      }
-    }); 
+        error: function() {
+          that.endWhirly();
+          that.addMessage(
+            "We're sorry, we were unable to retrieve your feed at this time.", 
+            "error"
+          );
+          Backbone.history.navigate('/', { trigger: true });
+        }
+      }); 
+    }
   },
 
   addMessage: function(message, status) {

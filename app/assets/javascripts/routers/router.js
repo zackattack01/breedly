@@ -7,12 +7,22 @@ Breedly.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'userRoot',
-    'feeds/:id': 'feedShow'
+    'feeds/:id': 'feedShow',
+    'help': 'helpPage'
   },
 
   userRoot: function() {
     this.$rootEl.html(this.rootView.$el);
     this.rootView.render();
+    this.rootView.showFeedContent("help");
+  },
+
+  helpPage: function() {
+    if (!this.rootView.rendered) {
+      this.$rootEl.html(this.rootView.$el);
+      this.rootView.render();
+    };
+    this.rootView.showFeedContent("help");
   },
 
   feedShow: function(id) {
