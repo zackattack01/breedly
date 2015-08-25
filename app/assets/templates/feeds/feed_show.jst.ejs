@@ -20,13 +20,17 @@
           <p class='timestamp'><%= activeEntry['timestamp'] %></p>
         <% }; %>
         <% if (activeEntry['image']) { %>
-          <img src="<%= activeEntry['image'] %>">
+          <% if (/\.mp4$/.test(activeEntry['image'])) { %>
+            <embed src="<%= activeEntry['image'] %>" type="video/mp4">
+          <% } else { %>
+            <img src="<%= activeEntry['image'] %>">
+          <% }; %>
         <% }; %>
       <%= activeEntry['summary'] %>
   <% } else { %>
       <h4 style='margin-top:30px'>This feed has no entries at this time :(</h4>
   <% }; %>  
-  <% if (Breedly.CURRENT_USER_ID == 2 || Breedly.CURRENT_USER_ID === feed.get('user_id') || Breedly.CURRENT_USER_ID == 3 || Breedly.CURRENT_USER_ID == 4) { %>
+  <% if (Breedly.CURRENT_USER_ID == 2 || Breedly.CURRENT_USER_ID === feed.get('user_id')) { %>
     <button class="delete-btn btn red">Delete this feed.</button>
   <% } %>
 </div>

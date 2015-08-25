@@ -29,6 +29,18 @@ class Feed < ActiveRecord::Base
     {:node_whitelist => [node]}
   end
 
+  ### WORKING ON IT #########################################################
+  # EMBEDDED_MP4S = lambda do |env|
+  #   node = env[:node]
+  #   node_name = env[:node_name]
+  #   debugger
+  #   return unless node.element? && node['src']
+  #   if node['src'] =~ /\.mp4$/ && ['video', 'embed'].none? { |tag| tag == node_name }
+  #     node_name = 'embed'
+  #     { :node_whitelist => [node] }
+  #   end
+  # end
+
   SANITIZATION_OPTIONS = Sanitize::Config.merge(Sanitize::Config::RELAXED,
     :elements => Sanitize::Config::RELAXED[:elements] + ['video', 'source'],
     :attributes => Sanitize::Config.merge(Sanitize::Config::RELAXED[:attributes], 
@@ -69,13 +81,13 @@ class Feed < ActiveRecord::Base
     author.username
   end
 
-  def entries
+  def entries(number_of_entries = 20)
     begin
       entries = Feedjira::Feed.fetch_and_parse(url).entries
     rescue StandardError
       return []
     else
-      entries.map! do |entry|
+      entries[0..number_of_entries].map! do |entry|
         entry.map do |key, value| 
           if key == "published" && value && value.class == Time
             ["timestamp", "posted #{time_ago_in_words(value)} ago."]
