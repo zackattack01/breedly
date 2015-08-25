@@ -21,7 +21,7 @@
         <% }; %>
         <% if (activeEntry['image']) { %>
           <% if (/\.mp4$/.test(activeEntry['image'])) { %>
-            <embed src="<%= activeEntry['image'] %>" type="video/mp4">
+            <video src="<%= activeEntry['image'] %>" type="video/mp4" height="400">
           <% } else { %>
             <img src="<%= activeEntry['image'] %>">
           <% }; %>

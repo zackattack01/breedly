@@ -10,6 +10,7 @@ Breedly.Views.NavBar = Backbone.View.extend({
       },
 
       success: function() {
+        that.feedCount = that.feeds.models.length
         that.feeds.each(function(feed) {
           feedTitles.push(feed.get('title'));
         });
@@ -30,7 +31,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     'click #logout-btn': 'logoutUser',
     'click #user-topic-btn': 'addUserTopic',
     'click #feed-search-btn': 'addCustomSearchModal',
-    'click #nav-feed-search': 'searchByTitle'
+    'click #nav-feed-search': 'searchByTitle',
+    'click #random-feed': 'randomFeedRedirect'
   },
 
   addUserTopic: function(e) {
@@ -61,11 +63,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     this.$('#feed-title').val("");
     if (typeof newFeed === "undefined") {
       this.$('#feed-title').val("sorry not here :(")
-      // this.$('#feed-title').attr("placeholder", "We don't currently have that feed :( ")
-      // this.$('.errors').html('<li>There are currently no feeds with that title.</li>')
     } else {
-      // this.remove();
-      Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });  
+      Backbone.history.navigate('feeds/' + newFeed.id, { trigger: true });
     }
   },
 
@@ -96,6 +95,13 @@ Breedly.Views.NavBar = Backbone.View.extend({
     var modalSearch = new Breedly.Views.FeedSearch({ rootView: this.rootView, collection: this.feeds });
     $('body').append(modalSearch.render().$el); 
     $('#topic-title').focus();
+  },
+
+  randomFeedRedirect: function() {
+    var max = this.feedCount || 500
+    var selectedFeedId = Math.floor(Math.random() * max)
+    selectedFeedId = (selectedFeedId === 0 ? 1 : selectedFeedId);
+    Backbone.history.navigate('feeds/' + selectedFeedId, { trigger: true });
   },
 
   updateModal: function(e) {
