@@ -30,9 +30,12 @@ Breedly.Views.NewFeed = Backbone.ModalView.extend({
       error: function(obj, resp) {
         var errorContent = ""
         for(var errorType in resp['responseJSON']) {
-          errorContent += ('<li>' + resp['responseJSON'][errorType] + '</li>');
+          errorContent += (resp['responseJSON'][errorType] + "\n");
         };
-        that.$('.errors').html(errorContent);
+        var errorView = new Breedly.Views.Error({
+          model: errorContent
+        })
+        that.$('.errors').html(errorView.render().$el);
         $('#public-feed-url').val("");
         $('#public-feed-url').focus();
         that.endWhirly();
