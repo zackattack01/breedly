@@ -1,6 +1,6 @@
 <a href="<%= feed.get('url') %>" class="feed-title"><%= feed.get('title') %></a>  
 <div class="feed-header">
-    <p class='timestamp' style="text-align:center">
+    <p class="author-stamp">
       <% var author = feed.get('author_name') %>
       <%= author === "public" ? "Public Feed" : "User Feed: " + author %>
     </p>

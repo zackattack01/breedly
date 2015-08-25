@@ -232,7 +232,7 @@ ul.dropdown-menu {
   text-align: center;
   display: block;
   color: #AA1111;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 5px 0;
 }
 
 #main-content a.feed-title:hover {
@@ -420,4 +420,11 @@ td {
   margin: 5px;
   background-color: #A11111;
   color: black;
+}
+
+#main-content .author-stamp {
+  text-indent: 0px;
+  color: gray;
+  text-align: center;
+  margin-top: 0px;
 }
