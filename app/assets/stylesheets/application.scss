@@ -250,6 +250,13 @@ div.teaser-content img,  div.teaser-content a img, div.teaser-content video {
   max-width: 75%;
 }
 
+iframe {
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  -webkit-transform: translateX(-50%) !important;
+  -ms-transform: translateX(-50%) !important;
+}
+
 #main-content a:hover {
   text-decoration: none;
   color: #A11111;

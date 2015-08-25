@@ -10,7 +10,8 @@ Breedly.Views.NewTopic = Backbone.ModalView.extend({
 
   events: {
     'click button.add-user-topic': 'addUserTopic',
-    'click #generate-suggestions': 'showSortedTopics'
+    'click #generate-suggestions': 'showSortedTopics',
+    'click .search-result-link': 'remove'
   },
 
   addUserTopic: function(e) {
