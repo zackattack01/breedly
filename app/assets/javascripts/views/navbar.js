@@ -97,7 +97,8 @@ Breedly.Views.NavBar = Backbone.View.extend({
     $('#topic-title').focus();
   },
 
-  randomFeedRedirect: function() {
+  randomFeedRedirect: function(e) {
+    e.preventDefault();
     var max = this.feedCount || 500
     var selectedFeedId = Math.floor(Math.random() * max)
     selectedFeedId = (selectedFeedId === 0 ? 1 : selectedFeedId);
