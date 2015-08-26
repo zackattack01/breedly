@@ -4,7 +4,7 @@
 View it live [here](http://breedly.co)
 
 ## The what 
-Breedly is a feed reading app tailored towards people with their own personal blogs.
+Breedly is a feed reading app tailored for people with their own personal blogs.
 
 ## The what specifically
 Users can:
