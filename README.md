@@ -1,6 +1,8 @@
 ## Welcome to 
 ![breedly](./app/assets/images/logo_small.png)
 
+View it live [here](breedly.co)
+
 ## The what 
 Breedly is a feed reading app tailored towards people with their own personal blogs.
 
