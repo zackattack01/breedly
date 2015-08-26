@@ -8,17 +8,14 @@
 - `username` -> unique
 - `real_name` -> not necessarily unique
 - `age`
-- `age_min`
-- `age_max`
-    - target range for compatible feeds
 - `have_many` feed
 - `have_many` interests
 
 ### Feeds
 - `user_id` -> foreign key
-- `title` -> optional
+- `title` -> optional initially but will default to URL if none can be found when the feed is fetched
 - `url`
-- `have_one` (or maybe many) topic(s)
+- `have_many` feed_topic
 
 ## Controllers
 

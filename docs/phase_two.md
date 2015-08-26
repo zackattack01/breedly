@@ -10,11 +10,11 @@
 - Views for both using templates
 
 ## Topics (of interest)
-- Blog feeds will `have_and_belong_to_many` topics
+- Blog feeds will `have_many` topics `through` feed_topics
     - Later users will be able to mark an interest in a topic
 
 #### Topic Schema
-- `name`
+- `title`
     - to be validated for inclusion in a set of topics
 - `feed_id` -> foreign key
 

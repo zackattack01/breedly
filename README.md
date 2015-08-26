@@ -2,7 +2,7 @@
 ![breedly](./app/assets/images/logo_small.png)
 
 ## The what 
-Breedly is a personal blog feed reading site for singles with blogs.
+Breedly is a feed reading app tailored towards people with their own personal blogs.
 
 ## The what specifically
 Users can:
@@ -15,15 +15,13 @@ Users can:
 - [x] See suggested feeds based on the topics they're interested in
 - [x] Subscribe to another user's blog
 - [x] Add public feeds to the database
-- [x] Subscribe to any public blogs
+- [x] Subscribe to any public feeds
 - [x] See a random feed
 - [x] Search for feeds by topic or title
 - [x] Reorder their subscriptions by drag and drop
 
 ## Wireframes
 [check em' out](./docs/views.md)
-
-## The timeline
 
 ### User Auth, Schema
 
@@ -51,7 +49,7 @@ Users can:
 [Details](./docs/phase_three.md)
 
 ### Style points
-- Random feed generator randomly selects a feed and redirects the user
+- Random feed generator button randomly selects a feed and triggers a redirect
 - Drag and drop subscriptions to reorder them
 - Autocomplete for search by topic and title
 - Toggle subscribe/unsubscribe on any feed's show page or search result
@@ -59,8 +57,9 @@ Users can:
 ### Plans for the future
 
 - create about us, help, contact us pages
-- Additional points may be given to the compatibility score if a user has indicated an interested in the user who is having the feeds generated
-- Implement a cap on the number of feeds provided, allow a refresh button from backbone as well as a more feeds button
+- oAuth through tumblr autogenerates the users rss feed from their tumblr username and adds it to the db
+- Additional points may be given during the feed sorting to a user's feed who has subscribed to the user who is having the feeds generated
+- Create a refresh button from backbone as well as a more feeds button
     - This will request the next 100 (or whatever the cap is) number of sorted feeds from the database
 - Users can add a profile picture
 - A private user messaging systems
