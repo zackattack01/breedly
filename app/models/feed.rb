@@ -42,10 +42,11 @@ class Feed < ActiveRecord::Base
   # end
 
   SANITIZATION_OPTIONS = Sanitize::Config.merge(Sanitize::Config::RELAXED,
-    :elements => Sanitize::Config::RELAXED[:elements] + ['video', 'source'],
+    :elements => Sanitize::Config::RELAXED[:elements] + ['video', 'source', 'enclosure'],
     :attributes => Sanitize::Config.merge(Sanitize::Config::RELAXED[:attributes], 
      'video' => ['width', 'height', 'data-crt-options', 'poster'],
-     'source' => ['src', 'type'] 
+     'source' => ['src', 'type'] ,
+     'enclosure' => ['url']
     ),
 
     :protocols => Sanitize::Config.merge(Sanitize::Config::RELAXED[:protocols],

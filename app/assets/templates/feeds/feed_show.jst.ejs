@@ -25,6 +25,10 @@
           <% } else { %>
             <img src="<%= activeEntry['image'] %>">
           <% }; %>
+        <% } else if (activeEntry['enclosure_type'] && /^image/.test(activeEntry['enclosure_type'])) { %>
+            <img src="<%= activeEntry['enclosure_url'] %>">
+        <% } else if (activeEntry['enclosure_type'] && /video/.test(activeEntry['enclosure_type'])) { %>
+            <video src="<%= activeEntry['enclosure_url'] %>">
         <% }; %>
       <%= activeEntry['summary'] %>
   <% } else { %>
