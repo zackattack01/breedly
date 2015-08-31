@@ -10,6 +10,6 @@
     <input class="btn auth-btn btn-lg submit" type="submit" value="<%= action == session_url ? 'Sign In' : 'Sign Up' %>">
     <% label, path = (action == session_url ? ['Or Sign Up', new_user_url] : ['Or Sign In', new_session_url]) %>
   </form>
-    <%= link_to label, path, style: "color:#A11111" %>
+    <%= link_to label, path, class: "or-link" %>
     <%= render 'shared/guest_login' %>
 </div>

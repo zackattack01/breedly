@@ -232,6 +232,11 @@ ul.dropdown-menu {
   display: block;
   color: #AA1111;
   margin: 20px 0 5px 0;
+  text-shadow: -2px 2px 5px #A11111;
+}
+
+.feed-title {
+  text-shadow: -2px 2px 5px black;
 }
 
 #main-content a.feed-title:hover {
@@ -441,4 +446,16 @@ td {
   color: gray;
   text-align: center;
   margin-top: 0px;
+}
+
+a.or-link {
+  color: #A11111;
+  font-size: 1.3em;
+  text-shadow: -2px 2px 5px #421717;
+}
+
+a.or-link:hover {
+  text-decoration: none;
+  text-shadow: -2px 2px 5px black;
+
 }
