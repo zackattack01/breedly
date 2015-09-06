@@ -14,7 +14,7 @@ Breedly.Routers.Router = Backbone.Router.extend({
   userRoot: function() {
     this.$rootEl.html(this.rootView.$el);
     this.rootView.render();
-    this.rootView.showFeedContent("help");
+    this.rootView.showFeedContent("splash");
   },
 
   helpPage: function() {

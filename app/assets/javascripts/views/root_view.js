@@ -37,6 +37,9 @@ Breedly.Views.RootView = Backbone.CompositeView.extend({
     if (activeFeedId === "help") {
       var helpView = new Breedly.Views.Help();
       this.swapActiveFeed(helpView);
+    } else if (activeFeedId === "splash") {
+      var splashPage = new Breedly.Views.Splash();
+      this.swapActiveFeed(splashPage);
     } else {
       this._activeFeed = new Breedly.Models.Feed({ id: activeFeedId });
       this.whirl();
