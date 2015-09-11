@@ -1,2 +1,9 @@
-<img style="max-width:100%" alt="splash" src="<%= asset_path('splash.png') %>" />
-<p >*For more help see the Getting Started page in the My Profile dropdown above.</p>
+<div class="splash">
+  <img style="max-width:100%;margin-top:200px" alt="splash" src="<%= asset_path('logo_full.png') %>"/>
+</div>
+<script>
+  $(function() {
+    introJs().setOptions({ 'skipLabel': 'Exit', 'tooltipPosition': 'bottom' })
+    introJs().start();
+  });
+</script>

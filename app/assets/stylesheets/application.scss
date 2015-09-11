@@ -460,5 +460,7 @@ a.or-link:hover {
 }
 
 .splash {
-  
+  min-height: calc(100% - 50px);
+  min-width: inherit;
+  background: radial-gradient(black, rgba(20, 20, 20, 0.01) 80%);
 }

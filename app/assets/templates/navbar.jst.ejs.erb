@@ -9,8 +9,9 @@
     <img class="navbar-brand" src="<%= image_path('logo_small.png') %>">
   </div>
 
-  <div class="collapse navbar-collapse" id="collapsable">
-    <ul class="nav navbar-nav">
+  <div class="collapse navbar-collapse" id="collapsable" data-intro="Welcome to Breedly.
+Breedly is a feed reading site where you can find and subscribe to your favorite feeds, as well as add your own blog or feed to be discovered." data-step="1" data-position="bottom-left-aligned">
+    <ul class="nav navbar-nav" data-intro="Up here you can add personal feeds and update your interests or settings to see feeds suggested for you." data-step="4">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -24,7 +25,8 @@
         </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" data-intro="Here you can add public feeds to the database.  You can also search by title, topic, or be shown a random feed.
+    Enjoy!" data-step="5">
       <li><a href="#" id="feed-search-btn">Custom Search</a></li>
       <li><a href="#" id="add-feed-btn">Add a Public Feed</a></li>
     </ul>

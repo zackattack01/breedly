@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require introjs
 //= require breedly
 //= require_tree ./utils
 //= require_tree ../templates

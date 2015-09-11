@@ -16,6 +16,7 @@ gem 'ejs'
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'sanitize'
+gem 'introjs-rails'
 
 gem 'rails_12factor', group: :production
 
