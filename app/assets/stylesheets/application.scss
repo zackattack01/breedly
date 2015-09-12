@@ -460,7 +460,21 @@ a.or-link:hover {
 }
 
 .splash {
-  min-height: calc(100% - 50px);
-  min-width: inherit;
-  background: radial-gradient(black, rgba(20, 20, 20, 0.01) 80%);
+  margin-left: -50px;
+  background: radial-gradient(black, rgba(20, 20, 20, 0.01) 70%);
+  background: -webkit-radial-gradient(black, rgba(20, 20, 20, 0.01) 70%);
+  background:    -moz-radial-gradient(black, rgba(20, 20, 20, 0.01) 70%);
+  background:      -o-radial-gradient(black, rgba(20, 20, 20, 0.01) 70%);
+
+}
+
+#tour-trigger {
+  color: #EBEBEB;
+  text-align: center;
+  margin-left: 50%;
+  font-size: 1.2em;
+  background-color: rgba(20, 20, 20, 0.3);
+  transform: translateX(-50%) !important;
+  -webkit-transform: translateX(-50%) !important;
+  -ms-transform: translateX(-50%) !important;
 }

@@ -1,9 +1,14 @@
-<div class="splash">
-  <img style="max-width:100%;margin-top:200px" alt="splash" src="<%= asset_path('logo_full.png') %>"/>
+<div class="splash clearfix">
+  <div class="clearfix" style="padding:200px 0 200px 0">
+    <img style="max-width:100%" alt="splash" src="<%= asset_path('logo_full.png') %>"/>
+    <button class="btn submit" id="tour-trigger">I'd like a tour</button>
+  </div>
 </div>
 <script>
   $(function() {
-    introJs().setOptions({ 'skipLabel': 'Exit', 'tooltipPosition': 'bottom' })
-    introJs().start();
+    $('#tour-trigger').on('click', function(e) {
+      e.preventDefault();
+      introJs().start();
+    });
   });
 </script>
